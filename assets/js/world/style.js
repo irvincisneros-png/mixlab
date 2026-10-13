@@ -367,7 +367,7 @@ export class StyleManager {
     if (u.realMat) {
       // a level may have faded this part while clay was on (it wrote to the clay material): hand the value back
       const cm = u.clayMat, r = u.realMat;
-      if (cm?.userData.opWritten !== undefined && !Array.isArray(r)) { r.opacity = cm.userData.opWritten; delete cm.userData.opWritten; }
+      if (!Array.isArray(cm) && cm?.userData?.opWritten !== undefined && !Array.isArray(r)) { r.opacity = cm.userData.opWritten; delete cm.userData.opWritten; }
       o.material = r; delete u.realMat;
     }
     if (u.shadowFlags) { [o.castShadow, o.receiveShadow] = u.shadowFlags; delete u.shadowFlags; }
