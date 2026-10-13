@@ -41,7 +41,7 @@ export function narrative(M, ctx, band) {
       : M.heatLoss < -0.5 ? `The hotplate is off, but the warmer room is still adding about <b>${(-M.heatLoss).toFixed(1)} W</b>.` : M.heatLoss > 0.5 ? `The hotplate is off and the sample is losing <b>${M.heatLoss.toFixed(1)} W</b> to the room.` : `The hotplate is off.`;
 
   if (tot <= 1e-6) {
-    out.push(`The ${vessel} is empty: all of the water has boiled away and left as steam (<b>${g1(M.escaped)} g</b> in total). Press <b>Reset</b> to start again.`);
+    out.push(`The ${vessel} is empty: all of the water has ${ctx.boiled ? "boiled away and left as steam" : "evaporated away (it never reached boiling)"} (<b>${g1(M.escaped)} g</b> in total). Press <b>Reset</b> to start again.`);
     return out;
   }
 
@@ -141,9 +141,9 @@ export function predictFeedback(sketch, M, band, run = {}) {
   const flatAt = (T0) => {   // longest nearly flat stretch of the sketch near a temperature
     let best = 0, start = null;
     for (let i = 0; i < pts.length; i++) {
-      const near = Math.abs(pts[i].T - T0) < 7;
+      const near = Math.abs(pts[i].T - T0) < 4;
       if (near && start === null) start = i;
-      if ((!near || i === pts.length - 1) && start !== null) { const end = near ? i : i - 1; best = Math.max(best, pts[end].t - pts[start].t); start = null; }
+      if ((!near || i === pts.length - 1) && start !== null) { const end = near ? i : i - 1, dt = pts[end].t - pts[start].t, slope = dt > 0 ? Math.abs(pts[end].T - pts[start].T) / dt : 99; if (slope < 1.5) best = Math.max(best, dt); start = null; }
     }
     return best;
   };
