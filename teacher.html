@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>(function(){var t="auto";try{t=localStorage.getItem("mixlab.theme")||"auto"}catch(e){}if(t!=="light"&&t!=="dark"){try{t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}catch(e){t="dark"}}document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t})()</script>
+  <title>Teacher links · CellScape</title>
+  <meta name="description" content="Build a classroom link for CellScape: pick a starting level and year level, add options, then share a URL or QR code." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/cellscape.css" />
+  <link rel="stylesheet" href="assets/css/teacher.css" />
+  <script type="importmap">
+    { "imports": { "three": "./assets/vendor/three/build/three.module.js", "three/addons/": "./assets/vendor/three/examples/jsm/" } }
+  </script>
+</head>
+<body>
+  <div class="t-wrap">
+    <div class="t-top">
+      <a class="brand" href="index.html">CELLSCAPE</a>
+      <span class="cs-theme-slot"></span>
+    </div>
+    <h1>Teacher links</h1>
+    <p class="lede">Choose where the class starts and how it behaves, then share the link or put the QR code on the projector. Nothing is stored and no student sign-in is needed.</p>
+
+    <div class="t-grid">
+      <div class="t-col">
+        <section class="t-card" aria-labelledby="h-start">
+          <h2 id="h-start">1 · Start level and year</h2>
+          <div class="t-field">
+            <label for="t-level">Start level</label>
+            <select id="t-level"></select>
+          </div>
+          <div class="t-field">
+            <label for="t-year">Year level</label>
+            <select id="t-year">
+              <option value="">Students choose (remembered on their device)</option>
+              <option value="y7-8">Years 7–8</option>
+              <option value="y9-10">Years 9–10</option>
+              <option value="y11">Year 11 Biology</option>
+              <option value="y12">Year 12 Biology</option>
+            </select>
+            <p class="t-note" id="t-year-note"></p>
+          </div>
+        </section>
+
+        <section class="t-card" aria-labelledby="h-dot">
+          <h2 id="h-dot">2 · Syllabus dot point or school code (optional)</h2>
+          <div class="t-field">
+            <label for="t-search">Search the syllabus</label>
+            <input type="search" id="t-search" placeholder="Try &quot;mitosis&quot;, &quot;enzyme&quot; or &quot;Y9 4.1.2&quot;" autocomplete="off" />
+          </div>
+          <ul class="t-dots" id="t-dots" aria-label="Matching dot points"></ul>
+          <p class="t-note" id="t-dot-now" style="margin-top:10px"></p>
+          <label class="t-opt" id="t-bycode-wrap" hidden style="margin-top:8px"><input type="checkbox" id="t-bycode" /><span>Link by school code<small>Uses the school's own Year and outcome numbering instead of the official dot point ID.</small></span></label>
+        </section>
+
+        <section class="t-card" aria-labelledby="h-opt">
+          <h2 id="h-opt">3 · Options</h2>
+          <div class="t-opts">
+            <label class="t-opt"><input type="checkbox" id="t-lock" /><span>Lock the year level<small>Students can't change the year level from the header.</small></span></label>
+            <label class="t-opt"><input type="checkbox" id="t-noquiz" /><span>Hide quizzes and revision<small>Missions stay visible.</small></span></label>
+            <label class="t-opt"><input type="checkbox" id="t-present" /><span>Presentation mode<small>Larger labels and text, no hint line. Press P to hide or show the side panel.</small></span></label>
+            <label class="t-opt"><input type="checkbox" id="t-paused" /><span>Start paused<small>The cell is frozen until you press Play. Good for setting up a question first.</small></span></label>
+            <label class="t-opt"><input type="checkbox" id="t-clay" /><span>Clay model look<small>Soft, pastel diorama style instead of the realistic glass look.</small></span></label>
+          </div>
+        </section>
+      </div>
+
+      <div class="t-col">
+        <section class="t-card" aria-labelledby="h-link">
+          <h2 id="h-link">Your link</h2>
+          <label for="t-url" class="visually-hidden" style="position:absolute;left:-9999px">Class link</label>
+          <textarea id="t-url" class="t-url" readonly rows="4"></textarea>
+          <div class="t-actions">
+            <button type="button" class="btn primary" id="t-copy">Copy link</button>
+            <a class="btn" id="t-open" href="index.html" target="_blank" rel="noopener">Open in new tab</a>
+            <span class="t-note" id="t-copied" role="status"></span>
+          </div>
+        </section>
+
+        <section class="t-card" aria-labelledby="h-qr">
+          <h2 id="h-qr">QR code for the projector</h2>
+          <div class="t-qr" id="t-qr"><canvas role="img" aria-label="QR code"></canvas></div>
+          <p class="t-note" id="t-qr-note" style="text-align:center;margin-top:8px"></p>
+        </section>
+
+        <section class="t-card t-help" aria-labelledby="h-help">
+          <h2 id="h-help">How to use in class</h2>
+          <ol>
+            <li><b>Set it up.</b> Pick the level, year level and options, then press Copy link.</li>
+            <li><b>Share it.</b> Paste the link into your LMS or email, or show this QR code on the projector. Students on phones or Chromebooks scan it and land on the same view.</li>
+            <li><b>Present.</b> Use presentation mode on the projector, and press P to hide the side panel and give the cell the whole screen.</li>
+            <li><b>Pause to ask.</b> Tick "Start paused" or press Pause on the stage to freeze the cell while you ask a question, then press Play.</li>
+            <li><b>Keep it fair.</b> Lock the year level so every student sees the same wording, or hide quizzes for a first look.</li>
+          </ol>
+        </section>
+      </div>
+    </div>
+  </div>
+  <p class="t-foot">CellScape · Links only contain the options above, nothing about your students.</p>
+
+  <script type="module" src="assets/js/teacher.js"></script>
+  <script type="module">import("./assets/js/world/theme.js").then((m) => m.mountThemeToggle(document.querySelector(".cs-theme-slot")));</script>
+</body>
+</html>

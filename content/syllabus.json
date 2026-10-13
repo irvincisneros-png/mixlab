@@ -1,0 +1,477 @@
+{
+ "source_notes": [
+  {
+   "syllabus": "Science 7–10 (2023)",
+   "url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/overview",
+   "retrieved": "2026-10-13",
+   "status": "current (implemented from 2026; replaces Science 7–10 Syllabus 2018)",
+   "method": "Text extracted from the NSW Curriculum website's embedded page data (__NEXT_DATA__) for the Stage 4 'Solutions and mixtures' focus area page and for the Stage 5 Materials, Reactions and Environmental sustainability focus area pages (URLs per dot point in source_url). Stage 4 band y7 = every content dot point of the Solutions and mixtures focus area (19); band ext = a small set of Stage 5 links. Working scientifically outcomes listed on the page (SC4-WS-03, SC4-WS-04, SC4-WS-07) are not content dot points and are not included; the single content outcome is SC4-SOL-01."
+  },
+  {
+   "syllabus": "School sequence (owner's 'NSW Junior Science Syllabus.docx')",
+   "url": "local: Spark the Question/YouTube Shorts/NSW Junior Science Syllabus.docx",
+   "retrieved": "2026-10-10",
+   "note": "school_code = the school's Year + outcome numbering (Y7 unit 4, 'Solutions and Mixtures', 4.1.1 to 4.5.1), matched to official dot points by text. All 19 school codes map one-to-one to the 19 official dot points; Stage 5 'ext' records have no school code."
+  }
+ ],
+ "bands": [
+  {
+   "id": "y7",
+   "label": "Year 7 (Stage 4)"
+  },
+  {
+   "id": "ext",
+   "label": "Extension (Years 8–10 links)"
+  }
+ ],
+ "extra_topic_tags": [],
+ "dotpoints": [
+  {
+   "id": "s4-sol-01",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Properties of matter",
+   "text": "Identify the 3 main states of matter and how they are represented in the movement of water on earth",
+   "topics": [
+    "states-of-matter",
+    "water-cycle"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.1.1",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-02",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Properties of matter",
+   "text": "Conduct an investigation to measure and graph the temperature of water to identify the changes of state as heated over time",
+   "topics": [
+    "heating-curves",
+    "states-of-matter"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.1.2",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-03",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Properties of matter",
+   "text": "Represent changes in the state of matter in terms of particle arrangement and movement",
+   "topics": [
+    "states-of-matter",
+    "particle-theory"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.1.3",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-04",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Properties of matter",
+   "text": "Compare the properties of matter in different states, including the relative strength of attractive forces between solid, liquid and gas particles, to explain differences in the behaviours of the 3 states of matter",
+   "topics": [
+    "states-of-matter",
+    "particle-theory"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.1.4",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-05",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Properties of water",
+   "text": "Investigate the other physical properties of water, such as density, buoyancy and surface tension",
+   "topics": [
+    "density",
+    "surface-tension"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.2.1",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-06",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Properties of water",
+   "text": "Conduct a practical investigation and select appropriate equipment to measure the density of water and other substances, and record the results in a table to compare the calculated density with SI data",
+   "topics": [
+    "density"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.2.2",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-07",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Properties of water",
+   "text": "Determine the volume and mass of regular-shaped and irregular-shaped objects to calculate their density using the formula ρ = m/V",
+   "topics": [
+    "density"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.2.3",
+   "school_unit": "4. Solutions and Mixtures",
+   "note": "Wording exact; the density formula was MathML on the source page and is rendered here as plain text (ρ = m/V, i.e. density = mass divided by volume). School wording differs only in the formula notation (\"p=m/v\")."
+  },
+  {
+   "id": "s4-sol-08",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Solutions",
+   "text": "Investigate what substances dissolve in water and discuss findings using key terms, including soluble, insoluble, solubility, solute, solvent and solution",
+   "topics": [
+    "solutions",
+    "solubility"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.3.1",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-09",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Solutions",
+   "text": "Conduct and document a practical investigation to measure solubility of different solutes in water, and present data using tables and relevant graphs",
+   "topics": [
+    "solubility",
+    "solutions"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.3.2",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-10",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Solutions",
+   "text": "Qualitatively investigate the effect of temperature on solubility",
+   "topics": [
+    "solubility"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.3.3",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-11",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Solutions",
+   "text": "Describe how solutions can be modelled using particle theory",
+   "topics": [
+    "solutions",
+    "particle-theory"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.3.4",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-12",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Solutions",
+   "text": "Compare the properties of dilute, concentrated, saturated and supersaturated solutions",
+   "topics": [
+    "concentration",
+    "solutions"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.3.5",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-13",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Separating mixtures",
+   "text": "Distinguish between atoms, mixtures and compounds and explain their properties using particle theory",
+   "topics": [
+    "pure-mixtures",
+    "particle-theory"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.4.1",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-14",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Separating mixtures",
+   "text": "Classify matter as pure substances, including elements and compounds, and impure substances, including mixtures based on their particle composition",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.4.2",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-15",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Separating mixtures",
+   "text": "Explain how the physical properties of substances are used to separate mixtures",
+   "topics": [
+    "separation",
+    "pure-mixtures"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.4.3",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-16",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Separating mixtures",
+   "text": "Conduct a series of practical investigations to explore common techniques to separate mixtures",
+   "topics": [
+    "separation"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.4.4",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-17",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Separating mixtures",
+   "text": "Investigate techniques used by Aboriginal and/or Torres Strait Islander Peoples to separate mixtures",
+   "topics": [
+    "first-nations",
+    "separation"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.4.5",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-18",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Separating mixtures",
+   "text": "Investigate an industrial separation technique",
+   "topics": [
+    "separation",
+    "fractional-distillation"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.4.6",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s4-sol-19",
+   "band": "y7",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC4-SOL-01",
+   "focus_area": "Solutions and mixtures",
+   "content_group": "Solutions and mixtures in context",
+   "text": "Model how a body of water can become polluted, and plan and conduct a practical investigation that attempts to remove the pollutants",
+   "topics": [
+    "water-treatment",
+    "separation"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-4/fa8f5a0412",
+   "school_code": "Y7 4.5.1",
+   "school_unit": "4. Solutions and Mixtures"
+  },
+  {
+   "id": "s5-mat-01",
+   "band": "ext",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC5-MAT-01",
+   "focus_area": "Materials",
+   "content_group": "Bonding",
+   "text": "Describe types of chemical bonds, including ionic, covalent and metallic bonds",
+   "topics": [
+    "particle-theory"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-5/faefd9a576"
+  },
+  {
+   "id": "s5-mat-02",
+   "band": "ext",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC5-MAT-01",
+   "focus_area": "Materials",
+   "content_group": "Bonding",
+   "text": "Recognise that some elements exist as diatomic molecules",
+   "topics": [
+    "particle-theory"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-5/faefd9a576"
+  },
+  {
+   "id": "s5-mat-03",
+   "band": "ext",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC5-MAT-01",
+   "focus_area": "Materials",
+   "content_group": "Bonding",
+   "text": "Construct chemical formulas of some common ionic compounds and covalent molecules",
+   "topics": [
+    "particle-theory",
+    "pure-mixtures"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-5/faefd9a576"
+  },
+  {
+   "id": "s5-mat-04",
+   "band": "ext",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC5-MAT-01",
+   "focus_area": "Materials",
+   "content_group": "Bonding",
+   "text": "Conduct an investigation to observe and compare the physical and chemical properties of ionic, covalent and metallic substances, and explain how these relate to their uses",
+   "topics": [
+    "particle-theory"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-5/faefd9a576"
+  },
+  {
+   "id": "s5-mat-05",
+   "band": "ext",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC5-MAT-01",
+   "focus_area": "Materials",
+   "content_group": "Chemistry of organic compounds",
+   "text": "Describe how hydrocarbons can be separated from crude oil and identify the uses of these products",
+   "topics": [
+    "fractional-distillation",
+    "separation"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-5/faefd9a576"
+  },
+  {
+   "id": "s5-rxn-01",
+   "band": "ext",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC5-RXN-01",
+   "focus_area": "Reactions",
+   "content_group": "Chemical reactions",
+   "text": "Model simple chemical reactions to show that atoms are rearranged and mass is conserved during a reaction",
+   "topics": [
+    "particle-theory"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-5/fa0b85b7a2"
+  },
+  {
+   "id": "s5-rxn-02",
+   "band": "ext",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC5-RXN-01",
+   "focus_area": "Reactions",
+   "content_group": "Chemical reactions",
+   "text": "Identify pH as the measure of acidity and compare the pH of a range of common substances to the pH of pure water",
+   "topics": [
+    "solutions"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-5/fa0b85b7a2"
+  },
+  {
+   "id": "s5-rxn-03",
+   "band": "ext",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC5-RXN-02",
+   "focus_area": "Reactions",
+   "content_group": "Rate of chemical reactions",
+   "text": "Investigate and explain how concentration, surface area, temperature and catalysts affect the rate of reactions",
+   "topics": [
+    "concentration"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-5/fa0b85b7a2"
+  },
+  {
+   "id": "s5-env-01",
+   "band": "ext",
+   "syllabus": "Science 7–10 (2023)",
+   "outcome": "SC5-ENV-01",
+   "focus_area": "Environmental sustainability",
+   "content_group": "Impacts of present-day climate change",
+   "text": "Investigate the effects of climate change on the water cycle and ecosystems",
+   "topics": [
+    "water-cycle"
+   ],
+   "paraphrased": false,
+   "source_url": "https://curriculum.nsw.edu.au/learning-areas/science/science-7-10-2023/content/stage-5/fa4cd11113"
+  }
+ ]
+}

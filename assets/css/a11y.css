@@ -1,0 +1,40 @@
+/* Phase 6 accessibility add-on. Injected by assets/js/world/a11y.js. */
+.a11y-sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.a11y-skip {
+  position: fixed; left: 12px; top: -60px; z-index: 1000; padding: 10px 16px; border-radius: 10px;
+  background: var(--accent); color: var(--on-accent); font-weight: 600; text-decoration: none; transition: top 0.15s;
+}
+.a11y-skip:focus, .a11y-skip:focus-visible { top: 12px; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+canvas:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+#panel:focus { outline: none; }
+.btn:focus-visible, .segmented button:focus-visible, .crumbs button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px; box-shadow: 0 0 0 4px var(--bg-0);
+}
+
+.a11y-keys {
+  position: absolute; left: 14px; top: 14px; z-index: 5; display: none; flex-direction: column; gap: 4px; max-width: min(280px, calc(100% - 28px));
+  padding: 10px 12px; border-radius: 12px; font-size: 0.8rem; color: var(--ink);
+  background: var(--toast-bg); border: 1px solid var(--accent); box-shadow: 0 6px 24px var(--shadow); pointer-events: none;
+}
+.a11y-keys.show { display: flex; }
+.a11y-keys kbd {
+  display: inline-block; min-width: 1.5em; margin-right: 3px; padding: 0 5px; text-align: center; font: inherit; font-weight: 600;
+  border: 1px solid var(--panel-border); border-radius: 5px; background: var(--tint-3);
+}
+
+.a11y-explore-h { margin: 0; font-size: 1rem; }
+.a11y-explore-toggle {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: 0; padding: 4px 0;
+  color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; text-align: left;
+}
+.a11y-explore-toggle[aria-expanded="true"] span { transform: rotate(180deg); }
+.a11y-explore-list { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; max-height: 220px; overflow: auto; }
+.a11y-explore-btn { font-size: 0.82rem; padding: 6px 10px; }
+.a11y-explore-note { margin-top: 6px; }
+
+.reduce-motion *, .reduce-motion *::before, .reduce-motion *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+@media (prefers-reduced-motion: reduce) {
+  .toast, .a11y-skip { transition: none; }
+}

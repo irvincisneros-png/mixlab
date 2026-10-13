@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>(function(){var t="auto";try{t=localStorage.getItem("mixlab.theme")||"auto"}catch(e){}if(t!=="light"&&t!=="dark"){try{t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}catch(e){t="dark"}}document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t})()</script>
+  <title>Lab bench · MixLab</title>
+  <meta name="description" content="MixLab: Year 7 Solutions &amp; Mixtures. A 3D lab bench you can zoom into, from beakers down to the particles: states of matter, density, dissolving, solubility and separating mixtures." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/cellscape.css" />
+  <link rel="stylesheet" href="assets/css/world.css" />
+  <script type="importmap">
+    { "imports": { "three": "./assets/vendor/three/build/three.module.js", "three/addons/": "./assets/vendor/three/examples/jsm/" } }
+  </script>
+</head>
+<body>
+  <div class="sim-shell">
+    <header class="sim-header"></header>
+    <main class="stage" id="stage">
+      <canvas id="canvas" aria-label="Interactive 3D lab bench. Each station on the bench is an experiment you can zoom into, down to the particles. The What's happening panel describes what the model is doing."></canvas>
+      <div id="labels"></div>
+      <div class="stage-overlay" id="overlay"></div>
+    </main>
+    <aside class="panel" id="panel"></aside>
+  </div>
+  <noscript>MixLab needs JavaScript and WebGL 2.</noscript>
+  <script type="module">
+    // three.js r169 needs WebGL2
+    const fail = (msg) => { document.getElementById("stage").insertAdjacentHTML("beforeend", `<p class="cs-nogl">${msg}</p>`); };
+    let gl = false;
+    try { gl = !!document.createElement("canvas").getContext("webgl2"); } catch { gl = false; }
+    if (!gl) fail("MixLab needs a browser with WebGL 2 (a recent Chrome, Edge, Firefox or Safari). Try turning on hardware acceleration.");
+    else import("./assets/js/world/shell.js")
+      .then((m) => m.boot({ start: "bench", root: "" }))
+      .catch((e) => { console.error(e); fail("MixLab couldn't start. Try reloading the page."); });
+  </script>
+</body>
+</html>

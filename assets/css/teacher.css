@@ -1,0 +1,62 @@
+/* Teacher mode: classroom overrides for the sim pages (injected by teacherMode.js) and styles for teacher.html. */
+
+/* ---- ?noquiz=1: hide the quiz cards (K.quiz makes section.card.quiz). Missions stay. ---- */
+html[data-teacher-hide-quiz="1"] .card.quiz,
+html[data-teacher-hide-quiz="1"] .card.revision { display: none !important; }
+
+/* ---- ?present=1: projector layout ---- */
+html[data-teacher-present="1"] .cs-hint { display: none !important; }
+html[data-teacher-present="1"] .lbl3d { font-size: 1.05rem; }
+html[data-teacher-present="1"] .lbl3d small { font-size: 0.9rem; }
+html[data-teacher-present="1"] .chip { font-size: 1rem; }
+html[data-teacher-present="1"] .panel { zoom: 1.2; }
+html[data-teacher-present="1"] .sim-shell { grid-template-columns: minmax(0, 1fr) 440px; }
+html[data-teacher-present="1"] .sim-shell.panel-hidden { grid-template-columns: minmax(0, 1fr); }
+html[data-teacher-present="1"] .sim-shell.panel-hidden .panel { display: none; }
+.cs-panel-toggle { position: absolute; top: 14px; right: 14px; z-index: 6; background: rgba(5, 11, 22, 0.8); color: #e8f1ff; font-size: 0.95rem; padding: 8px 14px; }
+.cs-panel-toggle:hover { color: #e8f1ff; }
+@media (max-width: 860px) {
+  html[data-teacher-present="1"] .sim-shell { grid-template-columns: minmax(0, 1fr); }
+  html[data-teacher-present="1"] .panel { zoom: 1.08; }
+}
+
+/* ---- teacher.html (link builder) ---- */
+.t-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 24px 60px; }
+.t-wrap h1 { font-family: var(--font-display); font-size: clamp(1.7rem, 4vw, 2.5rem); margin: 6px 0 8px; }
+.t-wrap .lede { color: var(--ink-dim); max-width: 62ch; margin: 0 0 24px; }
+.t-top { display: flex; align-items: center; gap: 12px; }
+.t-top .brand { font-family: var(--font-display); font-weight: 700; color: var(--accent); text-decoration: none; letter-spacing: 0.02em; }
+.t-top .cs-theme-slot { margin-left: auto; display: inline-flex; }
+.t-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 860px) { .t-grid { grid-template-columns: minmax(0, 1fr); } }
+.t-col { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.t-card { background: var(--panel); border: 1px solid var(--panel-border); border-radius: 16px; padding: 16px 18px; }
+.t-card h2 { font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 12px; }
+.t-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; font-size: 0.9rem; }
+.t-field > label, .t-field > .lab { color: var(--ink); font-weight: 600; }
+.t-field select, .t-field input[type="search"], .t-url {
+  font: inherit; color: var(--ink); background: var(--bg-1); border: 1px solid var(--panel-border);
+  border-radius: 10px; padding: 9px 11px; width: 100%; box-sizing: border-box;
+}
+.t-field select:disabled { opacity: 0.55; }
+.t-note { color: var(--ink-dim); font-size: 0.82rem; margin: 0; min-height: 1em; }
+.t-dots { list-style: none; margin: 0; padding: 0; max-height: 240px; overflow: auto; border: 1px solid var(--panel-border); border-radius: 10px; }
+.t-dots li + li { border-top: 1px solid var(--panel-border); }
+.t-dots button { all: unset; box-sizing: border-box; display: block; width: 100%; padding: 8px 11px; cursor: pointer; font-size: 0.84rem; color: var(--ink-dim); }
+.t-dots button:hover, .t-dots button:focus-visible { background: var(--btn-bg-hover); color: var(--ink); }
+.t-dots button[aria-pressed="true"] { background: var(--btn-bg-hover); color: var(--ink); box-shadow: inset 3px 0 0 var(--accent); }
+.t-dots b { color: var(--accent); }
+.t-dots small { display: block; color: var(--ink-faint); }
+.t-dots .none { padding: 10px 11px; color: var(--ink-dim); font-size: 0.85rem; }
+.t-opts { display: flex; flex-direction: column; gap: 10px; }
+.t-opt { display: flex; gap: 10px; align-items: flex-start; font-size: 0.9rem; cursor: pointer; }
+.t-opt input { margin-top: 3px; width: 17px; height: 17px; accent-color: var(--accent); flex: 0 0 auto; }
+.t-opt span small { display: block; color: var(--ink-dim); font-size: 0.8rem; }
+.t-url { font-family: ui-monospace, Menlo, monospace; font-size: 0.8rem; word-break: break-all; resize: vertical; min-height: 84px; }
+.t-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0 0; }
+.t-actions a.btn { text-decoration: none; }
+.t-qr { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.t-qr canvas { width: min(100%, 300px); height: auto; image-rendering: pixelated; border-radius: 10px; background: #fff; }
+.t-help ol { margin: 0; padding-left: 20px; color: var(--ink-dim); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px; }
+.t-help li b { color: var(--ink); }
+.t-foot { text-align: center; color: var(--ink-faint); font-size: 0.82rem; padding: 10px 20px 40px; }
