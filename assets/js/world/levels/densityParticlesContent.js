@@ -29,7 +29,7 @@ export const SUBSTANCES = [
   { key: "ice", name: "Ice", formula: "H₂O", particle: "water molecule", plural: "water molecules", M: molar({ H: 2, O: 1 }), rho: SOLIDS.ice.rho, state: "solid", src: "usgs" },
   { key: "oil", name: "Vegetable oil", formula: "C₅₇H₁₀₄O₆ (triolein)", particle: "oil molecule", plural: "oil molecules", M: molar({ C: 57, H: 104, O: 6 }), rho: LIQUIDS.oil.rho, state: "liquid", src: "etb" },
   { key: "aluminium", name: "Aluminium", formula: "Al", particle: "aluminium atom", plural: "aluminium atoms", M: ATOMIC.Al, rho: SOLIDS.aluminium.rho, state: "solid", src: "crc" },
-  { key: "lead", name: "Lead", formula: "Pb", particle: "lead atom", plural: "lead atoms", M: ATOMIC.Pb, rho: SOLIDS.lead.rho, state: "solid", src: "crc" },
+  { key: "lead", name: "Lead", formula: "Pb", particle: "lead atom", plural: "lead atoms", M: ATOMIC.Pb, rho: SOLIDS.lead.rho, state: "solid", src: "crc", side: 4 * 4.95 },   // side: 4 × 4 × 4 unit cells (19.8 Å): a rigid fcc block cannot hold the data count in exactly 20 Å, so this cube is 1 % narrower
   { key: "air", name: "Air", formula: "N₂, O₂ …", particle: "air molecule", plural: "air molecules", M: 28.96, rho: 0.001204, state: "gas", src: "air" },
 ];
 export const SUB = Object.fromEntries(SUBSTANCES.map((s) => [s.key, s]));
@@ -44,8 +44,9 @@ export const massZg = (M) => (M / NA) * 1e21;
  * Everything the readout shows for one substance in the cube.
  * `count` is the number of particles used for the arithmetic: the rounded count that is drawn (air: the expected 0.2).
  */
-export function cubeStats(sub, V = V_CUBE) {
+export function cubeStats(sub, V0) {
   const s = typeof sub === "string" ? SUB[sub] : sub;
+  const V = V0 ?? ((s.side ?? CUBE_A) ** 3) / 1000;
   const n = perNm3(s.rho, s.M);
   const expected = n * V;
   const drawn = s.key === "air" ? null : Math.round(expected);
@@ -54,7 +55,7 @@ export function cubeStats(sub, V = V_CUBE) {
   const massCube = count * m;
   const w = SUB.water, nw = perNm3(w.rho, w.M), mw = massZg(w.M);
   return {
-    key: s.key, name: s.name, n, expected, drawn, count, massEach: m, massCube, volume: V,
+    key: s.key, name: s.name, side: s.side ?? CUBE_A, n, expected, drawn, count, massEach: m, massCube, volume: V,
     rhoPicture: massCube / V,             // g/cm³ (zg per nm³)
     rhoData: s.rho,
     // against water: "x times as many particles, each y times as heavy, so z times the density"
@@ -115,7 +116,7 @@ export function fillLattice(key, S = CUBE_A, target, seed = 7) {
   const inside = (p) => Math.abs(p[0]) <= half && Math.abs(p[1]) <= half && Math.abs(p[2]) <= half;
   const cell = key === "ice" ? [L.a, L.a, L.c] : [L.a, L.a, L.a];
   let best = null, bestCost = 1e9;
-  for (let t = 0; t < 260; t++) {
+  for (let t = 0; t < 4000; t++) {
     const off = [(rnd() - 0.5) * cell[0], (rnd() - 0.5) * cell[1], (rnd() - 0.5) * cell[2]];
     const n = all(off).filter(inside).length;
     const cost = Math.abs(n - target) + (n < target ? 0.5 : 0);
@@ -126,11 +127,7 @@ export function fillLattice(key, S = CUBE_A, target, seed = 7) {
   let pts = full.filter(inside);
   pts.sort((p, q) => Math.max(Math.abs(q[0]), Math.abs(q[1]), Math.abs(q[2])) - Math.max(Math.abs(p[0]), Math.abs(p[1]), Math.abs(p[2])));
   if (pts.length > target) pts = pts.slice(pts.length - target);
-  else if (pts.length < target) {           // a window that cannot hold a whole number of cells: take the nearest sites just outside a face
-    const cheb = (p) => Math.max(Math.abs(p[0]), Math.abs(p[1]), Math.abs(p[2]));
-    const out = full.filter((p) => !inside(p)).sort((p, q) => cheb(p) - cheb(q));
-    pts = pts.concat(out.slice(0, target - pts.length));
-  }
+
   let nbr = null;
   if (key === "ice") {
     const ctx = full.filter((p) => Math.abs(p[0]) <= half + 6 && Math.abs(p[1]) <= half + 6 && Math.abs(p[2]) <= half + 6);
@@ -321,6 +318,7 @@ export const LIQUID_CHOICES = [
 ];
 
 // ---------- formatting helpers ----------
+export const fmtVol = (v) => (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : v.toFixed(2));
 const f0 = (x) => Math.round(x).toLocaleString("en-AU");
 const f1 = (x) => (Math.round(x * 10) / 10).toFixed(1);
 const f2 = (x) => (Math.round(x * 100) / 100).toFixed(2);
@@ -381,10 +379,10 @@ export function arithmetic(key, band) {
   const rows = [];
   if (key === "air") {
     rows.push(`<p><strong>${fmtN(c.count)}</strong> air molecules on average in the cube (so mostly <strong>0</strong>) × <strong>${fmtZg(c.massEach)} zg</strong> each = <strong>${fmtZg(c.massCube)} zg</strong>.</p>`);
-    rows.push(`<p>${fmtZg(c.massCube)} zg ÷ ${V_CUBE} nm³ = <strong>${fmtRho(c.rhoPicture)} g/cm³</strong>, matching the data-book value of ${fmtRho(c.rhoData)} (1.204 kg/m³).</p>`);
+    rows.push(`<p>${fmtZg(c.massCube)} zg ÷ ${fmtVol(c.volume)} nm³ = <strong>${fmtRho(c.rhoPicture)} g/cm³</strong>, matching the data-book value of ${fmtRho(c.rhoData)} (1.204 kg/m³).</p>`);
   } else {
     rows.push(`<p><strong>${f0(c.drawn)}</strong> ${s.plural} in the cube × <strong>${fmtZg(c.massEach)} zg</strong> each = <strong>${fmtZg(c.massCube)} zg</strong>.</p>`);
-    rows.push(`<p>${fmtZg(c.massCube)} zg ÷ ${V_CUBE} nm³ = <strong>${fmtRho(c.rhoPicture)} g/cm³</strong>, matching the data-book value of ${fmtRho(c.rhoData)} g/cm³.</p>`);
+    rows.push(`<p>${fmtZg(c.massCube)} zg ÷ ${fmtVol(c.volume)} nm³ = <strong>${fmtRho(c.rhoPicture)} g/cm³</strong>, matching the data-book value of ${fmtRho(c.rhoData)} g/cm³.</p>`);
   }
   if (key !== "water") {
     const w = `${fmtRatio(c.countRatio)}× as many particles`, h = `${fmtRatio(c.massRatio)}× as heavy each`;
@@ -414,7 +412,7 @@ export function narrativeCubes(c, band) {
   out.push(arithmetic(c.sel, band));
   if (c.sel === "air") out.push(`<p>Right now the cube holds <strong>${c.airNow}</strong> ${c.airNow === 1 ? "molecule" : "molecules"}. Molecules are flying through all the time: wait and watch for one. One cubic metre of air has a mass of ${f2(SUB.air.rho * 1000)} kg, so the air in an 8 m × 8 m × 3 m classroom is about <strong>${f0(roomAirKg(192))} kg</strong>.</p>`);
   if (c.sel === "ice") out.push(`<p>${f1((1 - ice.countRatio) * 100)}% fewer molecules than water in the same space, each exactly the same mass, so ice is ${f1((1 - ice.rhoRatio) * 100)}% less dense and floats with about ${f0(ice.rhoRatio * 100)}% under the surface.</p>`);
-  if (c.sel === "oil") out.push(`<p>Each oil molecule has ${f0(oil.massRatio)}× the mass of a water molecule, but there are only ${f2(oil.countRatio)}× as many in the same space. ${f0(oil.massRatio)} × ${f2(oil.countRatio)} = ${f2(oil.rhoRatio)}, so oil is ${fmtRatio(oil.rhoRatio)} times as dense as water.</p>`);
+  if (c.sel === "oil") out.push(`<p>Each oil molecule has ${f0(oil.massRatio)}× the mass of a water molecule, but there are only ${f2(oil.countRatio)}× as many in the same space. ${f1(oil.massRatio)} × ${oil.countRatio.toFixed(4)} ≈ ${f2(oil.rhoRatio)}, so oil is about ${f2(oil.rhoRatio)} times as dense as water.</p>`);
   if (c.sel === "lead") out.push(`<p>Lead atoms are ${f1(pb.massEach / al.massEach)}× heavier than aluminium atoms and ${f2(pb.n / al.n)}× as crowded, giving ${f1(pb.rhoData / al.rhoData)}× the density.</p>`);
   return out.join("");
 }
@@ -430,9 +428,9 @@ export function narrativeSurface(c, band) {
   const w = clipWeight();
   if (c.nDet === 0 && c.clip === "floating") {
     out.push(`<p><strong>Clean water, surface tension ${f1(c.gamma)} mN/m.</strong> Water molecules attract each other. A molecule <strong>inside</strong> is pulled in every direction by neighbours all around it, so the pulls cancel. A molecule <strong>at the top</strong> has neighbours only beside and below it, so it is pulled <strong>sideways and inward</strong>. All the surface molecules pulled this way make the surface tight, like a stretched skin, but it is made of the same water molecules, not a different substance.</p>`);
-    out.push(`<p>The steel clip is <strong>${f1(SUB.water.rho > 0 ? SOLIDS.steel.rho / SUB.water.rho : 0)} times denser than water</strong>, yet it floats: the pulling surface holds ${f1(maxSupport(c.gamma))} mN/m of weight at most, and the clip needs only ${f1(w)} mN/m. It dents the surface instead of breaking through (${f1(c.dimple)} Å deep here).</p>`);
+    out.push(`<p>The steel clip is <strong>${f1(SUB.water.rho > 0 ? SOLIDS.steel.rho / SUB.water.rho : 0)} times denser than water</strong>, yet it floats: in a simplified model the surface can hold at most ${f1(maxSupport(c.gamma))} mN/m of weight, and the clip needs only ${f1(w)} mN/m, so it should float if placed gently. It dents the surface instead of breaking through (${f1(c.dimple)} Å deep here).</p>`);
   } else if (c.clip === "floating") {
-    out.push(`<p><strong>Detergent on the surface: tension ${f1(c.gamma)} mN/m</strong> (clean water 72.8). ${f0(c.nDet)} detergent molecules have lined up with their <strong>water-loving heads in the water and oily tails sticking up</strong> into the air. Water molecules cannot pull on the tails the way they pull on each other, so the surface is looser. The clip needs ${f1(w)} mN/m; the surface can now give up to ${f1(maxSupport(c.gamma))} mN/m, so the dent is deeper (${f1(c.dimple)} Å) and getting close to the limit.</p>`);
+    out.push(`<p><strong>Detergent on the surface: tension ${f1(c.gamma)} mN/m</strong> (clean water 72.8). ${f0(c.nDet)} detergent molecules have lined up with their <strong>water-loving heads in the water and oily tails sticking up</strong> into the air. Water molecules cannot pull on the tails the way they pull on each other, so the surface is looser. The clip needs ${f1(w)} mN/m; in the simplified model the surface can now give up to ${f1(maxSupport(c.gamma))} mN/m, so the dent is deeper (${f1(c.dimple)} Å) and getting close to the limit.</p>`);
   } else if (c.clip === "sinking") {
     out.push(`<p><strong>The clip is sinking.</strong> ${c.pushed ? "You pushed it below the surface; once the clip is under the water the surface can no longer hold it, and it is denser than water, so it sinks." : `With ${f0(c.nDet)} detergent molecules on the surface the tension is down to ${f1(c.gamma)} mN/m, and the most it can hold is ${f1(maxSupport(c.gamma))} mN/m. The clip weighs ${f1(w)} mN/m, so the surface can no longer carry it.`}</p>`);
   } else {
@@ -440,12 +438,12 @@ export function narrativeSurface(c, band) {
   }
   if (c.sel) {
     if (c.sel.surface) {
-      out.push(`<p><strong>The selected molecule is in the surface layer.</strong> There is nothing above it to pull upwards, so the sum of the pulls is <strong>${f1(c.sel.pull)} units inward</strong> (the thick arrow; one unit is the pull of one neighbour)${c.coverage > 0 ? ". Detergent on the surface has weakened it" : ""}.</p>`);
+      out.push(`<p><strong>The selected molecule is in the surface layer.</strong> There is nothing above it to pull upwards, so the sum of the <strong>attractions</strong> is <strong>${f1(c.sel.pull)} units inward</strong> (the thick arrow: pull from neighbours, attractions only; one unit is the pull of one neighbour)${c.coverage > 0 ? ". Detergent on the surface has weakened it" : ""}. The molecule does not actually speed inward: when molecules are squeezed together they also push apart, and that balances the pull. What is left along the surface is surface tension.${ext ? " In a liquid the repulsive forces and the pressure gradient balance the cohesive pull, so the net force on a molecule is zero on average; the imbalance shows up as a tension (force per length) acting along the surface." : ""}</p>`);
     } else {
-      out.push(`<p><strong>The selected molecule is inside the water</strong> (${f1(c.sel.depth)} Å below the surface). Neighbours pull from all sides, and averaged over time the pulls cancel: the net is ${f1(c.sel.pull)}.</p>`);
+      out.push(`<p><strong>The selected molecule is inside the water</strong> (${f1(c.sel.depth)} Å below the surface). Neighbours pull from all sides, and averaged over time the attractions cancel: the net pull is ${f1(c.sel.pull)}.</p>`);
     }
   }
-  if (ext) out.push(`<p>Surface tension γ is force per length along the surface (mN/m), equal to the energy per area (mJ/m²) needed to make more surface. A wire of weight W per length can be held at most by 2γ (one edge each side, ideal case): here W = ρ g π r² = ${f1(w)} mN/m, so the clip floats while γ > W/2 = ${f1(criticalGamma())} mN/m. The measured value for water is ${SURF.water} mN/m, and for ethanol about ${SURF.ethanol} mN/m.</p>`);
+  if (ext) out.push(`<p>Surface tension γ is force per length along the surface (mN/m), equal to the energy per area (mJ/m²) needed to make more surface. In a simplified model a wire of weight W per length can be held by at most 2γ (one edge each side, the ideal limit): here W = ρ g π r² = ${f1(w)} mN/m, so the clip should float, if placed gently, while γ > W/2 = ${f1(criticalGamma())} mN/m. Real floating also depends on the contact angle, the shape of the dent and a little buoyancy. The measured value for water is ${SURF.water} mN/m, and for ethanol about ${SURF.ethanol} mN/m.</p>`);
   return out.join("");
 }
 
@@ -474,7 +472,7 @@ export function quizList(band) {
   const q = [
     { q: `A vegetable oil molecule is about ${f0(oil.massRatio)} times heavier than a water molecule, yet oil floats on water. Why?`,
       options: ["Oil molecules are lighter than they look", "There are far fewer oil molecules in the same space", "Oil is made of different atoms that float", "Oil molecules are filled with air"], answer: 1,
-      why: `Density depends on both the mass of each particle and how many fit in a given space. Oil molecules are long and tangled, so only ${fmtN(oil.n)} fit in each cubic nanometre against ${fmtN(cubeStats("water").n)} for water: ${f0(oil.massRatio)} × ${f2(oil.countRatio)} = ${f2(oil.rhoRatio)}, a little less than water.` },
+      why: `Density depends on both the mass of each particle and how many fit in a given space. Oil molecules are long and tangled, so only ${fmtN(oil.n)} fit in each cubic nanometre against ${fmtN(cubeStats("water").n)} for water: ${f1(oil.massRatio)} × ${oil.countRatio.toFixed(4)} ≈ ${f2(oil.rhoRatio)}, a little less than water.` },
     { q: "Ice and liquid water are made of exactly the same molecules. Why is ice less dense?",
       options: ["Ice molecules are lighter", "Ice molecules are smaller", "In ice the molecules are locked in an open pattern, so fewer fit in the same space", "Ice has air bubbles in every molecule"], answer: 2,
       why: "Each H₂O molecule has the same mass in both. In ice they are held in an open, hexagonal pattern with gaps, so about 8 % fewer molecules fit into the same space. The same mass per particle but fewer particles gives a lower density." },
@@ -510,12 +508,12 @@ export function mixups(band) {
 export function honesty(band) {
   const items = [
     "Particles are drawn as <strong>spheres</strong>. Colours are conventions (red = oxygen, white = hydrogen, grey = carbon, silver = aluminium); atoms have no colour. Hydrogen atoms in the oil are left out to keep the chains readable.",
-    "<strong>Cube size and counts are rounded.</strong> Each cube is 2 nm along (8 nm³). The numbers of particles come from the data-book density and molar mass, then are rounded to a whole number to draw. Real samples also have gaps, defects and thermal fluctuation that this picture does not show.",
+    "<strong>Cube size and counts are rounded.</strong> Each cube is 2 nm along (8 nm³); the lead cube is 4 × 4 × 4 unit cells, 1 % narrower, because a rigid lattice cannot hold the data count in exactly 2 nm. Only particle centres inside the cube are counted and drawn. The numbers of particles come from the data-book density and molar mass, then are rounded to a whole number to draw. Real samples also have gaps, defects and thermal fluctuation that this picture does not show.",
     "<strong>Oil is simplified.</strong> Real vegetable oil is a mixture of similar molecules. One typical molecule (triolein) stands in for all of them, with tails coiled at random and with its kinks left out.",
     "<strong>Motion is slowed down enormously.</strong> Real molecules in air move at about 470 m/s; here an air molecule crosses the cube in a couple of seconds. Water and oil are drawn jostling slightly, metals and ice vibrating about fixed positions, but the wiggles are exaggerated so you can see them.",
     "<strong>The air cube</strong> is a window onto a larger box of air with about 13 molecules in a box 8 nm across, moving freely. A molecule is shown only while it is inside the cube, and they do not bump into each other here (real air molecules collide billions of times a second).",
     "<strong>Surface tension.</strong> The water slab is a thin slice of liquid, about 6 nm across, with sideways ends that join up. The pulls are drawn as <em>equal</em> attractions between neighbours within 5 Å; real intermolecular forces vary with distance and direction. The thick arrow is the average over time, since at one instant the pulls never cancel exactly. How much the detergent weakens the pull follows a plausible curve rather than a measured one.",
-    "<strong>The paper clip is not to scale.</strong> A real clip wire is about 1 mm across, millions of times wider than a water molecule. The clip is shown at a size that fits the slab, with the correct physics (weight per length against the pull of the surface), but not the correct size. The support limit used (2γ) is an ideal upper limit; a real clip also sinks if the surface is disturbed or the steel is wetted.",
+    "<strong>The paper clip is not to scale.</strong> A real clip wire is about 1 mm across, millions of times wider than a water molecule. The clip is shown at a size that fits the slab, using a simplified model (weight per length against the pull of the surface), not the correct size. The support limit used (2γ) is an ideal upper bound; whether a real clip floats also depends on how it is placed, the contact angle, the shape of the dent and a little buoyancy.",
     "<strong>Detergent molecules</strong> are drawn with a short tail (real ones have 12 or more carbon atoms), and the way they arrive at the surface and the number needed to fill it are approximate.",
   ];
   if (band === "ext") items.push("Air at 20 °C is treated as an ideal gas; the 13 molecules in the box give 0.203 per cube against the exact 0.200. Surface tension also changes with temperature (about −0.15 mN/m per °C for water).");

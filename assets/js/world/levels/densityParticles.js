@@ -125,13 +125,13 @@ export function create(engine) {
       c.ph = pts.map(() => Array.from({ length: 7 }, () => rnd() * TAU)); c.amp = 0.55; c.rot = 0.55; c.freq = 1.0;
       for (let i = 0; i < c.n; i++) { setCol(poolO1, c.o + i, COL.O, 0.05); setCol(poolH1, c.h + 2 * i, COL.H); setCol(poolH1, c.h + 2 * i + 1, COL.H); }
     } else if (k === "ice") {
-      const f = T.fillLattice("ice", S, st.drawn, 7);
+      const f = T.fillLattice("ice", st.side, st.drawn, 7);
       c.n = f.pts.length; c.home = f.pts; c.o = nO1; c.h = nH1; nO1 += c.n; nH1 += 2 * c.n;
       c.q0 = f.nbr.map((nb) => orientIce(nb)); c.ax = f.pts.map(() => new THREE.Vector3(randn(), randn(), randn()).normalize());
       c.ph = f.pts.map(() => Array.from({ length: 7 }, () => rnd() * TAU)); c.amp = 0.17; c.rot = 0.1; c.freq = 2.2;
       for (let i = 0; i < c.n; i++) { setCol(poolO1, c.o + i, COL.O, 0.05); setCol(poolH1, c.h + 2 * i, COL.H); setCol(poolH1, c.h + 2 * i + 1, COL.H); }
     } else if (k === "aluminium" || k === "lead") {
-      const f = T.fillLattice(k, S, st.drawn, k === "lead" ? 13 : 9);
+      const f = T.fillLattice(k, st.side, st.drawn, k === "lead" ? 13 : 9);
       c.n = f.pts.length; c.home = f.pts; c.m = nM1; nM1 += c.n;
       c.ph = f.pts.map(() => Array.from({ length: 3 }, () => rnd() * TAU));
       c.amp = k === "lead" ? 0.1 : 0.13; c.freq = k === "lead" ? 1.6 : 2.1;
@@ -627,7 +627,7 @@ export function create(engine) {
       const d = dets.find((q) => q.state === "there");
       if (d && d.pos) { setHTML(lblDet, `Detergent molecule<small>head loves water, tail avoids it</small>`); _p.set(d.pos[0], d.pos[1] + 12, d.pos[2]); placeLabel(lblDet, _p, 0, 0, floorY); } else hide(lblDet);
       if (selMol >= 0 && selInfo) {
-        setHTML(lblSel, selInfo.surface ? `Surface molecule<small>net pull ${selInfo.pull.toFixed(1)} units, inward</small>` : `Inside molecule<small>pulls cancel: ${selInfo.pull < 0.05 ? "net 0" : "net " + selInfo.pull.toFixed(1)}</small>`);
+        setHTML(lblSel, selInfo.surface ? `Surface molecule<small>pull from neighbours (attractions only): ${selInfo.pull.toFixed(1)} units, inward</small>` : `Inside molecule<small>attractions cancel: ${selInfo.pull < 0.05 ? "0" : selInfo.pull.toFixed(1)}</small>`);
         _p.set(mx[selMol], my[selMol], mz[selMol]); placeLabel(lblSel, _p, 54, -24, floorY);
       } else hide(lblSel);
     }
@@ -717,7 +717,7 @@ export function create(engine) {
     K.button(r2, "Pick one inside", () => pickBy(false));
     W_.hi = K.checkbox(c, "Colour the surface layer", hiSurface, (v) => { hiSurface = v; paintWater(); });
     W_.lk = K.checkbox(c, "Show attractions near the surface (dotted lines)", showLinks, (v) => { showLinks = v; });
-    c.insertAdjacentHTML("beforeend", `<p class="hint">The cyan arrows show pulls from the molecule's neighbours (within about 5 Å). The thick yellow arrow is the total pull, averaged over time. Drag to turn the view.</p>`);
+    c.insertAdjacentHTML("beforeend", `<p class="hint">The cyan arrows show pulls from the molecule's neighbours (within about 5 Å). The thick yellow arrow is the pull from neighbours (attractions only), averaged over time. Repulsion and pressure balance it, so molecules do not rush inward; surface tension acts along the surface. Drag to turn the view.</p>`);
 
     const f = K.card(panel, "Would the clip float?");
     f.insertAdjacentHTML("beforeend", `<p>A surface can hold up to <strong>2 × its surface tension</strong> (in mN/m) for each metre of wire, one pull for each side of the wire, if everything is perfect. Pick a liquid and compare it with the clip's weight.</p>`);
@@ -738,8 +738,8 @@ export function create(engine) {
     if (!W_.floatOut) return;
     const liq = T.LIQUID_CHOICES.find((q) => q.key === W_.liq) || T.LIQUID_CHOICES[0];
     const sup = T.maxSupport(liq.gamma), fl = T.clipFloats(liq.gamma), ratio = T.supportRatio(liq.gamma);
-    W_.floatOut.innerHTML = `<p style="margin:0 0 4px">Clip: ρ g π r² = <b>${w_clip.toFixed(1)} mN/m</b> (1 mm steel wire).<br>${liq.name}: γ = ${liq.gamma} mN/m, so up to 2 × ${liq.gamma} = <b>${sup.toFixed(1)} mN/m</b> can be held.</p>
-      <p style="margin:0"><b style="color:${fl ? "var(--t-ok, #4ade80)" : "var(--t-warn, #fbbf24)"}">${fl ? "It floats" : "It sinks"}</b> (${w_clip.toFixed(1)} ${fl ? "<" : ">"} ${sup.toFixed(1)}${lens.band === "ext" ? `, weight ÷ support = ${ratio.toFixed(2)}` : ""}). ${liq.key === "ethanol" ? "Ethanol's surface is much weaker, so the same clip goes down." : liq.key === "soapy" ? "Detergent halves the pull. The clip is now heavier than the surface can hold." : "Water's strong surface holds the clip with room to spare."}</p>`;
+    W_.floatOut.innerHTML = `<p style="margin:0 0 4px">Clip: ρ g π r² = <b>${w_clip.toFixed(1)} mN/m</b> (1 mm steel wire).<br>${liq.name}: γ = ${liq.gamma} mN/m, so at most 2 × ${liq.gamma} = <b>${sup.toFixed(1)} mN/m</b> in this simplified model.</p>
+      <p style="margin:0"><b style="color:${fl ? "var(--t-ok, #4ade80)" : "var(--t-warn, #fbbf24)"}">${fl ? "Should float if placed gently" : "Sinks"}</b> (${w_clip.toFixed(1)} ${fl ? "<" : ">"} ${sup.toFixed(1)}${lens.band === "ext" ? `, weight ÷ support = ${ratio.toFixed(2)}` : ""}). ${liq.key === "ethanol" ? "Ethanol's surface is much weaker, so the same clip goes down." : liq.key === "soapy" ? "Detergent halves the pull. The clip is now heavier than the surface can hold." : "Water's strong surface holds the clip with room to spare."}</p>`;
   }
 
   function buildMissions() {

@@ -23,7 +23,8 @@ near(cubeStats("water").massEach, 0.02992, 0.0001, "water molecule mass, zg");
 assert.equal(cubeStats("ice").drawn, 245);
 assert.equal(cubeStats("oil").drawn, 5);
 assert.equal(cubeStats("aluminium").drawn, 482);
-assert.equal(cubeStats("lead").drawn, 264);
+assert.equal(cubeStats("lead").drawn, 256);
+near(cubeStats("lead").side, 19.8, 1e-9, "lead cube = 4 unit cells");
 
 // ---- particle × mass ÷ volume reproduces the data-book density (within the rounding of the drawn count) ----
 for (const s of SUBSTANCES) {
@@ -68,10 +69,10 @@ near(nearestNeighbour("aluminium"), 2.86, 0.01, "Al nearest neighbour");
 
 // ---- geometry fills the cube with exactly the data-derived count ----
 for (const k of ["ice", "aluminium", "lead"]) {
-  const t = cubeStats(k).drawn;
-  const { pts, nbr } = fillLattice(k, CUBE_A, t);
+  const t = cubeStats(k).drawn, side = cubeStats(k).side, seed = { ice: 7, aluminium: 9, lead: 13 }[k];   // the seeds densityParticles.js uses
+  const { pts, nbr } = fillLattice(k, side, t, seed);
   assert.equal(pts.length, t, `${k} lattice points = ${t}`);
-  for (const p of pts) for (const x of p) assert.ok(Math.abs(x) <= CUBE_A / 2 + 2.6, `${k} site within a lattice spacing of the cube`);
+  for (const p of pts) for (const x of p) assert.ok(Math.abs(x) <= side / 2 + 1e-9, `${k} centre inside the cube`);
   if (k === "ice") {
     assert.equal(nbr.length, pts.length);
     const four = nbr.filter((n) => n.length === 4).length;

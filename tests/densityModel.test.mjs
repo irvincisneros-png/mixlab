@@ -29,8 +29,10 @@ assert.equal(floatTest(SOLIDS.pet.rho, LIQUIDS.water.rho).result, "sinks");
 for (const k of Object.keys(SOLIDS)) {
   const s = makeSample(k, 1);
   const r = measure(s);
-  const err = percentError(r.rho, SOLIDS[k].rho);
-  assert.ok(err < 8, `${k} measured ${r.rho.toFixed(2)} vs ${SOLIDS[k].rho} (${err.toFixed(1)} %)`);
+  const [lo, hi] = SOLIDS[k].range;
+  assert.ok(s.rho >= lo && s.rho <= hi, `${k}: true density inside its typical range`);
+  assert.ok(r.rho > lo * 0.92 && r.rho < hi * 1.08, `${k} measured ${r.rho.toFixed(3)} near range ${lo}–${hi}`);
+  assert.ok(percentError(r.rho, s.rho) < 8, `${k}: measurement error from instrument resolution < 8 %`);
   if (SOLIDS[k].kind === "irregular") assert.equal(r.method, "displacement");
 }
 
@@ -39,4 +41,10 @@ const col = settleColumn(["oil", "water", "honey", "ethanol", "dish"]);
 assert.deepEqual(col.map((l) => l.keys[0]), ["honey", "dish", "water", "oil"]);
 assert.ok(col.find((l) => l.keys.includes("ethanol")).mixed, "ethanol mixes with water");
 assert.ok(col.find((l) => l.keys[0] === "honey").slowMix);
+assert.ok(col.find((l) => l.keys[0] === "honey").mixedZone, "honey poured onto water partly mixes on the way down");
+const good = settleColumn(["honey", "dish", "water", "oil"]);
+assert.ok(good.every((l) => !l.mixedZone), "poured densest first: clean layers");
+// only an exact match hangs; a 0.2 % difference still sinks, flagged as close
+assert.equal(floatTest(1.0, 0.998).result, "sinks"); assert.ok(floatTest(1.0, 0.998).close);
+assert.equal(floatTest(0.917, 0.92).result, "floats"); assert.ok(floatTest(0.917, 0.92).submerged > 0.99);
 console.log("all densityModel tests passed");

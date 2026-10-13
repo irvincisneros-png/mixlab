@@ -1,5 +1,5 @@
 // Density station: materials, liquids, measurement and floating. No DOM, no three.js; tested by tests/densityModel.test.mjs.
-// Densities in g/cm³ (= g/mL) at about 20 °C. Real materials vary (woods, plastics, oils, honey); the value used is a
+// Densities in g/cm³ (= g/mL) at about 20 °C, except ice (0.917 g/cm³ near 0 °C; the page treats it as not melting). Real materials vary (woods, plastics, oils, honey); the value used is a
 // typical one and the page says so. Sources in SOURCES.
 
 export const SOURCES = [
@@ -39,14 +39,17 @@ export const LIQUIDS = {
 export const density = (m, V) => (V > 0 ? m / V : null);
 
 /**
- * Float or sink in a liquid. Objects whose density is within `tie` of the liquid's are "suspended" (neutral).
- * Floating fraction submerged = ρ_object / ρ_liquid (Archimedes: weight = weight of liquid displaced).
+ * Float or sink in a liquid (Archimedes: a floating object displaces its own weight of liquid).
+ * Only an exact density match is "suspended". `close` flags differences under 1 %: real results there depend on
+ * temperature, trapped air bubbles and how the object was put in, so the page should say "only just".
+ * Floating fraction submerged = ρ_object / ρ_liquid.
  */
-export function floatTest(rhoObject, rhoLiquid, tie = 0.005) {
+export function floatTest(rhoObject, rhoLiquid) {
   const r = rhoObject / rhoLiquid;
-  if (Math.abs(r - 1) <= tie) return { result: "suspended", submerged: 1 };
-  if (r < 1) return { result: "floats", submerged: r };
-  return { result: "sinks", submerged: 1 };
+  const close = Math.abs(r - 1) < 0.01;
+  if (r === 1) return { result: "suspended", submerged: 1, close: true };
+  if (r < 1) return { result: "floats", submerged: r, close };
+  return { result: "sinks", submerged: 1, close };
 }
 
 /**
@@ -56,16 +59,24 @@ export function floatTest(rhoObject, rhoLiquid, tie = 0.005) {
  */
 export function makeSample(key, size = 1, seed = 1) {
   const s = SOLIDS[key];
+  // Real pieces are never exact: each material's piece has its own slightly off-round dimensions (±4 %) and a true
+  // density somewhere inside its typical range, fixed by key + seed so the same piece always measures the same.
+  const rnd = mulberry(hashStr(key) + seed * 7919);
+  const off = () => 1 + (rnd() - 0.5) * 0.08;
+  const rho = s.range[0] + (s.range[1] - s.range[0]) * (0.3 + 0.4 * rnd());
   // true dimensions (cm) for a size-1 piece
   const base = { box: [3, 2, 2], cylinder: [1.5, 3], lump: [3.2], stopper: [3.0], bolt: [2.4] }[s.shape];
   let V;
   let dims = null;
-  if (s.shape === "box") { dims = base.map((d) => d * Math.cbrt(size)); V = dims[0] * dims[1] * dims[2]; }
-  else if (s.shape === "cylinder") { const k = Math.cbrt(size); dims = [base[0] * k, base[1] * k]; V = Math.PI * dims[0] ** 2 * dims[1]; }
-  else { V = 12 * size; }      // irregular: 12 cm³ at size 1 (a 100 mL cylinder reads to 1 mL, so ±4 %)
-  const m = s.rho * V;
-  return { key, name: s.name, kind: s.kind, shape: s.shape, dims, trueV: V, trueM: m, rho: s.rho, seed };
+  if (s.shape === "box") { dims = base.map((d) => d * Math.cbrt(size) * off()); V = dims[0] * dims[1] * dims[2]; }
+  else if (s.shape === "cylinder") { const k = Math.cbrt(size); dims = [base[0] * k * off(), base[1] * k * off()]; V = Math.PI * dims[0] ** 2 * dims[1]; }
+  else { V = 12 * size * off(); }      // irregular: ≈ 12 cm³ at size 1 (a 100 mL cylinder reads to 1 mL, so ±4 %)
+  const m = rho * V;
+  return { key, name: s.name, kind: s.kind, shape: s.shape, dims, trueV: V, trueM: m, rho, seed };
 }
+
+function hashStr(t) { let h = 2166136261; for (const c of t) h = Math.imul(h ^ c.charCodeAt(0), 16777619); return h >>> 0; }
+function mulberry(a) { return () => { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 
 const round = (v, step) => Math.round(v / step) * step;
 
@@ -87,31 +98,38 @@ export function measure(sample, cylinderStart = 50) {
 export const percentError = (measured, accepted) => (100 * Math.abs(measured - accepted)) / accepted;
 
 /**
- * Equal volumes of liquids poured gently into a column settle into layers by density, bottom first.
- * Thin water-based liquids (water, salt water, methylated spirits) are miscible: they mix into one layer whose
- * density is total mass / total volume. Ethanol and water shrink by about 3.5 % in volume when mixed 50:50
- * (CRC ethanol–water density tables), so that's applied when both are present; other ratios are approximate.
- * Honey, golden syrup and dishwashing liquid also dissolve in water, but only slowly: poured gently they form
- * layers that blur over hours (`slowMix`). Oil doesn't mix with water at all.
+ * A density column: equal volumes of liquids poured gently down the side, in the order given.
+ * - Thin water-based liquids (water, salt water, methylated spirits) are miscible: they mix into one layer whose density
+ *   is total mass / total volume. Ethanol and water shrink by about 3.5 % in volume when mixed 50:50 (CRC
+ *   ethanol–water tables), applied when both are present; other ratios are approximate.
+ * - Honey, golden syrup and dishwashing liquid are water-based too and dissolve in water slowly. Poured gently, densest
+ *   first, they form layers whose boundaries blur over time (`slowMix`). If one is poured onto a LESS dense water-based
+ *   liquid it sinks through it and partly mixes on the way: that layer gets `mixedZone: true` (a cloudy blended zone).
+ * - Oil doesn't mix with water at all.
+ * Returns layers bottom first.
  */
 export const MISCIBLE = new Set(["water", "salt", "ethanol"]);
 export const SLOW_MIX = new Set(["honey", "syrup", "dish"]);
+const WATER_BASED = (k) => MISCIBLE.has(k) || SLOW_MIX.has(k);
 export function settleColumn(keys) {
   const layers = [];
   let thin = null;
+  const poured = [];
   for (const k of keys) {
     const L = LIQUIDS[k];
+    const throughLighter = WATER_BASED(k) && poured.some((q) => WATER_BASED(q) && LIQUIDS[q].rho < L.rho);
+    poured.push(k);
     if (MISCIBLE.has(k)) {
       if (thin) {
         thin.keys.push(k); thin.mixed = true;
         const mass = thin.keys.reduce((a, q) => a + LIQUIDS[q].rho, 0);       // equal volumes of 1 unit each
-        const shrink = thin.keys.includes("ethanol") ? 0.965 : 1;
+        const shrink = thin.keys.includes("ethanol") && thin.keys.some((q) => q !== "ethanol") ? 0.965 : 1;
         thin.rho = mass / (thin.keys.length * shrink);
         continue;
       }
-      thin = { keys: [k], rho: L.rho, mixed: false, slowMix: false };
+      thin = { keys: [k], rho: L.rho, mixed: false, slowMix: false, mixedZone: false };
       layers.push(thin);
-    } else layers.push({ keys: [k], rho: L.rho, mixed: false, slowMix: SLOW_MIX.has(k) });
+    } else layers.push({ keys: [k], rho: L.rho, mixed: false, slowMix: SLOW_MIX.has(k), mixedZone: SLOW_MIX.has(k) && throughLighter });
   }
   return layers.sort((a, b) => b.rho - a.rho);
 }
