@@ -99,6 +99,7 @@ export function createStatesModel(opts = {}) {
     if (o.container) m.container = o.container;
     if (o.bath !== undefined) m.bath = o.bath;
     m.t = 0; m.history = []; nextSample = 0;
+    m.heatIn = m.heatLoss = m.latentRate = m.evapRate = 0; m.phaseChange = null;
     setState(o.mass ?? opts.mass ?? 200, o.T0 ?? opts.T0 ?? -20);
     m.sample(true);
   };
@@ -114,13 +115,17 @@ export function createStatesModel(opts = {}) {
   /** Advance by dt simulated seconds (sub-stepped internally for stability). */
   m.step = (dt) => {
     if (dt <= 0) return;
-    const n = Math.max(1, Math.ceil(dt / 2));
+    // sub-step: at most 2 s, and well under the sample's thermal time constant (m·c/k) so small samples stay stable
+    const mass0 = m.solid + m.liquid + m.gas;
+    const k0 = Math.max(m.loss, m.bath != null ? m.bathLoss : 0, 1e-6);
+    const tau = (mass0 * Math.min(S.cSolid, S.cGas)) / k0;
+    const n = Math.min(20000, Math.max(1, Math.ceil(dt / Math.min(2, Math.max(1e-3, 0.2 * tau)))));
     const h = dt / n;
     const prev = { solid: m.solid, gas: m.gas + m.escaped };
     let evap = 0;
     for (let i = 0; i < n; i++) {
       const mass = m.solid + m.liquid + m.gas;
-      if (mass <= 1e-6) { m.liquid = m.solid = m.gas = 0; break; }
+      if (mass <= 1e-3) { m.escaped += mass; m.liquid = m.solid = m.gas = 0; m.T = m.bath ?? m.room; break; }   // dried out
       const surround = m.bath ?? m.room;
       const k = m.bath != null ? m.bathLoss : m.loss;
       const qIn = m.power;
@@ -135,6 +140,7 @@ export function createStatesModel(opts = {}) {
         // temperature, ≈ 2501 − 2.36·T J/g) comes from the water left behind: evaporation cools
         H -= dmEvap * (S.Lf + S.cLiquid * (m.T - S.mp) + (2501 - 2.36 * m.T));
       }
+      if (dmEvap >= m.liquid - 1e-9 && m.solid + m.gas <= 1e-9) { m.escaped += mass; m.solid = m.liquid = m.gas = 0; m.t += h; break; }
       const newMass = mass - dmEvap;
       m.escaped += dmEvap; evap += dmEvap;
       fromEnthalpy(H, newMass);
@@ -151,7 +157,12 @@ export function createStatesModel(opts = {}) {
     const dGas = (m.gas + m.escaped - prev.gas) / dt;      // + boiling/evaporating, − condensing
     const boil = dGas - evap / dt;
     m.evapRate = evap / dt;
-    m.phaseChange = dSolid < -1e-5 ? "melting" : dSolid > 1e-5 ? "freezing" : boil > 1e-5 ? "boiling" : boil < -1e-5 ? "condensing" : null;
+    // a change is "happening" only while both states are still present at the end of the step (a step that finishes
+    // melting reports no change, so the narrative doesn't say "melting" above 0 °C)
+    const meltZone = m.solid > 0 && m.liquid > 0;
+    const boilZone = m.T >= S.bp - 1e-9 && m.liquid > 0 && (m.gas > 0 || (m.container === "open" && boil > 1e-5));
+    m.phaseChange = meltZone && dSolid < -1e-5 ? "melting" : meltZone && dSolid > 1e-5 ? "freezing"
+      : boilZone && boil > 1e-5 ? "boiling" : boilZone && boil < -1e-5 ? "condensing" : null;
     m.latentRate = dSolid < 0 ? -dSolid * S.Lf : dSolid > 0 ? -dSolid * S.Lf : boil * S.Lv;   // W going into (+) or out of (−) bonds
     m.sample();
   };

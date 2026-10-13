@@ -44,6 +44,10 @@ export async function boot(opts) {
   hint.className = "cs-hint";
   hint.innerHTML = "Right-drag (or drag empty space) to look around · scroll / pinch to zoom · double-click to dive in · zoom out to go back up";
   stageEl.appendChild(hint);
+  // the hint fades once the student has used the stage (it otherwise sits under toasts and the lower scene)
+  const hideHint = () => { hint.style.transition = "opacity .6s"; hint.style.opacity = "0"; hint.setAttribute("aria-hidden", "true"); };
+  stageEl.addEventListener("pointerdown", hideHint, { once: true });
+  stageEl.addEventListener("wheel", hideHint, { once: true, passive: true });
   const upBtn = document.createElement("button");
   upBtn.className = "btn cs-up";
   upBtn.type = "button";

@@ -89,4 +89,25 @@ const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a}
   near(E, expected, 1, "energy conserved");
   console.log("ok energy");
 }
+
+
+// 7. Edge cases: tiny samples stay finite and stable; drying out empties cleanly; reset clears diagnostics
+{
+  const a = createStatesModel({ mass: 0.1, T0: 20, container: "sealed" }); a.bath = -15;
+  for (let i = 0; i < 50; i++) a.step(2);
+  assert.ok(Number.isFinite(a.T) && Math.abs(a.T + 15) < 1, `0.1 g in the bath settles at −15 °C (${a.T})`);
+  const b = createStatesModel({ mass: 0.001, T0: 22 });
+  for (let i = 0; i < 50; i++) b.step(2);
+  assert.ok(Number.isFinite(b.T), "empty beaker temperature is finite");
+  assert.equal(b.fractions().mass, 0);
+  const c = createStatesModel({ mass: 100, T0: 20, container: "sealed" }); c.bath = -15;
+  for (let i = 0; i < 500; i++) c.step(1);
+  assert.equal(c.phaseChange, "freezing");
+  c.reset({ T0: -20 });
+  assert.equal(c.phaseChange, null); assert.equal(c.latentRate, 0);
+  // the step that finishes melting doesn't report melting above 0 °C
+  const d = createStatesModel({ mass: 10, T0: -0.01, container: "sealed", loss: 0 }); d.power = 200;
+  for (let i = 0; i < 200; i++) { d.step(1); if (d.T > 0) assert.notEqual(d.phaseChange, "melting"); }
+  console.log("ok edge cases");
+}
 console.log("all statesModel tests passed");
