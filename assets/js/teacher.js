@@ -1,4 +1,4 @@
-// Teacher link builder (teacher.html): choose a start level, year level and options, get a URL, copy button and QR code.
+// MixLab teacher link builder (teacher.html): choose a start station, year level and options, get a URL, copy button and QR code.
 // Includes a small dependency-free QR encoder (byte mode, error correction M, versions 1-14). No network at runtime.
 
 // ---------------------------------------------------------------- QR encoder
@@ -184,29 +184,20 @@ if (typeof document !== "undefined") {
   const $ = (s, r = document) => r.querySelector(s);
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
-  // levels with their own page open there; every other level opens on the homepage with ?level=<id> (teacherMode.js
-  // swaps the starting level)
-  const PAGES = {
-    cell: "index.html", animal: "index.html?cell=animal",
-    membrane: "sims/membrane-transport/index.html", thylakoid: "sims/photosynthesis/index.html", cristae: "sims/atp-synthase/index.html",
-    enzymes: "sims/enzymes/index.html", expression: "sims/protein-synthesis/index.html", mitosis: "sims/mitosis/index.html",
-    meiosis: "sims/meiosis/index.html",
-  };
+  // every MixLab level opens on the homepage with ?start=<id> (shell.js reads it); the lab bench is the default
   const GROUPS = [
-    ["Whole cell", ["cell", "animal", "specialised", "immunity"]],
-    ["Organelles", ["nucleus", "chloroplast", "mitochondrion", "membrane", "enzymes"]],
-    ["Molecular scale", ["thylakoid", "cristae", "chromatin", "dna", "expression", "folding"]],
-    ["Cell division and inheritance", ["mitosis", "meiosis", "karyotype", "inheritance", "epigenetics"]],
+    ["Lab bench", ["bench"]],
+    ["Stations", ["states"]],
+    ["Particle scale", ["particles"]],
   ];
-  const state = { level: "cell", band: "", dot: null, byCode: false, lock: false, noquiz: false, present: false, paused: false, clay: false };
+  const state = { level: "bench", band: "", dot: null, byCode: false, lock: false, noquiz: false, present: false, paused: false, clay: false };
   let LEVELS = {}, SYL = [];
 
   const levelSel = $("#t-level"), yearSel = $("#t-year"), out = $("#t-url"), qrBox = $("#t-qr"), qrNote = $("#t-qr-note");
 
   function buildURL() {
-    const page = PAGES[state.level] || "index.html";
-    const u = new URL(page, new URL(".", location.href));
-    if (!PAGES[state.level]) u.searchParams.set("level", state.level);
+    const u = new URL("index.html", new URL(".", location.href));
+    if (state.level !== "bench") u.searchParams.set("start", state.level);
     if (state.dot) {
       if (state.byCode && state.dot.school_code) u.searchParams.set("code", state.dot.school_code.replace(" ", "-"));
       else u.searchParams.set("dot", state.dot.id);
