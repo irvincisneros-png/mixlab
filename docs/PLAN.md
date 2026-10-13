@@ -25,7 +25,7 @@
 Cross-station: revision quiz bank ✅ (`content/revision.json`: 200 items, 172 Y7 / 28 Ext; first-nations empty until sourced), syllabus map (`content/syllabus.json`: 19 Y7 + 9 Extension dot points, all 19 school codes matched 1:1).
 
 ## Publishing
-Repo `irvincisneros-png/mixlab` is **private**. Ask the owner before making it public or turning on GitHub Pages; after that, every push to `main` goes to students. Ask before adding it to `science-sim-hub`.
+**Live** (public repo + GitHub Pages, 2026-10-13): https://irvincisneros-png.github.io/mixlab/. Every push to `main` goes to students, so verify before pushing. Ask before adding it to `science-sim-hub`.
 
 ## Known follow-ups
 - Station 1: Extension "double the mass" mission not exercised end to end; Balanced tier glass reads milky (transmission → alpha); glass is alpha-blended (three.js transmission can't see other transmissive meshes), water is the one refracting volume.

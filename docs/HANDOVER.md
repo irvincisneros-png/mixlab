@@ -4,7 +4,7 @@ Paste everything below the line into a new Claude Code session opened in `~/Docu
 
 ---
 
-You're continuing **MixLab**, a 3D lab-bench simulator for NSW **Year 7 Solutions & Mixtures** (my Term 4 2026 unit, being taught now). I'm a science teacher. Work in `mixlab/`, branch `main`, GitHub repo `irvincisneros-png/mixlab` (**private**; ask me before making it public or turning on Pages, and before adding it to `science-sim-hub`). It runs on the engine copied from my CellScape site (`cellscape/`, live and public; read-only from here).
+You're continuing **MixLab**, a 3D lab-bench simulator for NSW **Year 7 Solutions & Mixtures** (my Term 4 2026 unit, being taught now). I'm a science teacher. Work in `mixlab/`, branch `main`, GitHub repo `irvincisneros-png/mixlab` (**public, live on Pages** at https://irvincisneros-png.github.io/mixlab/ since 2026-10-13; every push to `main` goes to students; ask me before adding it to `science-sim-hub`). It runs on the engine copied from my CellScape site (`cellscape/`, live and public; read-only from here).
 
 ## Read first
 1. `mixlab/docs/PLAN.md`: stations, status table, follow-ups.
