@@ -125,7 +125,7 @@ export function createStatesModel(opts = {}) {
     let evap = 0;
     for (let i = 0; i < n; i++) {
       const mass = m.solid + m.liquid + m.gas;
-      if (mass <= 1e-3) { m.escaped += mass; m.liquid = m.solid = m.gas = 0; m.T = m.bath ?? m.room; break; }   // dried out
+      if (mass <= 1e-3) { m.escaped += mass; m.liquid = m.solid = m.gas = 0; m.T = m.bath ?? m.room; m.t += h * (n - i); break; }   // dried out: the clock keeps running
       const surround = m.bath ?? m.room;
       const k = m.bath != null ? m.bathLoss : m.loss;
       const qIn = m.power;
@@ -140,7 +140,7 @@ export function createStatesModel(opts = {}) {
         // temperature, ≈ 2501 − 2.36·T J/g) comes from the water left behind: evaporation cools
         H -= dmEvap * (S.Lf + S.cLiquid * (m.T - S.mp) + (2501 - 2.36 * m.T));
       }
-      if (dmEvap >= m.liquid - 1e-9 && m.solid + m.gas <= 1e-9) { m.escaped += mass; m.solid = m.liquid = m.gas = 0; m.t += h; break; }
+      if (dmEvap >= m.liquid - 1e-9 && m.solid + m.gas <= 1e-9) { m.escaped += mass; m.solid = m.liquid = m.gas = 0; m.t += h * (n - i); break; }
       const newMass = mass - dmEvap;
       m.escaped += dmEvap; evap += dmEvap;
       fromEnthalpy(H, newMass);

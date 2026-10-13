@@ -110,4 +110,10 @@ const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a}
   for (let i = 0; i < 200; i++) { d.step(1); if (d.T > 0) assert.notEqual(d.phaseChange, "melting"); }
   console.log("ok edge cases");
 }
+{
+  const m = createStatesModel({ mass: 5, T0: 99, container: "open" }); m.power = 250;
+  for (let i = 0; i < 200; i++) m.step(1);
+  assert.equal(m.fractions().mass, 0); near(m.t, 200, 1e-6, "clock keeps running after drying out");
+  console.log("ok clock after drying");
+}
 console.log("all statesModel tests passed");
