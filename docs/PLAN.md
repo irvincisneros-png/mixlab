@@ -12,7 +12,7 @@
 |---|---|---|---|---|
 | 0 | Lab bench (home) + teacher page | — | `bench` | ✅ 2026-10-13 |
 | 1 | States of matter: heating/cooling, live heating curve, water cycle, particle view, properties of states | 4.1.1–4.1.4 | `states` → `particles` | ✅ 2026-10-13. Model `statesModel.js` tested; Codex 2 rounds, fixed |
-| 2 | Density: density column, float/sink lab (measured m and V, ρ = m/V), buoyancy, surface tension | 4.2.1–4.2.3 | — | Next |
+| 2 | Density: density column, float/sink lab (measured m and V, ρ = m/V), buoyancy, surface tension | 4.2.1–4.2.3 | `density` → `densityParticles` | ✅ 2026-10-13. Model `densityModel.js` + particle counts tested; Codex 2 rounds, fixed |
 | 3 | Dissolving: particle view of solute and solvent; temperature, stirring, particle size | 4.3.1, 4.3.4 | — | Planned |
 | 4 | Solubility: saturation, solubility curves (KNO₃, NaCl, CuSO₄; real cited data, g/100 g water), crystals on cooling, supersaturation | 4.3.2, 4.3.3, 4.3.5 | — | Planned |
 | 5 | Concentration: dilute/concentrated, g/L | 4.3.5 | — | Planned (may merge with 4) |
@@ -30,6 +30,8 @@ Cross-station: revision quiz bank ✅ (`content/revision.json`: 200 items, 172 Y
 ## Known follow-ups
 - Station 1: Extension "double the mass" mission not exercised end to end; Balanced tier glass reads milky (transmission → alpha); glass is alpha-blended (three.js transmission can't see other transmissive meshes), water is the one refracting volume.
 - Revision bank: key is still the longest option in 56 % of items.
+- CellScape has the same `style.js` clay→real crash on material arrays (fixed here 2026-10-13); port it when next working in CellScape (ask before pushing).
+- Density lab: portrait starts on a partial overview; Look at buttons give close-ups.
 - Real-device check (Chromebooks, phones) not done yet.
 - Year-7 site (`Year-7/solutions-mixtures/content.jsx`) has the science errors listed in `docs/AUDIT-year7-page.md`. Not fixed (separate repo; ask before pushing).
 - Syllabus: the 2023 syllabus has no explicit intermolecular-forces dot point; Extension links use Stage 5 Materials/Reactions points instead.

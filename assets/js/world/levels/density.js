@@ -502,6 +502,8 @@ export function create(engine) {
       g.position.set(p.x, p.y, p.z);
     }
   }
+  // whole percent, but never round a floating object up to 100 % (99.6 % shows as 99.6)
+  const pctUnder = (f) => (f >= 0.995 ? Math.min(99.9, Math.floor(f * 1000) / 10).toFixed(1) : String(Math.round(f * 100)));
   function moveTo(E, to, { dur = 0.8, lift = 7 } = {}) {
     for (let i = tweens.length - 1; i >= 0; i--) if (tweens[i].E === E) { tweens[i].res(false); tweens.splice(i, 1); }
     E.phys = null;
@@ -597,33 +599,29 @@ export function create(engine) {
   async function putOnBalance() {
     const E = S.E; if (!E) return;
     const from = E.loc;
-    if (from === "balance") return;
+    if (from === "balance" || from === "move" || from === "cyl-in") return;
     E.loc = "move";
     S.tankResult = null;
     const poseOnBal = balancePose(E);
-    if (from === "cyl") { const cp = cylPoses(E); await moveTo(E, { ...cp.above }, { dur: 0.7, lift: 0 }); }
-    await moveTo(E, poseOnBal, { dur: 0.85, lift: 6 });
-    if (S.E !== E) return;
+    if (from === "cyl") { const cp = cylPoses(E); if (!(await moveTo(E, { ...cp.above }, { dur: 0.7, lift: 0 })) || S.E !== E) return; }
+    if (!(await moveTo(E, poseOnBal, { dur: 0.85, lift: 6 })) || S.E !== E) return;
     E.loc = "balance"; lcdSettle = 0.9; S.haveMass = true;
     syncUI();
   }
   async function measureVolume() {
     const E = S.E; if (!E) return;
     if (E.sample.kind === "regular") {
-      if (E.loc === "ruler") return;
+      if (E.loc === "ruler" || E.loc === "move" || E.loc === "cyl-in") return;
       E.loc = "move";
-      await moveTo(E, rulerPose(E), { dur: 0.85, lift: 7 });
-      if (S.E !== E) return;
+      if (!(await moveTo(E, rulerPose(E), { dur: 0.85, lift: 7 })) || S.E !== E) return;
       E.loc = "ruler"; S.haveVol = true;
     } else {
-      if (E.loc === "cyl") return;
+      if (E.loc === "cyl" || E.loc === "move" || E.loc === "cyl-in") return;
       E.loc = "move";
       const cp = cylPoses(E);
-      await moveTo(E, cp.above, { dur: 0.85, lift: 5 });
-      if (S.E !== E) return;
+      if (!(await moveTo(E, cp.above, { dur: 0.85, lift: 5 })) || S.E !== E) return;
       E.loc = "cyl-in";
-      await moveTo(E, cp.in, { dur: 1.9 + (E.sq.b.H) * 0.08, lift: 0 });
-      if (S.E !== E) return;
+      if (!(await moveTo(E, cp.in, { dur: 1.9 + (E.sq.b.H) * 0.08, lift: 0 })) || S.E !== E) return;
       E.loc = "cyl"; S.haveVol = true;
     }
     syncUI();
@@ -652,13 +650,11 @@ export function create(engine) {
   // ---------- tank ----------
   const tankSurface = () => tankLevel;
   async function dropInTank() {
-    const E = S.E; if (!E) return;
-    const lq = LIQUIDS[ui.tankLiquid];
+    const E = S.E; if (!E || E.loc === "move" || E.loc === "cyl-in") return;
     E.loc = "move"; S.tankResult = null;
     const ox = (Math.random() - 0.5) * 3, oz = (Math.random() - 0.5) * 2;
     const to = { x: TANK.x + ox, y: tankSurface() + 8, z: TANK.z + oz, up: 0, k: 1, s: 1, yaw: Math.random() * TAU };
-    await moveTo(E, to, { dur: 0.95, lift: 6 });
-    if (S.E !== E) return;
+    if (!(await moveTo(E, to, { dur: 0.95, lift: 6 })) || S.E !== E) return;
     E.loc = "tank";
     E.phys = { vy: 0, t: 0, settled: false, logged: false, liquid: ui.tankLiquid };
     if (E.bolt) E.pose.up = 0;
@@ -690,8 +686,11 @@ export function create(engine) {
     }
     ph.t += dt;
     const still = Math.abs(ph.vy) < 1.2;
-    if (!ph.settled && ph.t > 0.8 && still) ph.stillT = (ph.stillT || 0) + dt; else if (!still) ph.stillT = 0;
-    if (!ph.settled && (ph.stillT > 0.5 || ph.t > 4)) {
+    // settled = calm AND at the depth the physics says it should rest at (floating depth, or the floor)
+    const yEq = ft.result === "floats" ? tankLevel - draught(b, ft.submerged) : ft.result === "sinks" ? tankFloor : E.pose.y;
+    const atEq = Math.abs(E.pose.y - yEq) < 0.1;
+    if (!ph.settled && ph.t > 0.8 && still && atEq) ph.stillT = (ph.stillT || 0) + dt; else if (!still || !atEq) ph.stillT = 0;
+    if (!ph.settled && (ph.stillT > 0.5 || ph.t > 25)) {
       ph.settled = true;
       S.tankResult = { ...ft, key: E.key, m: E.sample.trueM, liquid: ph.liquid, rho: E.sample.rho };
       if (ui.predicted) S.tankResult.predicted = ui.predicted;
@@ -1093,7 +1092,7 @@ export function create(engine) {
   }
   function predictLineOrResult(r) {
     const w = { floats: "floats", sinks: "sinks", suspended: "hangs in the middle" };
-    const base = `${SOLIDS[r.key].name} in ${LIQUIDS[r.liquid].name.toLowerCase()}: <b>${w[r.result]}</b>${r.result === "floats" ? ` (${Math.round(r.submerged * 100)} % under)` : ""}.`;
+    const base = `${SOLIDS[r.key].name} in ${LIQUIDS[r.liquid].name.toLowerCase()}: <b>${w[r.result]}</b>${r.result === "floats" ? ` (${pctUnder(r.submerged)} % under)` : ""}.`;
     return r.predicted ? `${base} ${predictLine(r.predicted, r.result)}` : `${base} (Predict first next time.)`;
   }
 
@@ -1231,7 +1230,7 @@ export function create(engine) {
     // result of the tank test
     if (E && E.loc === "tank" && S.tankResult) {
       const r = S.tankResult;
-      resultLbl.innerHTML = `<b style="color:${STATE_COL[r.result]}">${r.result === "floats" ? `Floats · ${Math.round(r.submerged * 100)} % under` : r.result === "sinks" ? "Sinks" : "Hangs in the middle"}</b>`;
+      resultLbl.innerHTML = `<b style="color:${STATE_COL[r.result]}">${r.result === "floats" ? `Floats · ${pctUnder(r.submerged)} % under` : r.result === "sinks" ? "Sinks" : "Hangs in the middle"}</b>`;
       placeClamped(resultLbl, _a.set(TANK.x - TANK.w / 2, TANK.h + 0.5, TANK.z), 0, -4, true);
     } else resultLbl.style.display = "none";
     // ruler readings

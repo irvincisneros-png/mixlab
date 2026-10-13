@@ -8,14 +8,16 @@ import * as K from "../../kit.js";
 import { physical, glass, hash, softDot } from "../materials.js";
 
 // ---------- stations ----------
-const SLOT_DX = 5;     // distance between station slots along the bench (units = 10 cm each)
+const SLOT_DX = 6;     // distance between station slots along the bench (units = 10 cm each)
 const STATIONS = [
   { to: "states", label: "States of matter", codes: "Y7 4.1", slot: 0,
     blurb: "Heat and cool water in a beaker. Watch it melt, boil, freeze and condense, then zoom in to see the particles doing it." },
+  { to: "density", label: "Density lab", codes: "Y7 4.2", slot: 1,
+    blurb: "Measure mass and volume, work out density, test float or sink, and build a density column. Then zoom in to see why." },
   // later slots (kept here so the layout stays fixed): density column, dissolving beaker, separation kit,
   // fractionating column, water-treatment train
 ];
-const TOPICS = ["states-of-matter", "heating-curves", "particle-theory"];   // union of the built stations' topics
+const TOPICS = ["states-of-matter", "heating-curves", "particle-theory", "density", "surface-tension"];   // union of the built stations' topics
 
 // ---------- scene sizes ----------
 const R = 0.35, H = 0.95, WALL = 0.025, BASE = 0.055;     // 250 mL Griffin beaker: 7 cm wide, 9.5 cm tall
@@ -364,7 +366,7 @@ export function create(engine) {
   trim.position.set(benchCx, TILE_H + 0.07, WALL_Z + 0.04); trim.userData.clayHide = true;
   root.add(trim);
   const sign = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 1.95), new THREE.MeshStandardMaterial({ map: signTex(), roughness: 0.4 }));
-  sign.position.set(slotX(stations[0] || { slot: 0 }) + 3.9, 2.55, WALL_Z + 0.012); sign.userData.clayHide = true;
+  sign.position.set(slotX(STATIONS[0]) + 3.9, 2.55, WALL_Z + 0.012); sign.userData.clayHide = true;
   root.add(sign);
 
   // =============== steel and glass materials ===============
@@ -378,8 +380,10 @@ export function create(engine) {
   const station = new THREE.Group();
   station.name = "station-states";
   root.add(station);
-  const sx = stations[0] ? slotX(stations[0]) : 0;
+  const sx = slotX(STATIONS[0]);
   station.position.set(sx, 0, 0);
+  station.visible = stations.some((s) => s.to === "states");
+  const pads = {};            // per station: the work-area outline that brightens on hover
   const mark = (m, kind) => { tag(m, kind); return m; };
 
   // work-area outline on the bench (portal marker; brightens when hovered)
@@ -388,6 +392,7 @@ export function create(engine) {
   pad.rotation.x = -Math.PI / 2; pad.position.set(-0.55, 0.008, 0.1); pad.renderOrder = -4; pad.userData.clayHide = true; pad.userData.kind = "station";
   station.add(pad);
   fallbackPickables.push(pad);
+  pads.states = { mesh: pad, mat: padMat };
   const shadowHot = decal(3.4, 3.5, 0, 0.1, 0.9); station.add(shadowHot);
   const shadowStand = decal(2.4, 1.8, -2.5, -0.2, 0.75); station.add(shadowStand);
 
@@ -552,6 +557,112 @@ export function create(engine) {
   // the thermometer passes through the clamp at armY: align its group height so the clamp holds it
   // (bulb sits just above the beaker floor)
 
+
+  // =============== station 1: density column + electronic balance ===============
+  const dX = slotX(STATIONS[1]);
+  const dens = new THREE.Group();
+  dens.name = "station-density";
+  dens.position.set(dX, 0, 0);
+  dens.visible = stations.some((s) => s.to === "density");
+  root.add(dens);
+  {
+    const dtag = (m, kind) => { m.userData.kind = kind; pickables.push(m); return m; };
+    const dpadMat = new THREE.MeshBasicMaterial({ map: padTex(), transparent: true, opacity: 0, depthWrite: false, fog: false });
+    const dpad = new THREE.Mesh(new THREE.PlaneGeometry(4.9, 3.7), dpadMat);
+    dpad.rotation.x = -Math.PI / 2; dpad.position.set(0.05, 0.008, 0.15); dpad.renderOrder = -4; dpad.userData.clayHide = true; dpad.userData.kind = "station-density";
+    dens.add(dpad); fallbackPickables.push(dpad);
+    pads.density = { mesh: dpad, mat: dpadMat };
+    dens.add(decal(1.6, 1.6, -1.2, 0.2, 0.85));
+    dens.add(decal(3.0, 3.4, 1.3, 0.15, 0.85));
+
+    // ---- 250 mL measuring cylinder with four layers (bottom to top: honey, dish liquid, water, oil) ----
+    const CX = -1.2, CZ = 0.2, CR = 0.2, CW = 0.02, CRI = CR - CW, CY0 = 0.12, CH = 3.3, FLOOR = 0.2;
+    const cyl = new THREE.Group();
+    cyl.position.set(CX, 0, CZ);
+    dens.add(cyl);
+    const baseMat = physical("#2a6fb5", { roughness: 0.42, clearcoat: 0.4, sheen: 0 });
+    const cbase = dtag(cast(new THREE.Mesh(new THREE.LatheGeometry(V2([[0, 0], [0.4, 0], [0.42, 0.03], [0.4, 0.07], [0.3, 0.12], [0.24, 0.16], [0.22, 0.2], [0, 0.2]]), 6), baseMat)), "cylinder");
+    cbase.userData.clayColor = "#9ec4ea";
+    cbase.rotation.y = Math.PI / 6; cyl.add(cbase);
+    const layers = [
+      { h: 0.55, color: "#c8780f", emissive: "#6b3a00", ei: 0.28, opacity: 0.94, rough: 0.12, name: "honey" },
+      { h: 0.55, color: "#2fae62", emissive: "#0c3f21", ei: 0.18, opacity: 0.88, rough: 0.1, name: "dish liquid" },
+      { h: 0.65, color: "#6cc2f0", emissive: "#0d3a58", ei: 0.1, opacity: 0.58, rough: 0.03, name: "water" },
+      { h: 0.55, color: "#f0c424", emissive: "#6a5000", ei: 0.18, opacity: 0.8, rough: 0.05, name: "oil" },
+    ];
+    let y = FLOOR;
+    layers.forEach((L, i) => {
+      const top = y + L.h, rw = CRI - 0.003, last = i === layers.length - 1;
+      const prof = last
+        ? [[0, y], [rw, y], [rw, top], [rw - 0.008, top + 0.012], [rw - 0.02, top + 0.004], [rw - 0.05, top], [0, top]]
+        : [[0, y], [rw, y], [rw, top], [0, top]];
+      const m = dtag(new THREE.Mesh(new THREE.LatheGeometry(V2(prof), 48), new THREE.MeshPhysicalMaterial({
+        color: L.color, emissive: new THREE.Color(L.emissive), emissiveIntensity: L.ei, roughness: L.rough, metalness: 0, clearcoat: 0.6, clearcoatRoughness: 0.08,
+        transparent: true, opacity: L.opacity, depthWrite: false, ior: 1.4, envMapIntensity: 1.1 })), "layer");
+      m.renderOrder = 2 + i * 0.01; m.userData.layer = L.name; m.userData.clayColor = L.color; m.userData.clayOpacity = Math.min(1, L.opacity + 0.15);
+      cyl.add(m);
+      y = top;
+    });
+    // glass tube, rolled lip and spout, with printed graduations
+    const tubeProfile = V2([[CR, CY0], [CR, CY0 + CH - 0.04], [CR + 0.012, CY0 + CH - 0.02], [CR + 0.012, CY0 + CH - 0.004], [CR + 0.002, CY0 + CH + 0.008], [CR - CW / 2, CY0 + CH + 0.01]]);
+    const tubeMat = glass("#ffffff", { rim: "#ffffff", rimPower: 2.3, rimStrength: 0.6, minAlpha: 0.02, maxAlpha: 0.6, clearcoat: 1, roughness: 0.04 });
+    const tubeMesh = dtag(new THREE.Mesh(new THREE.LatheGeometry(tubeProfile, 64), tubeMat), "cylinder");
+    tubeMesh.renderOrder = 8; tubeMesh.userData.clayColor = "#dbe8f0"; tubeMesh.userData.clayOpacity = 0.35;
+    cyl.add(tubeMesh);
+    const ghr = CH + 0.14, mlU = (ml) => ml / (Math.PI * 1.8 * 1.8) / 10;
+    const gradTex2 = canvasTex(256, 2048, (g, w, h) => {
+      g.clearRect(0, 0, w, h); g.fillStyle = "#fff"; g.strokeStyle = "#fff";
+      const yOf = (u) => h - ((u - CY0) / CH) * h;   // u = height above the bench
+      for (let ml = 10; ml <= 250; ml += 10) {
+        const yy = yOf(FLOOR + mlU(ml)), major = ml % 50 === 0;
+        g.lineWidth = major ? 5 : 3; const len = major ? 70 : (ml % 10 === 0 ? 38 : 20);
+        g.beginPath(); g.moveTo(w * 0.42, yy); g.lineTo(w * 0.42 + len, yy); g.stroke();
+        if (major) { g.font = "700 30px Inter, Arial, sans-serif"; g.textAlign = "right"; g.textBaseline = "middle"; g.fillText(String(ml), w * 0.42 - 8, yy); }
+      }
+      g.font = "700 26px Inter, Arial, sans-serif"; g.textAlign = "center"; g.fillText("250 mL", w * 0.5, h * 0.03);
+    }, { srgb: true });
+    const gradMesh = new THREE.Mesh(new THREE.CylinderGeometry(CR + 0.003, CR + 0.003, CH, 48, 1, true, -0.55, 1.1), new THREE.MeshStandardMaterial({ map: gradTex2, transparent: true, roughness: 0.55, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 }));
+    gradMesh.position.y = CY0 + CH / 2; gradMesh.renderOrder = 9; gradMesh.userData.clayHide = true;
+    cyl.add(gradMesh);
+
+    // ---- electronic balance with an aluminium block on the pan ----
+    const bal = new THREE.Group();
+    bal.position.set(1.35, 0, 0.1); bal.rotation.y = -0.18;
+    dens.add(bal);
+    const bodyMat = physical("#e3e6e7", { roughness: 0.42, clearcoat: 0.3, clearcoatRoughness: 0.35, sheen: 0 });
+    const bbody = dtag(cast(new THREE.Mesh(new RoundedBoxGeometry(2.2, 0.5, 2.7, 5, 0.09), bodyMat)), "balance");
+    bbody.position.y = 0.04 + 0.25; bbody.userData.clayColor = "#d8dee6"; bal.add(bbody);
+    for (const [fx, fz] of [[-0.85, -1.05], [0.85, -1.05], [-0.85, 1.05], [0.85, 1.05]]) {
+      const ft = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.11, 0.05, 16), physical("#15181a", { roughness: 0.9, clearcoat: 0, sheen: 0 }));
+      ft.position.set(fx, 0.025, fz); ft.userData.clayHide = true; bal.add(ft);
+    }
+    // top panel (dark glass) with LCD readout and buttons, at the front
+    const topY = 0.54;
+    const pnl = new THREE.Mesh(new RoundedBoxGeometry(1.9, 0.02, 0.78, 3, 0.008), physical("#14181b", { roughness: 0.25, clearcoat: 0.8 }));
+    pnl.position.set(0, topY + 0.003, 0.92); pnl.userData.clayHide = true; bal.add(pnl);
+    const lcdT = canvasTex(256, 96, (g, w, h) => {
+      g.fillStyle = "#0a0d0c"; g.fillRect(0, 0, w, h);
+      g.fillStyle = "#d4efd9"; g.font = "600 52px 'Space Grotesk', monospace"; g.textBaseline = "middle"; g.textAlign = "right";
+      g.fillText("72.9", w - 62, h * 0.52);
+      g.font = "600 30px Inter, monospace"; g.textAlign = "left"; g.fillText("g", w - 52, h * 0.58);
+      g.font = "500 16px Inter, monospace"; g.fillStyle = "#7fb590"; g.fillText("stable", 12, 18);
+    }, { srgb: true });
+    const lcd2 = new THREE.Mesh(new THREE.PlaneGeometry(1.0, 0.375), new THREE.MeshStandardMaterial({ map: lcdT, emissive: new THREE.Color("#ffffff"), emissiveMap: lcdT, emissiveIntensity: 0.55, roughness: 0.3 }));
+    lcd2.rotation.x = -Math.PI / 2; lcd2.position.set(-0.4, topY + 0.016, 0.93); lcd2.userData.clayHide = true; bal.add(lcd2);
+    for (let i = 0; i < 3; i++) {
+      const bt = new THREE.Mesh(new THREE.CylinderGeometry(0.095, 0.095, 0.03, 24), physical(i === 0 ? "#2b78c8" : "#9aa2a8", { roughness: 0.4, clearcoat: 0.3 }));
+      bt.position.set(0.4 + i * 0.27, topY + 0.016, 0.93); bt.userData.clayHide = true; bal.add(bt);
+    }
+    // pan on a short stem
+    const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.12, 0.1, 20), steel);
+    stem.position.set(0, topY + 0.05, -0.4); stem.userData.clayHide = true; bal.add(stem);
+    const pan = dtag(cast(new THREE.Mesh(new THREE.CylinderGeometry(0.78, 0.78, 0.035, 72), plateMat)), "balance");
+    pan.position.set(0, topY + 0.11, -0.4); pan.userData.clayColor = "#e1e6ea"; bal.add(pan);
+    const blockMat = physical("#c7ccd0", { metalness: 1, roughness: 0.36, roughnessMap: brushedLinear(), clearcoat: 0, sheen: 0, envMapIntensity: 1.1 });
+    const block = dtag(cast(new THREE.Mesh(new RoundedBoxGeometry(0.3, 0.3, 0.3, 4, 0.012), blockMat)), "block");
+    block.position.set(0.02, topY + 0.1275 + 0.15, -0.4); block.rotation.y = 0.35; block.userData.clayColor = "#cfd6dc"; bal.add(block);
+  }
+
   // =============== decor (kept light) ===============
   const decor = new THREE.Group();
   root.add(decor);
@@ -605,7 +716,7 @@ export function create(engine) {
 
   // test-tube rack with tubes (instanced, level-of-detail aware)
   const rack = new THREE.Group();
-  rack.position.set(sx + 3.9, 0, -2.05); rack.rotation.y = 0.12;
+  rack.position.set(sx + 1.9, 0, -2.45); rack.rotation.y = 0.12;
   {
     const rackMat = physical("#4aa3c2", { roughness: 0.55, clearcoat: 0.35 });
     const topP = mark(new THREE.Mesh(new RoundedBoxGeometry(1.8, 0.07, 0.5, 2, 0.02), rackMat), "rack");
@@ -636,16 +747,22 @@ export function create(engine) {
     rack.add(liqInst, tubeInst);
   }
   decor.add(rack);
-  decor.add(decal(2.4, 1.0, sx + 3.9, -2.05, 0.7));
+  decor.add(decal(2.4, 1.0, sx + 1.9, -2.45, 0.7));
 
   // =============== look: lights, env, camera ===============
   const centre = new THREE.Vector3(sx, 0, 0);
   const view = {
-    get target() { return new THREE.Vector3(stations.length ? stations.reduce((a, s) => a + slotX(s), 0) / stations.length + (engine.camera.aspect < 0.9 ? 0.1 : 0.45) : 0, 1.35, 0.25); },
+    // frames every built station: from the retort stand (left of the first) to the right edge of the last apparatus
+    get span() {
+      const xs = stations.map(slotX), lo = Math.min(...xs) - 3.2, hi = Math.max(...xs) + (stations.length > 1 ? 2.5 : 3.6);
+      return { lo, hi };
+    },
+    get target() { const { lo, hi } = this.span; return new THREE.Vector3((lo + hi) / 2 + (stations.length > 1 ? 0 : engine.camera.aspect < 0.9 ? 0.1 : 0.45), stations.length > 1 ? (engine.camera.aspect < 0.9 ? 0.5 : 1.6) : 1.35, stations.length > 1 ? (engine.camera.aspect < 0.9 ? 0.2 : -0.4) : 0.25); },
     get distance() {
-      const a = engine.camera.aspect, tanH = Math.tan(THREE.MathUtils.degToRad(engine.camera.fov / 2));
-      const wNeed = a < 0.9 ? 4.4 : 7.4, hNeed = a < 0.9 ? 6.4 : 5.2;
-      return clamp(Math.max(wNeed / (2 * tanH * a), hNeed / (2 * tanH)), 7.5, 22);
+      const a = engine.camera.aspect, tanH = Math.tan(THREE.MathUtils.degToRad(engine.camera.fov / 2)), { lo, hi } = this.span;
+      const multi = stations.length > 1, narrow = a < 0.9;
+      const wNeed = multi ? (hi - lo + 0.8) : narrow ? 4.4 : 7.4, hNeed = narrow ? 6.4 : 5.2;
+      return clamp(Math.max(wNeed / (2 * tanH * a), hNeed / (2 * tanH)), 7.5, 30);
     },
     dir: new THREE.Vector3(0.24, 0.5, 1),
   };
@@ -671,33 +788,43 @@ export function create(engine) {
   }
 
   // ---------- labels ----------
-  const lblStation = engine.label(`<b>${stations[0]?.label ?? ""}</b><small>${stations[0]?.codes ?? ""}</small>`, "org");
-  const lblDive = engine.label("🔍 Double-click or zoom in", "dive");
   const _lp = new THREE.Vector3();
-  const lblTop = new THREE.Vector3(), lblBase = new THREE.Vector3();
-  function putLabel(el, v, dx, dy, minY, maxY, prev) {
+  const lbls = stations.map((st) => ({
+    st, x: slotX(st),
+    name: engine.label(`<b>${st.label}</b><small>${st.codes}</small>`, "org"),
+    dive: engine.label("🔍 Double-click or zoom in", "dive"),
+  }));
+  const topAt = { states: [0, 3.55, 0.2], density: [-1.2, 3.8, 0.2] }, baseAt = { states: [0.2, 0, 1.35], density: [0.1, 0, 1.75] };
+  const placed = [];
+  function putLabel(el, v, dx, dy, minY, maxY) {
     const p = _lp.copy(v).project(engine.camera);
-    if (p.z > 1 || p.z < -1) { el.style.display = "none"; return null; }
+    if (p.z > 1 || p.z < -1) { el.style.display = "none"; return; }
     el.style.display = "";
     const w = el.offsetWidth || 120, h = el.offsetHeight || 24;
     let x = (p.x * 0.5 + 0.5) * engine.w + dx, y = (-p.y * 0.5 + 0.5) * engine.h + dy;
     x = clamp(x, w / 2 + 8, engine.w - w / 2 - 8);
     y = clamp(y, minY + h / 2, maxY - h / 2);
-    if (prev && Math.abs(x - prev.x) < (w + prev.w) / 2 + 6 && Math.abs(y - prev.y) < (h + prev.h) / 2 + 4) y = clamp(prev.y + (h + prev.h) / 2 + 4, minY + h / 2, maxY - h / 2);
+    for (let pass = 0; pass < 3; pass++) for (const q of placed) if (Math.abs(x - q.x) < (w + q.w) / 2 + 6 && Math.abs(y - q.y) < (h + q.h) / 2 + 4) y = clamp(q.y + (h + q.h) / 2 + 4, minY + h / 2, maxY - h / 2);
+    placed.push({ x, y, w, h });
     el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) translate(-50%, -50%)`;
-    return { x, y, w, h };
   }
+  function hideLabels() { for (const l of lbls) { l.name.style.display = "none"; l.dive.style.display = "none"; } }
   function updateLabels() {
-    const show = engine.current === level && stations.length > 0;
-    if (!show) { lblStation.style.display = "none"; lblDive.style.display = "none"; return; }
+    if (engine.current !== level) { hideLabels(); return; }
     const narrow = engine.camera.aspect < 0.9;
-    // labels clamp to the stage edges (phones), but vanish once the apparatus itself has been panned or zoomed off screen
-    const c = _lp.set(sx, 1.0, 0).project(engine.camera), cx = (c.x * 0.5 + 0.5) * engine.w, cy = (-c.y * 0.5 + 0.5) * engine.h;
-    if (c.z > 1 || cx < -30 || cx > engine.w + 30 || cy < -30 || cy > engine.h + 30) { lblStation.style.display = "none"; lblDive.style.display = "none"; return; }
-    lblTop.set(sx, 3.55, 0.2); lblBase.set(sx + 0.2, 0.0, 1.35);
-    const a = putLabel(lblStation, lblTop, 0, narrow ? 0 : -10, 10, engine.h - 100, null);
-    putLabel(lblDive, lblBase, 0, 24, 10, engine.h - 86, a);
+    placed.length = 0;
+    for (const l of lbls) {
+      // labels clamp to the stage edges (phones), but vanish once the apparatus itself has been panned or zoomed off screen
+      const c = _lp.set(l.x, 1.0, 0).project(engine.camera), cx = (c.x * 0.5 + 0.5) * engine.w, cy = (-c.y * 0.5 + 0.5) * engine.h;
+      if (c.z > 1 || cx < -30 || cx > engine.w + 30 || cy < -30 || cy > engine.h + 30) { l.name.style.display = "none"; l.dive.style.display = "none"; continue; }
+      putLabel(l.name, lblTop.set(l.x + topAt[l.st.to][0], topAt[l.st.to][1], topAt[l.st.to][2]), 0, narrow ? 0 : -10, 10, engine.h - 100);
+      // two stations on a phone: only the picked one shows its dive hint, so the labels don't pile up
+      if (lbls.length > 1 && narrow && l.st.to !== (activeTo || "")) l.dive.style.display = "none";
+      else putLabel(l.dive, lblBase.set(l.x + baseAt[l.st.to][0], baseAt[l.st.to][1], baseAt[l.st.to][2]), 0, 24, 10, engine.h - 86);
+    }
   }
+  const lblTop = new THREE.Vector3(), lblBase = new THREE.Vector3();
+  let hoverTo = null, selectedTo = null, activeTo = null;
 
   // ---------- panel ----------
   let node = null, builtBand = null, selBody = null, selCard = null, savedSelection = null;
@@ -772,25 +899,32 @@ export function create(engine) {
     stand: { title: "Retort stand and clamp", kind: "Station · States of matter", text: "Holds the thermometer steady in the water without touching the hot glass or the bottom of the beaker.", portal: true },
     bottle: { title: "Wash bottle", kind: "Bench equipment", text: "Holds distilled water for rinsing glassware. Squeeze to get a thin jet from the nozzle.", portal: false },
     glasses: { title: "Safety glasses", kind: "Bench equipment", text: "Wear them whenever you heat something, pour a liquid or use chemicals. They protect your eyes from splashes.", portal: false },
+    "station-density": { to: "density", title: "Density lab station", kind: "Y7 4.2", text: "A measuring cylinder holding four liquids that do not mix, next to an electronic balance with a metal block on it. Measure mass and volume, work out density, and see why some things float and others sink.", portal: true },
+    cylinder: { to: "density", title: "250 mL measuring cylinder", kind: "Station · Density lab", text: "Tall and narrow, so the layers are easy to see and the volume can be read accurately. It holds four liquids poured in gently so they stay in layers (honey, dish liquid and water do slowly mix over hours; oil never mixes with water).", portal: true },
+    layer: { to: "density", title: "Layers by density", kind: "Station · Density lab", text: "From the bottom: honey (about 1.4 g/mL), dish liquid (a little over 1), water (1.0) and cooking oil (about 0.9). The denser liquid sinks below the less dense one, so the order tells you the order of density.", portal: true },
+    balance: { to: "density", title: "Electronic balance", kind: "Station · Density lab", text: "Measures mass in grams. Press tare with the empty container on the pan so the reading shows only what you add.", portal: true },
+    block: { to: "density", title: "Aluminium block", kind: "Station · Density lab", text: "A 3 cm cube: volume 27 cm³. The balance reads about 73 g, so its density is about 2.7 g/cm³ (mass divided by volume). That is denser than water, so it sinks.", portal: true },
     rack: { title: "Test-tube rack", kind: "Bench equipment", text: "Keeps test tubes upright so they do not roll off the bench or tip over.", portal: false },
   };
+  for (const k of ["station", "hotplate", "beaker", "water", "ice", "thermometer", "stand"]) INFO[k].to = "states";
   function infoFor(kind) { return INFO[kind] ? { ...INFO[kind], kind0: kind } : null; }
-  let hoverStation = false, selectedStation = false;
   function showSelection(info) {
     if (!selBody) { savedSelection = info; return; }
     savedSelection = info;
     if (!info) { selBody.innerHTML = `<p class="hint">Click something on the bench to find out about it.</p>`; selBody.querySelectorAll("button").forEach((b) => b.remove()); return; }
     selBody.innerHTML = `<p style="margin:0 0 2px"><b>${esc(info.title)}</b></p><p class="hint" style="margin:0 0 6px">${esc(info.kind)}</p><p style="margin:0 0 8px;font-size:.84rem;color:var(--ink-dim)">${esc(info.text)}</p>`;
-    if (info.portal && stations[0]) {
+    const st = info.portal && stations.find((q) => q.to === info.to);
+    if (st) {
       const r = K.buttonRow(selBody);
-      K.button(r, `Dive into ${stations[0].label.toLowerCase()}`, () => engine.dive(level.portals[0]), { kind: "primary" });
+      K.button(r, `Dive into ${st.label.toLowerCase()}`, () => engine.dive(level.portals.find((q) => q.to === st.to)), { kind: "primary" });
     }
   }
 
   // ---------- the level object ----------
-  const portals = stations.map((s) => ({
-    to: s.to, label: s.label, object: station, radius: 1.3,
-    center: () => centre.clone().set(sx, PLATE_Y + 0.5, 0.0), auto: true,
+  const groups = { states: station, density: dens };
+  const portals = stations.map((st) => ({
+    to: st.to, label: st.label, object: groups[st.to], radius: st.to === "density" ? 1.5 : 1.3,
+    center: () => (st.to === "density" ? new THREE.Vector3(slotX(st) + 0.1, 1.5, 0.2) : new THREE.Vector3(sx, PLATE_Y + 0.5, 0)), auto: true,
   }));
 
   const level = {
@@ -799,7 +933,7 @@ export function create(engine) {
     root, pickables, fallbackPickables, portals,
     metersPerUnit: 0.1,
     get view() { return view; },
-    minDistance: 2.0, maxDistance: 24, near: 0.02, far: 600,
+    minDistance: 2.0, maxDistance: 34, near: 0.02, far: 600,
     minPolar: 0.3, maxPolar: 1.42, minAzimuth: -1.15, maxAzimuth: 1.15,
     enablePan: true,
     env: {
@@ -814,15 +948,15 @@ export function create(engine) {
       }
       return null;
     },
-    onSelect(info) { selectedStation = !!info?.portal; showSelection(info); },
-    onHover(obj, info) { hoverStation = !!info?.portal; },
+    onSelect(info) { selectedTo = info?.portal ? info.to : null; if (selectedTo) activeTo = selectedTo; showSelection(info); },
+    onHover(obj, info) { hoverTo = info?.portal ? info.to : null; },
     mountPanel(el) {
       if (!node || builtBand !== lens.band) buildPanel();
       el.appendChild(node);
       studioLights();
     },
     unmountPanel() {
-      lblStation.style.display = "none"; lblDive.style.display = "none";
+      hideLabels();
       restoreLights();
     },
     onResume() { studioLights(); },
@@ -830,13 +964,15 @@ export function create(engine) {
     onLens() { const old = node, parent = old?.parentNode; node = null; buildPanel(); if (parent) { parent.insertBefore(node, old); old.remove(); } },
     update(dt, t, rdt = dt) {
       updateLabels();
-      // work-area outline: faint at rest, bright when hovered or selected
-      const want = hoverStation || selectedStation ? 0.95 : 0.0;
-      padMat.opacity += (want - padMat.opacity) * (engine.reducedMotion ? 1 : Math.min(1, rdt * 8));
-      padMat.opacity = padMat.opacity < 0.005 ? 0 : padMat.opacity;
-      pad.visible = padMat.opacity > 0;
+      // work-area outlines: faint at rest, bright when hovered or selected
+      for (const k in pads) {
+        const pd = pads[k], want = hoverTo === k || selectedTo === k ? 0.95 : 0.0;
+        pd.mat.opacity += (want - pd.mat.opacity) * (engine.reducedMotion ? 1 : Math.min(1, rdt * 8));
+        if (pd.mat.opacity < 0.005) pd.mat.opacity = 0;
+        pd.mesh.visible = pd.mat.opacity > 0;
+      }
     },
-    dispose() { lblStation.remove(); lblDive.remove(); restoreLights(); },
+    dispose() { for (const l of lbls) { l.name.remove(); l.dive.remove(); } restoreLights(); },
   };
   return level;
 }

@@ -9,6 +9,8 @@ export const LEVELS = {
   bench: { title: "Lab bench", load: () => import("./levels/bench.js") },
   states: { title: "States of matter", load: () => import("./levels/states.js") },
   particles: { title: "Water particles", load: () => import("./levels/statesParticles.js") },
+  density: { title: "Density lab", load: () => import("./levels/density.js") },
+  densityParticles: { title: "Particles and density", load: () => import("./levels/densityParticles.js") },
 };
 
 /**

@@ -8,7 +8,7 @@ export const MINUS = "−";
 export const f1 = (x) => x.toFixed(1);
 export const f2 = (x) => x.toFixed(2);
 export const g2 = (x) => x.toFixed(2);
-const pct = (x) => `${Math.round(x * 100)} %`;
+const pct = (x) => (x >= 0.995 && x < 1 ? `${Math.min(99.9, Math.floor(x * 1000) / 10).toFixed(1)} %` : `${Math.round(x * 100)} %`);   // 99.6 % never shows as 100 %
 const short = (n) => n.replace(/ \(.*\)/, "");
 const nameLo = (n) => short(n).replace(/^([A-Z])([a-z])/, (m, a, b) => a.toLowerCase() + b);
 
@@ -187,7 +187,7 @@ export function narrative(S, band) {
     const r = T.result, lq = LIQUIDS[r.liquid], m = r.m, ms = SOLIDS[r.key];
     const verb = r.result === "floats" ? (r.close ? "only just floats" : "floats") : r.result === "sinks" ? (r.close ? "only just sinks" : "sinks") : "is neutrally buoyant (an exact match)";
     let t = `In ${nameLo(lq.name)} (${rhoTxt(lq.rho)} g/cm³) the ${nameLo(ms.name)} (${rhoTxt(r.rho ?? ms.rho)} g/cm³) <b>${verb}</b>`;
-    if (r.result === "floats") t += `: it is less dense than the liquid, so about <b>${pct(r.submerged)}</b> of it is under the surface (${rhoTxt(r.rho ?? ms.rho)} ÷ ${rhoTxt(lq.rho)} = ${r.submerged.toFixed(2)}).`;
+    if (r.result === "floats") t += `: it is less dense than the liquid, so about <b>${pct(r.submerged)}</b> of it is under the surface (${rhoTxt(r.rho ?? ms.rho)} ÷ ${rhoTxt(lq.rho)} = ${r.submerged.toFixed(r.close ? 3 : 2)}).`;
     else if (r.result === "sinks") t += `: it is denser than the liquid.`;
     else t += `: its density exactly matches the liquid's, so the upward push of the liquid balances its weight at any depth.`;
     if (r.close && r.result !== "suspended") t += ` The two densities are within 1 % of each other, so it only just ${r.result === "floats" ? "floats" : "sinks"}: tiny differences in temperature, trapped air bubbles or how it is put in can change the result.`;
@@ -285,7 +285,7 @@ export const MIXUPS = [
 // ---------- data & sources ----------
 export const SIMPLIFICATIONS = [
   "Densities are <b>typical values</b> at about 20 °C. Real woods, plastics, oils and honey vary from sample to sample; the range is shown on every result.",
-  "Water at 20 °C is 0.998 g/mL (not exactly 1). An object at 1.000 g/cm³ is within 0.005 of it and counts as neutrally buoyant, not as sinking.",
+  "Water at 20 °C is 0.998 g/mL (not exactly 1). An object at 1.000 g/cm³ is only 0.2 % denser, so it only just sinks; within 1 % the result depends on temperature, trapped air bubbles and how it is put in. Only an exact match is neutrally buoyant.",
   "Instruments read only to their resolution: balance 0.01 g, ruler 1 mm, measuring cylinder 1 mL. There are no slips (parallax, drips, bubbles), so your errors come from that resolution only.",
   "Irregular solids are found by displacement. HDPE floats, so it is held under with a thin wire; the volume found is the same.",
   "Floating depth uses Archimedes' rule with each piece's own shape, upright (cylinders lie on their sides). It ignores surface tension and tipping.",

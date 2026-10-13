@@ -116,6 +116,7 @@ export function create(engine) {
     const plinth = new THREE.Mesh(plinthGeo, plinthMat); plinth.position.y = -HS - 0.75; g.add(plinth);
     const proxy = new THREE.Mesh(boxGeo, new THREE.MeshBasicMaterial({ visible: false })); proxy.userData.cubeKey = k; g.add(proxy); cubeProxies.push(proxy);
     c.proxy = proxy;
+    for (const o of [glassMesh, c.edges, proxy]) o.scale.setScalar(st.side / S);        // lead: 4 unit cells = 19.8 Å, drawn at that size so the box matches the sum
     cubes.push(c);
 
     if (k === "water") {
@@ -607,7 +608,7 @@ export function create(engine) {
       for (const c of cubes) {
         const st = c.st, el = lblCube[c.key];
         const unit = c.key === "aluminium" || c.key === "lead" ? "atoms" : "molecules";
-        const small = c.key === "air" ? `${T.fmtN(st.expected)} molecules on average` : `${st.drawn.toLocaleString("en-AU")} ${unit}`;
+        const small = c.key === "air" ? `${T.fmtN(st.expected)} molecules on average` : `${st.drawn.toLocaleString("en-AU")} ${unit}${st.side !== S ? " · box 1% narrower (4 unit cells)" : ""}`;
         setHTML(el, `${T.SUB[c.key].name}<small>${small}</small>`);
         el.style.outline = sel === c.key ? "1px solid #ffe28a" : "";
         _p.set(c.cx, c.cy + HS + 3.2, c.cz);
