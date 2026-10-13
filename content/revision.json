@@ -1,0 +1,3289 @@
+{
+ "generated": "tools/build-revision-bank.mjs",
+ "items": [
+  {
+   "id": "mx001",
+   "band": "y7",
+   "topics": [
+    "states-of-matter"
+   ],
+   "q": "What are the three states of matter?",
+   "options": [
+    "Solid, liquid and steam",
+    "Solid, plasma and gas",
+    "Liquid, vapour and crystal",
+    "Solid, liquid and gas"
+   ],
+   "answer": 3,
+   "why": "The three states of matter are solid, liquid and gas. Plasma is sometimes called a fourth state, but it is not part of Year 7."
+  },
+  {
+   "id": "mx002",
+   "band": "y7",
+   "topics": [
+    "states-of-matter",
+    "particle-theory"
+   ],
+   "q": "Which state of matter has particles in a fixed, regular arrangement that can only vibrate about their positions?",
+   "options": [
+    "Gas",
+    "Plasma",
+    "Liquid",
+    "Solid"
+   ],
+   "answer": 3,
+   "why": "In a solid the particles are packed closely in a regular pattern and are held in place by strong attractions. They vibrate about fixed positions but cannot move from place to place."
+  },
+  {
+   "id": "mx003",
+   "band": "y7",
+   "topics": [
+    "states-of-matter",
+    "particle-theory"
+   ],
+   "q": "Which state of matter can be easily compressed into a smaller volume?",
+   "options": [
+    "Gas",
+    "Liquid",
+    "Solid",
+    "All three states equally"
+   ],
+   "answer": 0,
+   "why": "Gases can be compressed significantly because there is a large amount of empty space between their particles. Solids and liquids resist compression."
+  },
+  {
+   "id": "mx004",
+   "band": "y7",
+   "topics": [
+    "states-of-matter",
+    "heating-curves"
+   ],
+   "q": "What is the melting point of water at standard atmospheric pressure?",
+   "options": [
+    "37 degrees Celsius",
+    "0 degrees Celsius",
+    "100 degrees Celsius",
+    "-10 degrees Celsius"
+   ],
+   "answer": 1,
+   "why": "Pure water melts (ice becomes liquid water) at 0 degrees Celsius at standard atmospheric pressure."
+  },
+  {
+   "id": "mx005",
+   "band": "y7",
+   "topics": [
+    "states-of-matter",
+    "heating-curves"
+   ],
+   "q": "What is the boiling point of water at standard atmospheric pressure?",
+   "options": [
+    "37 degrees Celsius",
+    "0 degrees Celsius",
+    "100 degrees Celsius",
+    "50 degrees Celsius"
+   ],
+   "answer": 2,
+   "why": "Pure water boils at 100 degrees Celsius at standard atmospheric pressure (sea level). It boils at a lower temperature at high altitude."
+  },
+  {
+   "id": "mx006",
+   "band": "y7",
+   "topics": [
+    "states-of-matter"
+   ],
+   "q": "What is the name for the change of state from liquid to gas?",
+   "options": [
+    "Evaporation (or boiling)",
+    "Melting",
+    "Condensation",
+    "Freezing"
+   ],
+   "answer": 0,
+   "why": "A liquid changing to a gas is called evaporation when it happens at the surface at any temperature, and boiling when bubbles of vapour form throughout the liquid at its boiling point. Both are changes from liquid to gas."
+  },
+  {
+   "id": "mx007",
+   "band": "y7",
+   "topics": [
+    "states-of-matter"
+   ],
+   "q": "What is the name for the change of state from gas to liquid?",
+   "options": [
+    "Condensation",
+    "Sublimation",
+    "Melting",
+    "Evaporation"
+   ],
+   "answer": 0,
+   "why": "Condensation is the change from gas to liquid. Energy is released to the surroundings as the particles slow down and come together."
+  },
+  {
+   "id": "mx008",
+   "band": "y7",
+   "topics": [
+    "states-of-matter"
+   ],
+   "q": "What is sublimation?",
+   "options": [
+    "A liquid changing directly into a solid without cooling",
+    "Solid changing directly to a gas, skipping the liquid state",
+    "A gas turning into a liquid as it loses energy",
+    "A liquid turning to a gas only at its boiling point"
+   ],
+   "answer": 1,
+   "why": "Sublimation is a solid changing directly to a gas without becoming a liquid first. Dry ice (solid carbon dioxide) does this at room temperature."
+  },
+  {
+   "id": "mx009",
+   "band": "y7",
+   "topics": [
+    "heating-curves",
+    "particle-theory"
+   ],
+   "q": "Why does temperature remain constant during a change of state (for example, while ice is melting)?",
+   "options": [
+    "The energy is lost to the surroundings, so the particles cannot speed up",
+    "The energy goes into making the particles smaller, not into making them move faster",
+    "The energy is stored inside the thermometer instead of heating the substance",
+    "The energy goes into overcoming the attractions between particles, not into making them move faster"
+   ],
+   "answer": 3,
+   "why": "While a substance melts, the energy added is used to overcome the attractions holding the particles in place. It does not increase the average speed of the particles, so the temperature stays constant until the change of state is complete."
+  },
+  {
+   "id": "mx010",
+   "band": "y7",
+   "topics": [
+    "particle-theory",
+    "states-of-matter"
+   ],
+   "q": "Using particle theory, why does a gas fill its entire container while a solid holds its own shape?",
+   "options": [
+    "Gas particles are heavier than solid particles, so they sink to fill the container",
+    "Solid particles are electrically charged but gas particles are not charged at all",
+    "Gas particles are smaller than solid particles, so they spread out to fill the space",
+    "Gas particles move freely and attract each other only weakly; solid particles are held in fixed positions"
+   ],
+   "answer": 3,
+   "why": "In a gas the attractions between particles are very weak, so the particles move quickly in all directions and fill any container. In a solid, strong attractions hold particles in fixed positions, so a solid keeps its own shape."
+  },
+  {
+   "id": "mx011",
+   "band": "y7",
+   "topics": [
+    "states-of-matter",
+    "particle-theory"
+   ],
+   "q": "What happens to particles of a liquid when it evaporates?",
+   "options": [
+    "The particles slow down and join together into a solid",
+    "The particles combine with oxygen from the air",
+    "Surface particles with enough energy escape from the liquid as a gas",
+    "The particles are destroyed as the liquid disappears"
+   ],
+   "answer": 2,
+   "why": "Some particles at the surface of a liquid have enough energy to overcome the attractions to their neighbours and escape into the air as a gas. This is evaporation."
+  },
+  {
+   "id": "mx012",
+   "band": "y7",
+   "topics": [
+    "particle-theory",
+    "states-of-matter"
+   ],
+   "q": "In which state of matter are the attractive forces between particles weakest?",
+   "options": [
+    "The forces are the same in all states",
+    "Liquid",
+    "Solid",
+    "Gas"
+   ],
+   "answer": 3,
+   "why": "In a gas the particles are far apart, so the attractions between them are the weakest of the three states. That is why a gas spreads out to fill its container."
+  },
+  {
+   "id": "mx013",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "What is the formula for calculating density?",
+   "options": [
+    "Density = volume divided by mass",
+    "Density = mass times volume",
+    "Density = mass + volume",
+    "Density = mass divided by volume"
+   ],
+   "answer": 3,
+   "why": "Density (rho) = mass (m) divided by volume (V). Units are commonly g/mL or g/cm cubed for school work."
+  },
+  {
+   "id": "mx014",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "A block has a mass of 120 g and a volume of 40 cm³. What is its density?",
+   "options": [
+    "80 g/cm³",
+    "3 g/cm³",
+    "4800 g/cm³",
+    "0.33 g/cm³"
+   ],
+   "answer": 1,
+   "why": "Density = mass ÷ volume = 120 ÷ 40 = 3 g/cm³."
+  },
+  {
+   "id": "mx015",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "What is the approximate density of water?",
+   "options": [
+    "2.7 g/mL",
+    "0.5 g/mL",
+    "10 g/mL",
+    "1.0 g/mL"
+   ],
+   "answer": 3,
+   "why": "Pure water has a density of about 1.0 g/mL (1000 kg/m³) at room temperature. A solid that is less dense than water floats in it."
+  },
+  {
+   "id": "mx016",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "A piece of wood has a density of 0.7 g/mL. Will it float or sink in water?",
+   "options": [
+    "Float, because it is less dense than water",
+    "Sink, because it is denser than water",
+    "Float, because wood is always buoyant",
+    "Sink, because wood absorbs water"
+   ],
+   "answer": 0,
+   "why": "An object floats when its density is less than that of the liquid. Wood at 0.7 g/mL is less dense than water (1.0 g/mL), so it floats. (Some very dense woods, such as ebony, do sink.)"
+  },
+  {
+   "id": "mx017",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "How do you measure the volume of an irregularly shaped object in the laboratory?",
+   "options": [
+    "Estimate its size by eye and compare it with a known object",
+    "Weigh it on a balance and then divide the mass by the density of water",
+    "Measure its length, width and height with a ruler and multiply them",
+    "Submerge it in water in a measuring cylinder and read how far the level rises"
+   ],
+   "answer": 3,
+   "why": "The water displacement method: place the object in a measured volume of water in a measuring cylinder; the rise in water level equals the object's volume."
+  },
+  {
+   "id": "mx018",
+   "band": "y7",
+   "topics": [
+    "density",
+    "states-of-matter",
+    "particle-theory"
+   ],
+   "q": "Why does ice float on liquid water?",
+   "options": [
+    "Ice has no mass, so gravity does not pull it down at all",
+    "Ice is less dense, because its particles are in an open pattern with more space",
+    "Ice particles are moving faster than the particles in liquid water",
+    "Ice is lighter in colour than liquid water, so it floats on top"
+   ],
+   "answer": 1,
+   "why": "When water freezes, its particles lock into an open, regular pattern that takes up more space than the liquid. The same mass fills a bigger volume, so ice (about 0.92 g/mL) is less dense than liquid water (1.00 g/mL) and floats."
+  },
+  {
+   "id": "mx019",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "Why must you read a measuring cylinder at eye level?",
+   "options": [
+    "To stop the measuring cylinder from tipping over on the bench",
+    "To see the colour of the liquid more clearly in the light",
+    "To avoid a parallax error caused by looking at the scale from an angle",
+    "Because the scale is only printed on one side of the glass"
+   ],
+   "answer": 2,
+   "why": "Looking from above or below eye level makes the liquid level seem higher or lower than it really is. Read the bottom of the curved surface (the meniscus) with your eye level with it."
+  },
+  {
+   "id": "mx020",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "A student measures a pebble: mass = 78 g, volume = 30 mL using water displacement. What is the density?",
+   "options": [
+    "2.6 g/mL",
+    "0.38 g/mL",
+    "78 g/mL",
+    "2340 g/mL"
+   ],
+   "answer": 0,
+   "why": "Density = mass / volume = 78 / 30 = 2.6 g/mL. This is consistent with many common rocks and pebbles."
+  },
+  {
+   "id": "mx021",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "What decides whether an object floats or sinks in water?",
+   "options": [
+    "Its mass, with heavier objects always sinking",
+    "Its shape, since flat objects always float",
+    "Its average density compared with water's",
+    "Its colour and how shiny it is"
+   ],
+   "answer": 2,
+   "why": "An object floats if its average density is less than the density of the liquid, and sinks if it is greater. Size and mass alone do not decide it: a huge log floats while a tiny pebble sinks."
+  },
+  {
+   "id": "mx022",
+   "band": "y7",
+   "topics": [
+    "surface-tension"
+   ],
+   "q": "What is surface tension?",
+   "options": [
+    "A stretchy 'skin' on a liquid caused by surface particles being pulled inwards",
+    "The force of a liquid pushing on the sides of its container",
+    "The ability of a liquid to run downhill quickly",
+    "The temperature at which a liquid changes into a gas"
+   ],
+   "answer": 0,
+   "why": "Particles at the surface of a liquid are pulled sideways and inwards by the particles around them, but not upwards. This makes the surface behave like a thin stretchy skin. All liquids have surface tension; water's is relatively high."
+  },
+  {
+   "id": "mx023",
+   "band": "y7",
+   "topics": [
+    "solutions"
+   ],
+   "q": "What is a solution?",
+   "options": [
+    "A mixture in which a solute is dissolved evenly through a solvent",
+    "A liquid that has been purified by distillation",
+    "A compound made when two elements join together",
+    "Any mixture of two or more different substances"
+   ],
+   "answer": 0,
+   "why": "A solution is a homogeneous (uniform) mixture formed when a solute dissolves completely and evenly in a solvent."
+  },
+  {
+   "id": "mx024",
+   "band": "y7",
+   "topics": [
+    "solutions"
+   ],
+   "q": "In a solution of salt dissolved in water, what is the solute?",
+   "options": [
+    "Water",
+    "The resulting solution",
+    "Salt",
+    "Both water and salt equally"
+   ],
+   "answer": 2,
+   "why": "The solute is the substance that dissolves (salt). The solvent is the substance it dissolves in (water). The result is the solution."
+  },
+  {
+   "id": "mx025",
+   "band": "y7",
+   "topics": [
+    "solutions",
+    "solubility"
+   ],
+   "q": "What does 'soluble' mean?",
+   "options": [
+    "A substance that melts easily when it is heated",
+    "A substance that can dissolve in a given solvent",
+    "A substance that floats on the top of water",
+    "A substance that reacts when acid is added"
+   ],
+   "answer": 1,
+   "why": "A soluble substance can dissolve in a given solvent; an insoluble substance cannot. Salt and sugar are soluble in water; sand is insoluble."
+  },
+  {
+   "id": "mx026",
+   "band": "y7",
+   "topics": [
+    "solubility",
+    "solutions"
+   ],
+   "q": "Which of the following substances is INSOLUBLE in water?",
+   "options": [
+    "Table salt (sodium chloride)",
+    "Sugar (sucrose)",
+    "Sand (silicon dioxide)",
+    "Copper sulfate"
+   ],
+   "answer": 2,
+   "why": "Sand (silicon dioxide) is insoluble in water — it does not dissolve and settles to the bottom of the container."
+  },
+  {
+   "id": "mx027",
+   "band": "y7",
+   "topics": [
+    "concentration",
+    "solubility"
+   ],
+   "q": "What is a saturated solution?",
+   "options": [
+    "A solution in which all of the solvent has evaporated",
+    "A solution that has been diluted with a lot of extra water",
+    "A solution that holds the maximum amount of dissolved solute at that temperature",
+    "A solution that has a strong colour from its solute"
+   ],
+   "answer": 2,
+   "why": "A saturated solution holds the maximum possible amount of dissolved solute for that temperature. Adding more solute will leave it undissolved at the bottom."
+  },
+  {
+   "id": "mx028",
+   "band": "y7",
+   "topics": [
+    "solubility"
+   ],
+   "q": "How does increasing temperature generally affect the solubility of a solid solute in water?",
+   "options": [
+    "Solubility increases as temperature increases (for most solids)",
+    "Solubility decreases as temperature increases",
+    "Solubility increases but then suddenly decreases above 50 degrees C",
+    "Solubility stays the same regardless of temperature"
+   ],
+   "answer": 0,
+   "why": "For most solid solutes, solubility increases with temperature because faster-moving water particles can more effectively separate and surround solute particles."
+  },
+  {
+   "id": "mx029",
+   "band": "y7",
+   "topics": [
+    "solubility"
+   ],
+   "q": "How does increasing temperature affect the solubility of a gas dissolved in water?",
+   "options": [
+    "Gas solubility increases as temperature increases",
+    "Gas solubility doubles for every 10 degree rise",
+    "Gas solubility is not affected by temperature",
+    "Gas solubility decreases as temperature increases"
+   ],
+   "answer": 3,
+   "why": "The solubility of gases in water decreases with increasing temperature, which is why fish can be stressed in warm water with less dissolved oxygen."
+  },
+  {
+   "id": "mx030",
+   "band": "y7",
+   "topics": [
+    "solubility",
+    "states-of-matter"
+   ],
+   "q": "Why do bubbles appear inside a saucepan before the water even reaches boiling point?",
+   "options": [
+    "The metal of the pan reacts with water to make gas",
+    "Dissolved gases become less soluble as water warms and escape as bubbles",
+    "Water molecules are splitting into hydrogen and oxygen",
+    "A chemical reaction in the water is making oxygen gas"
+   ],
+   "answer": 1,
+   "why": "Gases are less soluble in warmer water, so dissolved air comes out of solution as small bubbles on the pan before the water boils. The bubbles that rise through water that is truly boiling are water vapour."
+  },
+  {
+   "id": "mx031",
+   "band": "y7",
+   "topics": [
+    "concentration",
+    "solubility"
+   ],
+   "q": "What is a supersaturated solution?",
+   "options": [
+    "A solution made using two different solvents at once",
+    "An unstable solution holding more dissolved solute than it normally could",
+    "A very concentrated solution that is completely stable",
+    "A solution that has been filtered to remove all of its impurities"
+   ],
+   "answer": 1,
+   "why": "A supersaturated solution is made by dissolving solute at high temperature and carefully cooling it. It is unstable — any disturbance causes rapid crystallisation."
+  },
+  {
+   "id": "mx032",
+   "band": "y7",
+   "topics": [
+    "concentration",
+    "solubility"
+   ],
+   "q": "If you add more solute to a saturated solution, what happens?",
+   "options": [
+    "The solvent evaporates to make room for more solute",
+    "The extra solute remains undissolved at the bottom",
+    "It all dissolves because the solution adjusts",
+    "The solution becomes supersaturated immediately"
+   ],
+   "answer": 1,
+   "why": "At saturation, the solution holds the maximum amount of solute for that temperature. Any additional solute remains undissolved at the bottom."
+  },
+  {
+   "id": "mx033",
+   "band": "y7",
+   "topics": [
+    "concentration"
+   ],
+   "q": "A solution is described as 'dilute'. What does this mean?",
+   "options": [
+    "It contains only the solvent and no solute at all",
+    "It contains the maximum possible amount of dissolved solute",
+    "It contains a small amount of solute relative to the volume of solvent",
+    "It has been heated so that more solute can dissolve"
+   ],
+   "answer": 2,
+   "why": "A dilute solution contains a relatively small amount of dissolved solute in the solvent — it is the opposite of concentrated."
+  },
+  {
+   "id": "mx034",
+   "band": "y7",
+   "topics": [
+    "concentration"
+   ],
+   "q": "A solution contains more dissolved solute than the maximum allowed at that temperature. What type of solution is it?",
+   "options": [
+    "Concentrated",
+    "Dilute",
+    "Saturated",
+    "Supersaturated"
+   ],
+   "answer": 3,
+   "why": "A supersaturated solution contains more dissolved solute than the normal saturation point allows; it is unstable and will crystallise when disturbed."
+  },
+  {
+   "id": "mx035",
+   "band": "y7",
+   "topics": [
+    "solutions"
+   ],
+   "q": "Which of these is a physical change?",
+   "options": [
+    "Dissolving sugar in water",
+    "Rusting iron",
+    "Baking a cake",
+    "Burning a candle"
+   ],
+   "answer": 0,
+   "why": "Dissolving sugar in water is a physical change: no new substance forms and the sugar can be recovered by evaporating the water. Rusting, baking and burning make new substances."
+  },
+  {
+   "id": "mx036",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "What is an element?",
+   "options": [
+    "A mixture of different substances",
+    "A pure substance made from only one type of atom",
+    "A substance that cannot be seen",
+    "A pure substance made of two or more types of atom joined together"
+   ],
+   "answer": 1,
+   "why": "An element is a pure substance made entirely from one type of atom; all atoms of the same element are identical to each other."
+  },
+  {
+   "id": "mx037",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "Which elements are combined in water, H₂O?",
+   "options": [
+    "Hydrogen and carbon",
+    "Helium and oxygen",
+    "Hydrogen and oxygen",
+    "Hydrogen and nitrogen"
+   ],
+   "answer": 2,
+   "why": "Water is a compound of hydrogen and oxygen. Its formula, H₂O, shows two hydrogen atoms and one oxygen atom in each molecule."
+  },
+  {
+   "id": "mx038",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "What is an alloy?",
+   "options": [
+    "A mixture of a metal with one or more other elements, such as steel",
+    "A compound formed when two non-metals react together",
+    "A pure element with special properties, such as iron",
+    "A type of metalloid that conducts only a little heat"
+   ],
+   "answer": 0,
+   "why": "An alloy is a mixture of a metal with one or more other elements (usually other metals or carbon) designed to improve properties such as strength or corrosion resistance."
+  },
+  {
+   "id": "mx039",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "What is the difference between an element and a compound?",
+   "options": [
+    "They mean the same thing, because both are mixtures of atoms",
+    "An element has one type of atom; a compound has two or more types joined together",
+    "An element has two types of atom; a compound has only one type",
+    "A compound can be separated by filtering but an element cannot be"
+   ],
+   "answer": 1,
+   "why": "An element contains only one type of atom (e.g. pure iron). A compound contains two or more types of atoms chemically bonded together in fixed ratios (e.g. water, H2O)."
+  },
+  {
+   "id": "mx040",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "What is the difference between a compound and a mixture?",
+   "options": [
+    "A compound can be filtered apart, but a mixture cannot be separated",
+    "A mixture is always a liquid, but a compound is always a solid",
+    "A compound has random amounts of each part; a mixture has fixed amounts",
+    "A compound has its elements joined in fixed ratios; a mixture's parts are not joined"
+   ],
+   "answer": 3,
+   "why": "In a compound, elements are chemically bonded in fixed ratios, creating new properties. In a mixture, substances are physically combined with no chemical bonding, each retaining its original properties."
+  },
+  {
+   "id": "mx041",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures",
+    "separation"
+   ],
+   "q": "Can a mixture be separated by physical methods?",
+   "options": [
+    "Only if the mixture contains metals",
+    "Yes, because each part keeps its own properties",
+    "No, it needs a chemical reaction to separate it",
+    "No, mixtures cannot be separated at all"
+   ],
+   "answer": 1,
+   "why": "Mixtures can be separated by physical techniques (filtration, evaporation, distillation, magnetic separation, etc.) because each component retains its own distinctive physical properties."
+  },
+  {
+   "id": "mx042",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "What is a homogeneous mixture?",
+   "options": [
+    "A mixture that looks the same throughout, such as salt water",
+    "A mixture with visibly different parts, such as a salad",
+    "A mixture whose parts are in different states of matter",
+    "A mixture that can only be separated by chemical reactions"
+   ],
+   "answer": 0,
+   "why": "A homogeneous mixture is uniform throughout — the same composition in every part. Saltwater and air are examples. You cannot see the separate components."
+  },
+  {
+   "id": "mx043",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "What is a heterogeneous mixture?",
+   "options": [
+    "A mixture that dissolves completely when it is added to water",
+    "A mixture that is not the same throughout, so its parts can often be seen, such as soil",
+    "A compound in which the proportions of elements can vary",
+    "A mixture in which all of the particles are exactly the same size"
+   ],
+   "answer": 1,
+   "why": "A heterogeneous mixture is non-uniform; different components can often be seen separately, like the different particles in soil or granite."
+  },
+  {
+   "id": "mx044",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures",
+    "solutions"
+   ],
+   "q": "Which best describes filtered seawater?",
+   "options": [
+    "Pure substance (compound)",
+    "Element",
+    "Homogeneous mixture (solution)",
+    "Heterogeneous mixture"
+   ],
+   "answer": 2,
+   "why": "Seawater is a homogeneous mixture (solution) of water, salt and many other dissolved substances — it looks uniform throughout."
+  },
+  {
+   "id": "mx045",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "How would you separate sand from water using a common laboratory technique?",
+   "options": [
+    "Filtration",
+    "Distillation",
+    "Evaporation",
+    "Chromatography"
+   ],
+   "answer": 0,
+   "why": "Filtration separates an insoluble solid (sand) from a liquid (water). The sand is too large to pass through the tiny pores in the filter paper, but the water passes through."
+  },
+  {
+   "id": "mx046",
+   "band": "y7",
+   "topics": [
+    "separation",
+    "solutions"
+   ],
+   "q": "A student wants to recover the salt from salt water as solid crystals and does not need to keep the water. Which is the simplest technique?",
+   "options": [
+    "Evaporation",
+    "Magnetic separation",
+    "Chromatography",
+    "Filtration"
+   ],
+   "answer": 0,
+   "why": "Evaporation drives off the water and leaves the salt behind as crystals. Filtration cannot work because the salt is dissolved. (Distillation would also leave the salt behind, and collects the water too.)"
+  },
+  {
+   "id": "mx047",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "What physical property does filtration exploit to separate mixtures?",
+   "options": [
+    "Boiling point: the filter paper holds back the liquid with the higher boiling point",
+    "Density: the filter paper holds back the denser liquid",
+    "Particle size: the filter paper's tiny pores block large particles but let smaller ones through",
+    "Magnetism: the filter paper attracts magnetic particles"
+   ],
+   "answer": 2,
+   "why": "Filtration exploits differences in particle size; the filter paper's small pores allow liquid and dissolved particles through but block larger solid particles."
+  },
+  {
+   "id": "mx048",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "What separation technique would you use to separate iron filings from sand?",
+   "options": [
+    "Distillation",
+    "Magnetic separation",
+    "Evaporation",
+    "Filtration"
+   ],
+   "answer": 1,
+   "why": "Iron is a ferromagnetic material attracted to magnets, while sand is not. A magnet can pull iron filings away from sand."
+  },
+  {
+   "id": "mx049",
+   "band": "y7",
+   "topics": [
+    "separation",
+    "fractional-distillation"
+   ],
+   "q": "What is distillation used for?",
+   "options": [
+    "Collecting a liquid, such as pure water, by boiling a solution and condensing the vapour",
+    "Separating an insoluble solid from a liquid by passing it through paper",
+    "Separating dyes by how far they travel up a sheet of paper",
+    "Separating magnetic materials from non-magnetic materials using a magnet"
+   ],
+   "answer": 0,
+   "why": "In distillation a liquid is boiled, and its vapour is cooled in a condenser and collected as a liquid. It can collect pure water from salt water, because the salt stays behind. Liquids with boiling points close together need fractional distillation."
+  },
+  {
+   "id": "mx050",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "What is the residue in a filtration experiment?",
+   "options": [
+    "The liquid that passes through the filter paper",
+    "The chemical produced by the reaction",
+    "The solid material that is left behind on the filter paper",
+    "The filter paper used in the experiment"
+   ],
+   "answer": 2,
+   "why": "The residue is the solid trapped on the filter paper. The liquid that passes through is called the filtrate."
+  },
+  {
+   "id": "mx051",
+   "band": "y7",
+   "topics": [
+    "separation",
+    "solutions"
+   ],
+   "q": "A mixture of sand, salt and water is to be separated. Which FIRST step would you use?",
+   "options": [
+    "Evaporation, to boil the water away from the sand and salt first",
+    "Magnetic separation, to attract the salt out of the mixture",
+    "Filtration, to remove the insoluble sand from the salt water",
+    "Distillation, to separate the sand from the salt"
+   ],
+   "answer": 2,
+   "why": "Sand is insoluble and can be removed by filtration first. The filtrate (salt solution) can then be evaporated to recover the salt."
+  },
+  {
+   "id": "mx052",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "What physical property is exploited when chromatography separates dyes in ink?",
+   "options": [
+    "Only the size of the dye particles, with large ones travelling furthest",
+    "How well each dye dissolves in the solvent and how strongly it sticks to the paper",
+    "The magnetic properties of the dyes, which differ from dye to dye",
+    "The boiling points of the dyes, which differ from dye to dye"
+   ],
+   "answer": 1,
+   "why": "In paper chromatography the solvent carries the dyes up the paper. Dyes that dissolve well and stick weakly travel further; dyes that stick strongly travel less far. This separates them into spots."
+  },
+  {
+   "id": "mx053",
+   "band": "y7",
+   "topics": [
+    "separation",
+    "solutions"
+   ],
+   "q": "Why can filtration NOT remove dissolved salt from salt water?",
+   "options": [
+    "The dissolved salt particles are tiny and pass through the filter paper along with the water",
+    "Salt reacts with the filter paper and passes through as a gas",
+    "Salt is denser than the filter paper, so it sinks through the water",
+    "Filtration only works on mixtures of gases and not of liquids"
+   ],
+   "answer": 0,
+   "why": "Dissolved particles are far smaller than the pores in filter paper, so they pass through with the water. Evaporation is needed to recover the salt."
+  },
+  {
+   "id": "mx054",
+   "band": "y7",
+   "topics": [
+    "fractional-distillation",
+    "separation"
+   ],
+   "q": "What is fractional distillation used for in industry?",
+   "options": [
+    "Filtering solid particles out of town drinking water",
+    "Removing the salt from seawater to make drinking water",
+    "Pulling iron out of other metals using a magnet",
+    "Separating crude oil into fractions such as petrol and diesel"
+   ],
+   "answer": 3,
+   "why": "Crude oil is a mixture of many liquids. It is heated and its vapours rise up a fractionating tower, where each fraction condenses at a different height because of its different boiling point."
+  },
+  {
+   "id": "mx055",
+   "band": "y7",
+   "topics": [
+    "water-cycle",
+    "states-of-matter"
+   ],
+   "q": "In the water cycle, what change of state happens when water vapour in the air forms a cloud?",
+   "options": [
+    "Evaporation: liquid water changes into water vapour gas",
+    "Sublimation: a solid changes directly into a gas",
+    "Condensation: water vapour cools into tiny droplets of liquid water",
+    "Melting: solid ice changes into liquid water"
+   ],
+   "answer": 2,
+   "why": "Water vapour in rising air cools and condenses into tiny liquid droplets, which make up a cloud. (At very low temperatures the droplets can freeze into ice crystals.)"
+  },
+  {
+   "id": "mx056",
+   "band": "y7",
+   "topics": [
+    "water-cycle",
+    "states-of-matter"
+   ],
+   "q": "What are the three states of matter that water exists in naturally on Earth, and where is each found?",
+   "options": [
+    "Solid (ice in glaciers), liquid (oceans, rivers), gas (water vapour in the atmosphere)",
+    "Solid (at the equator), liquid (at the poles), gas (in lakes)",
+    "Solid (in the sky), liquid (underground), gas (in rivers)",
+    "Solid (underground), liquid (in clouds), gas (at the ocean surface)"
+   ],
+   "answer": 0,
+   "why": "Water exists as solid ice (glaciers, polar ice caps, snow), liquid water (oceans, rivers, lakes) and gaseous water vapour (atmosphere, clouds) naturally on Earth."
+  },
+  {
+   "id": "mx057",
+   "band": "y7",
+   "topics": [
+    "states-of-matter",
+    "particle-theory"
+   ],
+   "q": "Which state of matter has a fixed volume but takes the shape of its container?",
+   "options": [
+    "All three states",
+    "Solid",
+    "Gas",
+    "Liquid"
+   ],
+   "answer": 3,
+   "why": "A liquid's particles are close together, so its volume is fixed, but they can slide past each other, so it flows and takes the shape of its container."
+  },
+  {
+   "id": "mx058",
+   "band": "y7",
+   "topics": [
+    "states-of-matter",
+    "particle-theory"
+   ],
+   "q": "A gas is squashed into a smaller space by pushing in a syringe plunger. What happens to the gas particles?",
+   "options": [
+    "They stop moving until the plunger is released",
+    "They move closer together, but each particle stays the same size",
+    "They change into a liquid straight away",
+    "They shrink, so that they take up less room"
+   ],
+   "answer": 1,
+   "why": "Gases can be compressed because there is a lot of empty space between the particles. Squashing a gas reduces that space; the particles themselves do not change size."
+  },
+  {
+   "id": "mx059",
+   "band": "y7",
+   "topics": [
+    "particle-theory"
+   ],
+   "q": "What happens to the particles of a substance when it is heated?",
+   "options": [
+    "They stop vibrating",
+    "They get bigger",
+    "They move faster (they gain kinetic energy)",
+    "They are created from the heat energy"
+   ],
+   "answer": 2,
+   "why": "Heating gives particles more kinetic energy, so they move or vibrate faster. The particles do not get bigger. A substance usually expands because the particles spread further apart."
+  },
+  {
+   "id": "mx060",
+   "band": "y7",
+   "topics": [
+    "particle-theory",
+    "states-of-matter"
+   ],
+   "q": "Why does a gas push on the walls of its container?",
+   "options": [
+    "Gas particles are heavier than the walls are",
+    "Gas particles push upwards on one another",
+    "Gas particles stick to the walls of the container",
+    "Its fast-moving particles keep colliding with the walls"
+   ],
+   "answer": 3,
+   "why": "Gas particles move quickly in all directions. Each collision with a wall gives a tiny push, and billions of collisions every second add up to gas pressure."
+  },
+  {
+   "id": "mx061",
+   "band": "y7",
+   "topics": [
+    "particle-theory"
+   ],
+   "q": "A drop of food colouring spreads through a cup of still water without stirring. What is the best explanation?",
+   "options": [
+    "Dye particles are lighter than water, so they spread out",
+    "Gravity pulls the dye sideways through the water",
+    "The water particles stay still and pull the dye in",
+    "Water particles are always moving and bump the dye particles around"
+   ],
+   "answer": 3,
+   "why": "Particles in a liquid are in constant random motion. Collisions with moving water particles spread the dye through the water. This is called diffusion."
+  },
+  {
+   "id": "mx062",
+   "band": "y7",
+   "topics": [
+    "particle-theory",
+    "states-of-matter"
+   ],
+   "q": "Which statement about the particles in a liquid is correct?",
+   "options": [
+    "They are close together but can slide past one another",
+    "They are close together and do not move at all",
+    "They are far apart and move freely in all directions",
+    "They are in a fixed pattern and can only vibrate"
+   ],
+   "answer": 0,
+   "why": "Liquid particles touch their neighbours but are not locked in place, so a liquid can flow and be poured."
+  },
+  {
+   "id": "mx063",
+   "band": "y7",
+   "topics": [
+    "states-of-matter"
+   ],
+   "q": "Steam touches a cold window and forms drops of water. What is this change of state called?",
+   "options": [
+    "Condensation",
+    "Sublimation",
+    "Melting",
+    "Evaporation"
+   ],
+   "answer": 0,
+   "why": "Water vapour (a gas) loses energy on the cold glass and changes to liquid water. A gas changing to a liquid is condensation."
+  },
+  {
+   "id": "mx064",
+   "band": "y7",
+   "topics": [
+    "states-of-matter"
+   ],
+   "q": "A puddle slowly disappears on a warm day. Which change of state is mainly responsible?",
+   "options": [
+    "Melting",
+    "Evaporation",
+    "Condensation",
+    "Sublimation"
+   ],
+   "answer": 1,
+   "why": "The water at the surface of the puddle slowly changes to water vapour and mixes with the air. It does not need to reach 100 degrees Celsius."
+  },
+  {
+   "id": "mx065",
+   "band": "y7",
+   "topics": [
+    "states-of-matter"
+   ],
+   "q": "Dry ice (solid carbon dioxide) changes straight to a gas at room temperature. What is this called?",
+   "options": [
+    "Condensation",
+    "Melting",
+    "Sublimation",
+    "Evaporation"
+   ],
+   "answer": 2,
+   "why": "A solid changing directly into a gas, with no liquid stage, is sublimation. The white fog around dry ice is tiny droplets of water formed when water vapour from the air is chilled; it is not the carbon dioxide gas, which is invisible."
+  },
+  {
+   "id": "mx066",
+   "band": "y7",
+   "topics": [
+    "states-of-matter"
+   ],
+   "q": "Which change of state is the reverse of freezing?",
+   "options": [
+    "Melting",
+    "Condensation",
+    "Sublimation",
+    "Evaporation"
+   ],
+   "answer": 0,
+   "why": "Freezing changes a liquid to a solid, so the opposite change is melting, a solid becoming a liquid."
+  },
+  {
+   "id": "mx067",
+   "band": "y7",
+   "topics": [
+    "states-of-matter"
+   ],
+   "q": "How is evaporation different from boiling?",
+   "options": [
+    "Evaporation can only happen when a liquid reaches 100 degrees Celsius",
+    "Evaporation is at the surface at any temperature; boiling is throughout the liquid",
+    "They are two different names for exactly the same process",
+    "Boiling only happens at the surface, while evaporation happens throughout"
+   ],
+   "answer": 1,
+   "why": "Evaporation is a slow change at the surface of a liquid. Boiling is a rapid change in which bubbles of vapour form throughout the liquid at its boiling point."
+  },
+  {
+   "id": "mx068",
+   "band": "y7",
+   "topics": [
+    "states-of-matter",
+    "heating-curves"
+   ],
+   "q": "What are the bubbles made of that rise through a pot of boiling water?",
+   "options": [
+    "Air that was dissolved in the water",
+    "Water vapour (water in its gas state)",
+    "Hydrogen and oxygen gases from the water splitting",
+    "Heat energy from the burner trapped in the liquid"
+   ],
+   "answer": 1,
+   "why": "Inside boiling water, liquid water is turning into water vapour, so the large bubbles are water vapour. Small bubbles that appear earlier, before boiling, are dissolved air coming out of solution."
+  },
+  {
+   "id": "mx069",
+   "band": "y7",
+   "topics": [
+    "states-of-matter"
+   ],
+   "q": "What is the white 'cloud' seen above a boiling kettle?",
+   "options": [
+    "Tiny droplets of liquid water formed when water vapour cools",
+    "Hot air that is rising up from the kettle",
+    "Water vapour, which is a white gas you can see",
+    "Smoke given off by the heating element"
+   ],
+   "answer": 0,
+   "why": "Steam (water vapour) is an invisible gas. The white cloud forms a little way from the spout, where the vapour cools and condenses into tiny droplets of liquid water."
+  },
+  {
+   "id": "mx070",
+   "band": "y7",
+   "topics": [
+    "particle-theory",
+    "states-of-matter"
+   ],
+   "q": "A sealed, flexible bag of air is warmed. Why does the bag swell?",
+   "options": [
+    "More air particles are created by the heat",
+    "The particles get bigger as they are heated up",
+    "The particles become lighter and float to the top",
+    "The particles move faster and push harder on the walls of the bag"
+   ],
+   "answer": 3,
+   "why": "Warm gas particles move faster, so they hit the walls harder and more often. The bag swells until the pressure inside equals the pressure outside. The particles do not change in size or number."
+  },
+  {
+   "id": "mx071",
+   "band": "y7",
+   "topics": [
+    "states-of-matter",
+    "particle-theory"
+   ],
+   "q": "Why can a liquid be poured but a solid cannot?",
+   "options": [
+    "Liquid particles slide past each other; solid particles are held in place",
+    "Liquid particles are much further apart than solid particles",
+    "Liquid particles are smaller than solid particles are",
+    "Solid particles are heavier than liquid particles are"
+   ],
+   "answer": 0,
+   "why": "The particles of a liquid can move past each other, so a liquid flows. In a solid they are held in place, so a solid keeps its shape."
+  },
+  {
+   "id": "mx072",
+   "band": "y7",
+   "topics": [
+    "states-of-matter",
+    "particle-theory"
+   ],
+   "q": "Which statement is true of the particles in every state of matter?",
+   "options": [
+    "They are always held in a fixed, regular pattern",
+    "They are always in motion, either vibrating or moving around",
+    "They always stay in contact with all of their neighbours",
+    "They are always spread far apart from one another"
+   ],
+   "answer": 1,
+   "why": "In all three states the particles are moving. In solids they vibrate about fixed positions; in liquids and gases they move around."
+  },
+  {
+   "id": "mx073",
+   "band": "y7",
+   "topics": [
+    "heating-curves",
+    "states-of-matter"
+   ],
+   "q": "A solid is heated steadily and its temperature is recorded. What does a flat section on the graph show?",
+   "options": [
+    "The substance is changing state while energy is still being added",
+    "The heater has been switched off for a short time",
+    "The substance has finished changing state completely",
+    "The substance has stopped absorbing any more energy"
+   ],
+   "answer": 0,
+   "why": "During a change of state the energy supplied goes into overcoming the attractions between particles, not into raising the temperature. Energy is still being absorbed, so the graph is flat."
+  },
+  {
+   "id": "mx074",
+   "band": "y7",
+   "topics": [
+    "heating-curves"
+   ],
+   "q": "Ice at −10 °C is heated steadily until it becomes water at 20 °C. How many flat sections does the temperature graph have?",
+   "options": [
+    "None, since the temperature always rises",
+    "Three, one for each state of matter",
+    "Two, one for melting and one for boiling",
+    "One, while the ice melts"
+   ],
+   "answer": 3,
+   "why": "A flat section appears only while a change of state is happening. Here the only change of state is melting, so there is one flat section (at 0 °C). The water never reaches its boiling point."
+  },
+  {
+   "id": "mx075",
+   "band": "y7",
+   "topics": [
+    "heating-curves",
+    "states-of-matter"
+   ],
+   "q": "Ice at −10 °C is heated steadily until the water boils. What is the correct order of the stages on the graph?",
+   "options": [
+    "Water warms, ice melts (flat), water boils (flat), ice warms",
+    "Ice warms, ice melts (flat), water warms, water boils (flat)",
+    "Ice warms, water boils (flat), ice melts (flat), water warms",
+    "Ice melts (flat), ice warms, water boils (flat), water warms"
+   ],
+   "answer": 1,
+   "why": "Temperature rises while the solid warms, stays flat at the melting point, rises while the liquid warms, then stays flat at the boiling point."
+  },
+  {
+   "id": "mx076",
+   "band": "y7",
+   "topics": [
+    "heating-curves"
+   ],
+   "q": "Pure water is boiling in an open pot at sea level. Why does the thermometer stay at 100 °C even though the burner keeps heating?",
+   "options": [
+    "The water particles have stopped moving around once boiling begins",
+    "The added energy is used to change liquid into gas, not to raise the temperature",
+    "The thermometer is not able to read any temperature above 100 degrees",
+    "The burner cannot supply any more energy once the water is at 100 degrees"
+   ],
+   "answer": 1,
+   "why": "At the boiling point the energy supplied overcomes the attractions between the liquid particles so they can escape as a gas. The temperature stays constant until the liquid has all turned to gas."
+  },
+  {
+   "id": "mx077",
+   "band": "y7",
+   "topics": [
+    "heating-curves"
+   ],
+   "q": "A pure liquid freezes at 80 °C. A student cools the liquid and records its temperature. Where is the flat section on the graph?",
+   "options": [
+    "At 80 °C, while the liquid freezes",
+    "There is no flat section when a liquid is cooled",
+    "At 0 °C",
+    "At 100 °C"
+   ],
+   "answer": 0,
+   "why": "A pure substance freezes at the same temperature at which it melts. While it freezes, energy is released but the temperature stays constant."
+  },
+  {
+   "id": "mx078",
+   "band": "y7",
+   "topics": [
+    "heating-curves",
+    "particle-theory"
+   ],
+   "q": "On a heating curve, the temperature rises in the sloping sections. What is happening to the particles?",
+   "options": [
+    "They are losing energy to the surroundings",
+    "They are changing state",
+    "They are being destroyed",
+    "They gain kinetic energy and move or vibrate faster"
+   ],
+   "answer": 3,
+   "why": "The slope shows the temperature rising, so the average kinetic energy of the particles is increasing."
+  },
+  {
+   "id": "mx079",
+   "band": "y7",
+   "topics": [
+    "heating-curves",
+    "pure-mixtures"
+   ],
+   "q": "Why is the melting point useful for identifying a pure substance?",
+   "options": [
+    "All pure substances melt at exactly 0 degrees Celsius",
+    "Only mixtures are able to have a melting point",
+    "The melting point changes each time it is measured",
+    "A pure substance melts at one specific temperature"
+   ],
+   "answer": 3,
+   "why": "Each pure substance has its own sharp melting point. A mixture usually melts over a range of temperatures, which shows that it is impure."
+  },
+  {
+   "id": "mx080",
+   "band": "y7",
+   "topics": [
+    "heating-curves",
+    "states-of-matter"
+   ],
+   "q": "What happens to energy when water vapour condenses to liquid water?",
+   "options": [
+    "No energy is transferred",
+    "Energy is absorbed from the surroundings",
+    "Energy is released to the surroundings",
+    "Energy is created"
+   ],
+   "answer": 2,
+   "why": "Condensing, freezing and deposition release energy. Melting, evaporating and sublimation absorb it. This is why steam can scald more than boiling water: it releases extra energy as it condenses on skin."
+  },
+  {
+   "id": "mx081",
+   "band": "y7",
+   "topics": [
+    "heating-curves",
+    "pure-mixtures"
+   ],
+   "q": "Compared with a pure liquid, how does a mixture usually boil?",
+   "options": [
+    "At exactly the same temperature as the pure liquid",
+    "It cannot be boiled",
+    "Over a range of temperatures, instead of at one fixed temperature",
+    "At exactly 100 °C every time"
+   ],
+   "answer": 2,
+   "why": "A pure substance boils at one fixed temperature (at a given pressure). A mixture such as salt water boils over a range, which usually starts a little higher than the pure liquid's boiling point."
+  },
+  {
+   "id": "mx082",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "A block has a mass of 50 g and a volume of 25 cm³. What is its density?",
+   "options": [
+    "1250 g/cm³",
+    "2 g/cm³",
+    "0.5 g/cm³",
+    "25 g/cm³"
+   ],
+   "answer": 1,
+   "why": "Density = mass ÷ volume = 50 ÷ 25 = 2 g/cm³."
+  },
+  {
+   "id": "mx083",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "A liquid has a density of 0.8 g/mL. What is the volume of 200 g of it?",
+   "options": [
+    "250 mL",
+    "400 mL",
+    "0.004 mL",
+    "160 mL"
+   ],
+   "answer": 0,
+   "why": "Volume = mass ÷ density = 200 ÷ 0.8 = 250 mL."
+  },
+  {
+   "id": "mx084",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "Cooking oil floats on top of water. What does this tell you?",
+   "options": [
+    "Oil is less dense than water",
+    "Oil is thicker than water so it cannot sink",
+    "Oil has a smaller mass than the water",
+    "Oil particles are heavier than water particles"
+   ],
+   "answer": 0,
+   "why": "A liquid floats on another liquid it does not mix with when it is less dense. A large amount of oil can have more mass than a small amount of water and still float."
+  },
+  {
+   "id": "mx085",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "A huge log floats but a tiny pebble sinks. What is the best explanation?",
+   "options": [
+    "The pebble has no air trapped inside it but the log is full of air",
+    "The log is much bigger, so the water is able to hold it up",
+    "The pebble has more mass than the log has, so the pebble sinks",
+    "The pebble is denser than water, but the log is less dense than water"
+   ],
+   "answer": 3,
+   "why": "Floating depends on density, not on mass or size. The log has more mass than the pebble, but its density is below that of water, while the pebble's density is above it."
+  },
+  {
+   "id": "mx086",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "A steel ship floats even though steel is denser than water. Why?",
+   "options": [
+    "The ship's average density, including the air inside it, is less than water's",
+    "The hull of the ship repels water particles so that it stays on top",
+    "Gravity pulls less strongly on large objects such as ships",
+    "Steel becomes much lighter in weight once it is placed in water"
+   ],
+   "answer": 0,
+   "why": "The hollow ship holds a lot of air, so its total mass is spread over a large volume. Its average density is less than that of water, so it floats."
+  },
+  {
+   "id": "mx087",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "A solid has a density of 2.7 g/cm³. Water has a density of 1.0 g/cm³ and mercury has 13.6 g/cm³. What happens when the solid is put in each liquid?",
+   "options": [
+    "It sinks in both",
+    "It sinks in water and floats in mercury",
+    "It floats in both",
+    "It floats in water and sinks in mercury"
+   ],
+   "answer": 1,
+   "why": "An object sinks in a liquid that is less dense than it is, and floats in a liquid that is denser than it is."
+  },
+  {
+   "id": "mx088",
+   "band": "y7",
+   "topics": [
+    "density",
+    "particle-theory"
+   ],
+   "q": "Why does a hot air balloon rise?",
+   "options": [
+    "The particles in hot air shrink as they are heated",
+    "The hot air inside is less dense than the cooler air around it",
+    "The particles in hot air are lighter than those in cold air",
+    "The flame pushes the balloon upwards"
+   ],
+   "answer": 1,
+   "why": "Warm air spreads out, so some leaves the balloon and the air inside has less mass in the same volume. The balloon system is then less dense than the cooler air around it and rises."
+  },
+  {
+   "id": "mx089",
+   "band": "y7",
+   "topics": [
+    "density",
+    "states-of-matter"
+   ],
+   "q": "For most substances, what happens to the density when a liquid freezes to a solid?",
+   "options": [
+    "The density decreases, because the particles move apart",
+    "The density stays exactly the same",
+    "The mass of the substance increases",
+    "The density increases, because the particles pack more closely"
+   ],
+   "answer": 3,
+   "why": "Most solids are slightly denser than their liquids. Water is an important exception, because ice is less dense than liquid water."
+  },
+  {
+   "id": "mx090",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "A small piece of pure gold and a large gold bar are compared. Which property is the same for both?",
+   "options": [
+    "Mass",
+    "Density",
+    "Volume",
+    "Weight"
+   ],
+   "answer": 1,
+   "why": "Density is a property of the material, so it does not depend on how much of it you have."
+  },
+  {
+   "id": "mx091",
+   "band": "y7",
+   "topics": [
+    "density"
+   ],
+   "q": "A block measures 5.0 cm × 4.0 cm × 2.0 cm and has a mass of 108 g. What is its density?",
+   "options": [
+    "5.4 g/cm³",
+    "0.37 g/cm³",
+    "27 g/cm³",
+    "2.7 g/cm³"
+   ],
+   "answer": 3,
+   "why": "Volume = 5.0 × 4.0 × 2.0 = 40 cm³. Density = 108 ÷ 40 = 2.7 g/cm³, which is the density of aluminium."
+  },
+  {
+   "id": "mx092",
+   "band": "y7",
+   "topics": [
+    "surface-tension"
+   ],
+   "q": "Why can a water strider walk on the surface of a pond?",
+   "options": [
+    "Its legs are filled with air, which makes them float like a boat",
+    "Its legs are lighter than air, so the insect cannot sink at all",
+    "Water is denser at the surface of the pond than it is below it",
+    "Surface tension holds up its light weight, spread over its long legs"
+   ],
+   "answer": 3,
+   "why": "The attractions between surface water particles make the surface behave like a thin elastic skin. The insect's weight is spread over its legs, so the skin is not broken."
+  },
+  {
+   "id": "mx093",
+   "band": "y7",
+   "topics": [
+    "surface-tension"
+   ],
+   "q": "Why can a paperclip be made to rest on top of water if it is placed on gently?",
+   "options": [
+    "Surface tension supports it",
+    "Water repels all metals",
+    "Steel is less dense than water",
+    "Gravity does not pull on small objects"
+   ],
+   "answer": 0,
+   "why": "The paperclip is denser than water, so it would normally sink. If it is placed gently, the surface 'skin' holds it up. If it breaks through the surface, it sinks."
+  },
+  {
+   "id": "mx094",
+   "band": "y7",
+   "topics": [
+    "surface-tension"
+   ],
+   "q": "Water forms small round beads on a waxy leaf. What is the best explanation?",
+   "options": [
+    "Water particles attract each other more than the wax, so the drop pulls into a bead",
+    "Gravity squeezes every drop on the leaf into the shape of a ball",
+    "Wax makes the water heavier, so the drop forms a round bead",
+    "Wax attracts water particles very strongly, so the drop is pulled together"
+   ],
+   "answer": 0,
+   "why": "Surface tension pulls a drop into the rounded shape with the smallest surface. The wax does not attract the water strongly enough to spread it out."
+  },
+  {
+   "id": "mx095",
+   "band": "y7",
+   "topics": [
+    "surface-tension"
+   ],
+   "q": "What happens to the surface tension of water when detergent is added?",
+   "options": [
+    "It decreases",
+    "It increases",
+    "It doubles",
+    "It does not change"
+   ],
+   "answer": 0,
+   "why": "Detergent weakens the attractions between surface water particles. This lowers the surface tension, which is why soapy water spreads and wets surfaces better."
+  },
+  {
+   "id": "mx096",
+   "band": "y7",
+   "topics": [
+    "surface-tension"
+   ],
+   "q": "Pepper is sprinkled on water and a drop of detergent touches the centre. What happens to the pepper?",
+   "options": [
+    "It gathers together in the middle of the dish",
+    "It stays exactly where it was and nothing changes",
+    "It is pulled quickly to the edges of the dish",
+    "It sinks straight to the bottom of the dish"
+   ],
+   "answer": 2,
+   "why": "The detergent lowers the surface tension where it touches. The stronger surface tension elsewhere pulls the surface, and the pepper floating on it, outwards."
+  },
+  {
+   "id": "mx097",
+   "band": "y7",
+   "topics": [
+    "surface-tension"
+   ],
+   "q": "What causes surface tension in a liquid?",
+   "options": [
+    "Particles at the surface stop moving and become solid",
+    "Particles at the surface are pushed upwards by the air above them",
+    "Particles at the surface are heavier than the particles below them",
+    "Particles at the surface are pulled inwards by the particles beside and below them"
+   ],
+   "answer": 3,
+   "why": "A surface particle has neighbours only below and beside it, so the net pull is inwards and sideways. This makes the surface tight, like a stretched skin."
+  },
+  {
+   "id": "mx098",
+   "band": "y7",
+   "topics": [
+    "surface-tension"
+   ],
+   "q": "Which statement about surface tension is correct?",
+   "options": [
+    "Only hot liquids have surface tension, and cold liquids have none",
+    "Only liquids that float on water have any surface tension",
+    "Only water has surface tension, and no other liquid has any",
+    "All liquids have surface tension, and water's is relatively high"
+   ],
+   "answer": 3,
+   "why": "Surface tension happens in every liquid because of the attractions between its particles. Water's is higher than that of most common liquids."
+  },
+  {
+   "id": "mx099",
+   "band": "y7",
+   "topics": [
+    "surface-tension"
+   ],
+   "q": "What happens to the surface tension of water when it is heated?",
+   "options": [
+    "It does not change at all",
+    "It increases a lot",
+    "It decreases slightly",
+    "It becomes zero at 20 °C"
+   ],
+   "answer": 2,
+   "why": "As water warms its particles move faster and the attractions are weaker compared with their motion, so the surface tension falls a little. Hot soapy water cleans better, partly for this reason."
+  },
+  {
+   "id": "mx100",
+   "band": "y7",
+   "topics": [
+    "surface-tension"
+   ],
+   "q": "A glass can be filled slightly above its rim without spilling. What allows this?",
+   "options": [
+    "The glass is actually bigger on the inside than outside",
+    "The water expands to fit the space above the rim",
+    "Air pressure pushes down on the top of the water",
+    "Surface tension holds the surface of the water in a dome"
+   ],
+   "answer": 3,
+   "why": "The stretchy surface layer holds the water together in a rounded dome above the rim until the extra weight is too much."
+  },
+  {
+   "id": "mx101",
+   "band": "y7",
+   "topics": [
+    "solutions"
+   ],
+   "q": "Which of these is a solution?",
+   "options": [
+    "Flour mixed with water",
+    "Salt dissolved in water",
+    "Sand stirred into water",
+    "Oil shaken with water"
+   ],
+   "answer": 1,
+   "why": "In a solution the solute is dissolved evenly, and you cannot see the separate parts. Sand, oil and flour stay as separate particles or droplets and settle or separate."
+  },
+  {
+   "id": "mx102",
+   "band": "y7",
+   "topics": [
+    "solutions",
+    "separation"
+   ],
+   "q": "A sugar solution is poured through filter paper. What goes through?",
+   "options": [
+    "Nothing, because the paper blocks both",
+    "Only the sugar, with the water left on the paper",
+    "Only the water, with the sugar left on the paper",
+    "Both the sugar and the water pass through"
+   ],
+   "answer": 3,
+   "why": "Dissolved sugar particles are tiny and pass through the filter paper with the water. Filtration only separates undissolved solids."
+  },
+  {
+   "id": "mx103",
+   "band": "y7",
+   "topics": [
+    "solutions"
+   ],
+   "q": "Copper sulfate crystals are dissolved in water. What is the water called?",
+   "options": [
+    "The solvent",
+    "The solution",
+    "The solute",
+    "The residue"
+   ],
+   "answer": 0,
+   "why": "The solvent is the substance that does the dissolving. The substance that dissolves is the solute, and the two together make the solution."
+  },
+  {
+   "id": "mx104",
+   "band": "y7",
+   "topics": [
+    "solutions",
+    "pure-mixtures"
+   ],
+   "q": "Which of these is NOT a solution?",
+   "options": [
+    "Sugar dissolved in tea",
+    "Soft drink with the lid on",
+    "Salty water",
+    "Muddy water"
+   ],
+   "answer": 3,
+   "why": "Muddy water contains undissolved soil particles that slowly settle out, so it is a suspension. The other three are uniform mixtures of dissolved substances."
+  },
+  {
+   "id": "mx105",
+   "band": "y7",
+   "topics": [
+    "solutions",
+    "particle-theory"
+   ],
+   "q": "Salt is stirred into water until it seems to disappear. What has happened to the salt?",
+   "options": [
+    "Its particles have changed into extra water particles",
+    "Its particles have shrunk until there is nothing left of them",
+    "Its particles are spread out among the water particles and are still there",
+    "Its particles have been destroyed by the water particles"
+   ],
+   "answer": 2,
+   "why": "When a solute dissolves, its particles separate and mix evenly with the solvent. No matter is lost, and you can recover the salt by evaporating the water."
+  },
+  {
+   "id": "mx106",
+   "band": "y7",
+   "topics": [
+    "solutions"
+   ],
+   "q": "10 g of salt is dissolved completely in 100 g of water. What is the mass of the salt solution?",
+   "options": [
+    "10 g",
+    "110 g",
+    "90 g",
+    "100 g"
+   ],
+   "answer": 1,
+   "why": "Mass is conserved when a solid dissolves: 100 g + 10 g = 110 g. The salt does not disappear."
+  },
+  {
+   "id": "mx107",
+   "band": "y7",
+   "topics": [
+    "solutions",
+    "solubility"
+   ],
+   "q": "Why does stirring make sugar dissolve faster?",
+   "options": [
+    "It makes the sugar more soluble in water",
+    "It brings fresh water into contact with the sugar",
+    "It heats the water a lot",
+    "It makes the sugar particles smaller"
+   ],
+   "answer": 1,
+   "why": "Stirring moves the sugar-rich water away from the solid and replaces it with fresh solvent. It speeds up dissolving but does not change how much can dissolve."
+  },
+  {
+   "id": "mx108",
+   "band": "y7",
+   "topics": [
+    "solutions",
+    "solubility"
+   ],
+   "q": "Which set-up would dissolve the sugar fastest?",
+   "options": [
+    "Cold water, a sugar cube and no stirring",
+    "Warm water, a sugar cube and no stirring",
+    "Warm water, powdered sugar and stirring",
+    "Cold water, powdered sugar and no stirring"
+   ],
+   "answer": 2,
+   "why": "Warm water, a larger surface area (powder) and stirring each speed up dissolving."
+  },
+  {
+   "id": "mx109",
+   "band": "y7",
+   "topics": [
+    "solutions"
+   ],
+   "q": "Oil and water form two separate layers when shaken together. Which word describes this?",
+   "options": [
+    "Miscible: they mix completely",
+    "Saturated: they cannot hold more",
+    "Dilute: they contain little solute",
+    "Immiscible: they do not mix"
+   ],
+   "answer": 3,
+   "why": "Liquids that do not mix are immiscible, and liquids that mix completely are miscible. Oil and water do not form a solution."
+  },
+  {
+   "id": "mx110",
+   "band": "y7",
+   "topics": [
+    "solutions",
+    "solubility"
+   ],
+   "q": "Why does a bottle of soft drink fizz when you open it?",
+   "options": [
+    "The sugar in the drink reacts with the air outside",
+    "The drink suddenly warms up and its gas expands",
+    "The drink starts to boil as soon as it is opened",
+    "Dissolved carbon dioxide leaves the drink when the pressure drops"
+   ],
+   "answer": 3,
+   "why": "The gas is kept dissolved by high pressure inside the sealed bottle. Opening it lowers the pressure, so the gas is less soluble and escapes as bubbles."
+  },
+  {
+   "id": "mx111",
+   "band": "y7",
+   "topics": [
+    "solubility"
+   ],
+   "q": "At 20 °C, 36 g of salt can dissolve in 100 g of water. A student stirs 20 g of salt into 100 g of water at 20 °C. The solution is",
+   "options": [
+    "supersaturated, because the liquid is clear",
+    "insoluble, because salt is a solid to begin with",
+    "saturated, because all of the salt dissolved",
+    "unsaturated, because more salt could still dissolve"
+   ],
+   "answer": 3,
+   "why": "The solution holds 20 g, which is less than the 36 g it could hold, so more salt can dissolve."
+  },
+  {
+   "id": "mx112",
+   "band": "y7",
+   "topics": [
+    "solubility",
+    "concentration"
+   ],
+   "q": "At 20 °C, 36 g of salt can dissolve in 100 g of water. A student stirs 50 g of salt into 100 g of water at 20 °C. How much salt stays undissolved?",
+   "options": [
+    "36 g",
+    "About 14 g",
+    "50 g",
+    "0 g"
+   ],
+   "answer": 1,
+   "why": "Only 36 g can dissolve, so 50 − 36 = 14 g remains undissolved at the bottom, and the solution is saturated."
+  },
+  {
+   "id": "mx113",
+   "band": "y7",
+   "topics": [
+    "solubility"
+   ],
+   "q": "In what units is the solubility of a solid usually given?",
+   "options": [
+    "Degrees Celsius needed to dissolve one gram of solute",
+    "Grams of solute that dissolve in 100 g of water at a stated temperature",
+    "Grams of water needed to dissolve 100 g of solute",
+    "Litres of solute that dissolve in a kilogram of water"
+   ],
+   "answer": 1,
+   "why": "Solubility is the maximum mass of solute that dissolves in 100 g of water at a certain temperature. The temperature must be stated because solubility changes with it."
+  },
+  {
+   "id": "mx114",
+   "band": "y7",
+   "topics": [
+    "solubility",
+    "separation"
+   ],
+   "q": "Potassium nitrate has a solubility of about 64 g per 100 g of water at 40 °C and about 32 g at 20 °C. A saturated solution with 100 g of water at 40 °C is cooled to 20 °C. About how much crystallises out?",
+   "options": [
+    "About 96 g",
+    "None, because it stays dissolved",
+    "About 32 g",
+    "About 64 g"
+   ],
+   "answer": 2,
+   "why": "The solution can now hold only 32 g, so 64 − 32 = 32 g of crystals form. This is how crystallisation by cooling works."
+  },
+  {
+   "id": "mx115",
+   "band": "y7",
+   "topics": [
+    "solubility",
+    "states-of-matter"
+   ],
+   "q": "Why does a can of soft drink go flat more quickly when it is warm?",
+   "options": [
+    "The sugar becomes less soluble in warm drinks and stops it fizzing",
+    "The can expands when it is warm and lets the gas out",
+    "Gases are less soluble in warmer water, so carbon dioxide escapes faster",
+    "Carbon dioxide turns into a liquid as the drink warms up"
+   ],
+   "answer": 2,
+   "why": "The solubility of a gas falls as the temperature rises, so warm drinks hold less dissolved carbon dioxide."
+  },
+  {
+   "id": "mx116",
+   "band": "y7",
+   "topics": [
+    "solubility",
+    "water-treatment"
+   ],
+   "q": "Why can fish struggle to breathe in very warm water?",
+   "options": [
+    "Fish gills do not work below 30 °C",
+    "Warm water has no oxygen in it at all",
+    "Warm water holds less dissolved oxygen",
+    "Warm water is denser, so fish cannot swim"
+   ],
+   "answer": 2,
+   "why": "The solubility of gases such as oxygen decreases as water warms, so there is less dissolved oxygen available to the fish."
+  },
+  {
+   "id": "mx117",
+   "band": "y7",
+   "topics": [
+    "solubility"
+   ],
+   "q": "Which of these would dissolve in water?",
+   "options": [
+    "Plastic beads",
+    "Cooking oil",
+    "Sand",
+    "Sugar"
+   ],
+   "answer": 3,
+   "why": "Sugar is soluble in water. Sand and plastic are insoluble, and oil does not mix with water."
+  },
+  {
+   "id": "mx118",
+   "band": "y7",
+   "topics": [
+    "solubility",
+    "separation"
+   ],
+   "q": "A saturated salt solution at 60 °C is left to cool. Salt solubility decreases a little as it cools. What do you see?",
+   "options": [
+    "The dissolved salt turns into more water",
+    "Nothing at all happens as the solution cools down",
+    "The water in the solution changes into ice",
+    "Some salt crystals form as the solution cools"
+   ],
+   "answer": 3,
+   "why": "The cooled solution can hold less salt than before, so the extra dissolved salt comes out of solution as crystals. (For some solutes the effect is much bigger than for salt.)"
+  },
+  {
+   "id": "mx119",
+   "band": "y7",
+   "topics": [
+    "solubility",
+    "concentration"
+   ],
+   "q": "How can you tell that a solution is saturated?",
+   "options": [
+    "It has been boiled for several minutes",
+    "Extra solute stays undissolved however long you stir",
+    "It contains a very large amount of water",
+    "It has a strong colour all the way through"
+   ],
+   "answer": 1,
+   "why": "A saturated solution holds as much solute as it can at that temperature, so any extra solute remains as a solid."
+  },
+  {
+   "id": "mx120",
+   "band": "y7",
+   "topics": [
+    "concentration"
+   ],
+   "q": "Which solution is more concentrated?",
+   "options": [
+    "It cannot be told without the temperature",
+    "5 g of salt in 100 mL of water",
+    "Both are the same, because both are salt water",
+    "20 g of salt in 100 mL of water"
+   ],
+   "answer": 3,
+   "why": "Concentration compares the amount of solute with the amount of solution. With the same volume, more solute means a more concentrated solution."
+  },
+  {
+   "id": "mx121",
+   "band": "y7",
+   "topics": [
+    "concentration",
+    "solubility"
+   ],
+   "q": "Which statement is correct?",
+   "options": [
+    "A saturated solution is always a concentrated solution",
+    "A saturated solution of a barely soluble substance can still be dilute",
+    "A dilute solution can never be a saturated solution",
+    "Saturated and concentrated always mean the same thing"
+   ],
+   "answer": 1,
+   "why": "Dilute and concentrated describe how much solute there is in the solution; saturated means no more can dissolve. If a solute barely dissolves, even a saturated solution has little of it."
+  },
+  {
+   "id": "mx122",
+   "band": "y7",
+   "topics": [
+    "concentration"
+   ],
+   "q": "Water is added to a salt solution. What happens to the concentration?",
+   "options": [
+    "It increases, because there is more liquid",
+    "It stays the same, because the amount of salt is unchanged",
+    "It decreases, because the same salt is spread through more water",
+    "The solution becomes saturated"
+   ],
+   "answer": 2,
+   "why": "Adding solvent dilutes the solution. The amount of salt is the same, but each millilitre now has less of it."
+  },
+  {
+   "id": "mx123",
+   "band": "y7",
+   "topics": [
+    "concentration"
+   ],
+   "q": "A drink label says to mix one part cordial with four parts water. What happens if you use eight parts water instead?",
+   "options": [
+    "The drink becomes saturated",
+    "The drink is unchanged",
+    "The drink is more dilute",
+    "The drink is more concentrated"
+   ],
+   "answer": 2,
+   "why": "Using more water spreads the same amount of cordial through more liquid, so the drink is more dilute."
+  },
+  {
+   "id": "mx124",
+   "band": "y7",
+   "topics": [
+    "concentration"
+   ],
+   "q": "Some water evaporates from a salt solution and no salt is lost. What happens to the solution?",
+   "options": [
+    "It becomes more dilute",
+    "Its concentration stays the same",
+    "It turns into a pure substance",
+    "It becomes more concentrated"
+   ],
+   "answer": 3,
+   "why": "The amount of salt is the same but the amount of water is less, so each millilitre now holds more salt. Water evaporates and the solute stays behind."
+  },
+  {
+   "id": "mx125",
+   "band": "y7",
+   "topics": [
+    "concentration"
+   ],
+   "q": "Which is more dilute: 1 teaspoon of sugar in 1 cup of water, or 1 teaspoon of sugar in 10 cups of water?",
+   "options": [
+    "Neither is dilute",
+    "They are equally dilute",
+    "1 teaspoon in 10 cups",
+    "1 teaspoon in 1 cup"
+   ],
+   "answer": 2,
+   "why": "The same amount of sugar is spread through ten times as much water, so that solution is more dilute."
+  },
+  {
+   "id": "mx126",
+   "band": "y7",
+   "topics": [
+    "concentration",
+    "solubility"
+   ],
+   "q": "When you click the metal disc in a sodium acetate hand warmer, it suddenly turns solid and warms up. What was inside before you clicked?",
+   "options": [
+    "A dilute solution",
+    "A saturated solution with crystals on the bottom",
+    "A supersaturated solution",
+    "Pure water"
+   ],
+   "answer": 2,
+   "why": "The liquid holds more dissolved sodium acetate than normal at that temperature. The click starts crystallisation, which releases energy as heat."
+  },
+  {
+   "id": "mx127",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "Which of these is a pure substance?",
+   "options": [
+    "Distilled water",
+    "Seawater",
+    "Milk",
+    "Air"
+   ],
+   "answer": 0,
+   "why": "A pure substance has only one kind of particle. Distilled water is water only. Seawater, air and milk are mixtures."
+  },
+  {
+   "id": "mx128",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "Air is best described as",
+   "options": [
+    "an element",
+    "a mixture of gases",
+    "a compound of nitrogen and oxygen",
+    "a pure gas"
+   ],
+   "answer": 1,
+   "why": "Air contains nitrogen, oxygen, argon, carbon dioxide and other gases that are not chemically joined, so it is a mixture."
+  },
+  {
+   "id": "mx129",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures",
+    "separation"
+   ],
+   "q": "Iron filings and sulfur powder are mixed. A magnet pulls the iron out. When the mixture is heated strongly, it forms a black solid that the magnet does not attract. What is the black solid?",
+   "options": [
+    "A mixture of iron and sulfur that has been heated",
+    "An element, because it is a single colour",
+    "A compound, iron sulfide, which has new properties",
+    "Iron that has changed colour but is otherwise the same"
+   ],
+   "answer": 2,
+   "why": "Heating made a chemical reaction. Iron sulfide is a new substance, so the iron can no longer be pulled out with a magnet."
+  },
+  {
+   "id": "mx130",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "Which of these is an element?",
+   "options": [
+    "Salt water",
+    "Water",
+    "Carbon dioxide",
+    "Oxygen"
+   ],
+   "answer": 3,
+   "why": "An element has only one kind of atom. Oxygen is an element. Water and carbon dioxide are compounds, and salt water is a mixture."
+  },
+  {
+   "id": "mx131",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "Which is a heterogeneous mixture?",
+   "options": [
+    "Orange juice with pulp",
+    "Filtered salt solution",
+    "Air in a sealed jar",
+    "Sugar dissolved in tea"
+   ],
+   "answer": 0,
+   "why": "The pulp can be seen as separate pieces, so orange juice with pulp is not uniform. The others look the same throughout."
+  },
+  {
+   "id": "mx132",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures",
+    "solutions",
+    "water-treatment"
+   ],
+   "q": "A bottle of clean-looking water has been filtered. A student says it must be pure water. Why might this be wrong?",
+   "options": [
+    "Water cannot be filtered at all, so it can never be made cleaner",
+    "Pure water is always slightly cloudy or a little bit coloured",
+    "It could still contain dissolved substances that filtering does not remove",
+    "Filtered water always still contains some fine sand in it"
+   ],
+   "answer": 2,
+   "why": "Filtering removes undissolved solids only. Dissolved salts and gases pass through, so the water is still a solution (mixture). Distillation can produce much purer water."
+  },
+  {
+   "id": "mx133",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "Which technique separates the dyes in a black ink?",
+   "options": [
+    "Chromatography",
+    "Evaporation",
+    "Filtration",
+    "Magnetic separation"
+   ],
+   "answer": 0,
+   "why": "Dyes in the ink dissolve in the solvent and travel up the paper at different speeds. Chromatography separates them into spots."
+  },
+  {
+   "id": "mx134",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "Which technique would separate gravel from sand?",
+   "options": [
+    "Sieving",
+    "Chromatography",
+    "Distillation",
+    "Evaporation"
+   ],
+   "answer": 0,
+   "why": "A sieve has holes of a set size. Small sand grains fall through and the larger gravel is held back."
+  },
+  {
+   "id": "mx135",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "A solid has settled to the bottom of a beaker of water. Pouring off the liquid without disturbing the solid is called",
+   "options": [
+    "condensing",
+    "distilling",
+    "decanting",
+    "subliming"
+   ],
+   "answer": 2,
+   "why": "Decanting separates a liquid from a settled solid by pouring the liquid off. Filtering is more complete."
+  },
+  {
+   "id": "mx136",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "How does a centrifuge separate a mixture?",
+   "options": [
+    "It uses a strong magnet to pick out the iron parts",
+    "It heats the mixture until one of the parts evaporates",
+    "It passes the mixture slowly through a sheet of paper",
+    "It spins the mixture quickly so the denser parts move to the bottom"
+   ],
+   "answer": 3,
+   "why": "Spinning makes the denser parts settle to the bottom much faster than they would just standing. Centrifuges are used to separate blood cells from plasma."
+  },
+  {
+   "id": "mx137",
+   "band": "y7",
+   "topics": [
+    "separation",
+    "solubility"
+   ],
+   "q": "How can you grow large salt crystals from a salt solution?",
+   "options": [
+    "Evaporate some water, then let the solution cool slowly",
+    "Pour the solution through a sheet of filter paper",
+    "Freeze the solution in a freezer overnight",
+    "Boil it quickly until all of the water has gone"
+   ],
+   "answer": 0,
+   "why": "Heating removes some water and makes the solution more concentrated. Slow cooling and evaporation give the crystals time to grow."
+  },
+  {
+   "id": "mx138",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "In paper chromatography, why is the starting line drawn in pencil and not pen?",
+   "options": [
+    "Pens are not able to write on chromatography paper",
+    "Pencil lead does not dissolve in the solvent, but pen ink does",
+    "Pencil marks are always darker and easier to see than pen marks",
+    "Pencil lead is magnetic and so it stays still"
+   ],
+   "answer": 1,
+   "why": "Pen ink contains dyes that would travel with the solvent and confuse the results. Pencil marks stay where they are."
+  },
+  {
+   "id": "mx139",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "In paper chromatography, why must the solvent level be below the starting line when the paper is set up?",
+   "options": [
+    "So the dyes in the spots are warmed by the solvent",
+    "So the sample spots do not dissolve into the solvent in the container",
+    "So the solvent cannot evaporate out of the container",
+    "So the paper at the bottom does not get wet in the solvent"
+   ],
+   "answer": 1,
+   "why": "If the solvent covered the spots, the dyes would dissolve into the container rather than being carried up the paper."
+  },
+  {
+   "id": "mx140",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "Two inks make spots at the same height in one chromatography test. What can you conclude?",
+   "options": [
+    "They are definitely the same ink, so no more tests are needed",
+    "They might contain the same dye, but more tests with other solvents are needed",
+    "They definitely contain different dyes, whatever the solvent",
+    "The solvent was too hot, so the test must be repeated"
+   ],
+   "answer": 1,
+   "why": "Different dyes can travel the same distance in one solvent. Distance travelled depends on the solvent and paper as well as the dye, so it is not a unique fingerprint."
+  },
+  {
+   "id": "mx141",
+   "band": "y7",
+   "topics": [
+    "separation"
+   ],
+   "q": "Which pairing of mixture and separation technique is correct?",
+   "options": [
+    "Salt dissolved in water: filtration",
+    "Sand and water: evaporation",
+    "Dyes in black ink: sieving",
+    "Iron filings and sand: magnet"
+   ],
+   "answer": 3,
+   "why": "Iron is magnetic and sand is not. Dissolved salt needs evaporation or distillation, ink dyes need chromatography, and sand in water can be filtered."
+  },
+  {
+   "id": "mx142",
+   "band": "y7",
+   "topics": [
+    "separation",
+    "fractional-distillation"
+   ],
+   "q": "In a distillation set-up, why is a condenser used?",
+   "options": [
+    "To heat the mixture so that it boils faster",
+    "To filter out the solids from the mixture",
+    "To cool the vapour so that it turns back into a liquid",
+    "To stop the liquid in the flask from boiling"
+   ],
+   "answer": 2,
+   "why": "The vapour passes through a tube cooled by water, where it condenses and runs into the collecting flask."
+  },
+  {
+   "id": "mx143",
+   "band": "y7",
+   "topics": [
+    "separation",
+    "solutions"
+   ],
+   "q": "Salt water is boiled in a distillation set-up and the vapour is condensed and collected. What is left in the flask?",
+   "options": [
+    "Water vapour",
+    "The salt",
+    "Pure water",
+    "Nothing"
+   ],
+   "answer": 1,
+   "why": "Only the water evaporates. The salt stays in the flask and the collected liquid is nearly pure water."
+  },
+  {
+   "id": "mx144",
+   "band": "y7",
+   "topics": [
+    "fractional-distillation",
+    "separation"
+   ],
+   "q": "Ethanol boils at 78 °C and water at 100 °C. A mixture of the two is heated slowly. What does the vapour that first leaves contain mostly?",
+   "options": [
+    "Neither, because both stay as liquids",
+    "Equal amounts of ethanol and water, always",
+    "Ethanol, because it has the lower boiling point",
+    "Water, because there is more of it"
+   ],
+   "answer": 2,
+   "why": "The liquid with the lower boiling point evaporates more easily, so the first vapour is richer in ethanol. It is still not completely pure."
+  },
+  {
+   "id": "mx145",
+   "band": "y7",
+   "topics": [
+    "fractional-distillation"
+   ],
+   "q": "What is the extra part in fractional distillation that is not used in simple distillation?",
+   "options": [
+    "A magnet",
+    "A fractionating column",
+    "A larger flask",
+    "A filter funnel"
+   ],
+   "answer": 1,
+   "why": "The column lets the vapour condense and re-evaporate many times as it rises, which gives a much better separation of liquids with close boiling points."
+  },
+  {
+   "id": "mx146",
+   "band": "y7",
+   "topics": [
+    "fractional-distillation"
+   ],
+   "q": "Why is simple distillation not very good at separating ethanol from water?",
+   "options": [
+    "They have exactly the same boiling point as each other",
+    "Their boiling points are fairly close, so some of both liquids evaporate",
+    "Ethanol does not boil, so it stays in the flask",
+    "Water does not evaporate, so it stays in the flask"
+   ],
+   "answer": 1,
+   "why": "Because both liquids evaporate to some extent, the liquid collected is a mixture. Fractional distillation separates them much better. (Even so, a mixture of ethanol and water cannot be separated beyond about 96% ethanol by distillation.)"
+  },
+  {
+   "id": "mx147",
+   "band": "y7",
+   "topics": [
+    "fractional-distillation"
+   ],
+   "q": "Fractional distillation is best for separating",
+   "options": [
+    "magnetic iron filings from the sand around them",
+    "a dissolved solid from the water it is dissolved in",
+    "an insoluble solid from a liquid it is mixed with",
+    "liquids with different boiling points that are mixed together"
+   ],
+   "answer": 3,
+   "why": "It uses the differences in boiling points to separate the liquids in a mixture, such as ethanol and water or the parts of crude oil."
+  },
+  {
+   "id": "mx148",
+   "band": "y7",
+   "topics": [
+    "fractional-distillation"
+   ],
+   "q": "In a fractionating column, the liquid with the lowest boiling point comes off",
+   "options": [
+    "near the top, where it is cooler",
+    "in the middle in every case",
+    "near the bottom, where it is hotter",
+    "at the same height as all the other liquids"
+   ],
+   "answer": 0,
+   "why": "The column is hottest at the bottom and cooler at the top. Vapour that boils at a lower temperature stays a gas until it reaches the cooler upper part."
+  },
+  {
+   "id": "mx149",
+   "band": "y7",
+   "topics": [
+    "fractional-distillation"
+   ],
+   "q": "A mixture of ethanol and water is heated and the thermometer in the distillation column stays near 78 °C. Which liquid is mostly boiling off?",
+   "options": [
+    "Water",
+    "Neither",
+    "Ethanol",
+    "Both equally"
+   ],
+   "answer": 2,
+   "why": "A reading near 78 °C matches the boiling point of ethanol. Once the ethanol has mostly gone the temperature rises towards the boiling point of water, 100 °C."
+  },
+  {
+   "id": "mx150",
+   "band": "y7",
+   "topics": [
+    "fractional-distillation",
+    "separation"
+   ],
+   "q": "Why would filtering not separate ethanol from water?",
+   "options": [
+    "Ethanol sticks to the filter paper and blocks the pores",
+    "Filter paper dissolves completely when ethanol touches it",
+    "Both liquids have tiny particles that pass through the filter paper together",
+    "Water is not able to pass through filter paper at all"
+   ],
+   "answer": 2,
+   "why": "Filtration separates undissolved solids from liquids. Mixed liquids pass through the filter together, so a technique that uses boiling points is needed."
+  },
+  {
+   "id": "mx151",
+   "band": "y7",
+   "topics": [
+    "water-treatment"
+   ],
+   "q": "What is the first step in a water treatment plant?",
+   "options": [
+    "Boiling all of the water in large tanks",
+    "Adding chlorine to kill microorganisms in the water",
+    "Distilling the water to remove everything in it",
+    "Screening to remove large objects such as sticks and leaves"
+   ],
+   "answer": 3,
+   "why": "Water is first passed through screens that hold back large debris, so it does not block or damage the equipment in later steps."
+  },
+  {
+   "id": "mx152",
+   "band": "y7",
+   "topics": [
+    "water-treatment"
+   ],
+   "q": "What is coagulation (or flocculation) in water treatment?",
+   "options": [
+    "Chlorine is added to the water to kill germs",
+    "Dissolved gases are removed from the water by heating",
+    "Chemicals make tiny particles clump into larger lumps called flocs",
+    "Water is filtered through layers of sand and gravel"
+   ],
+   "answer": 2,
+   "why": "Tiny particles in the water are too small to settle. A coagulant makes them stick together into larger clumps that can settle or be filtered."
+  },
+  {
+   "id": "mx153",
+   "band": "y7",
+   "topics": [
+    "water-treatment"
+   ],
+   "q": "Why is water left to stand in a sedimentation tank?",
+   "options": [
+    "So that the water has time to cool down",
+    "So that the dissolved salts settle out of the water",
+    "The clumps are denser than water, so they settle to the bottom",
+    "So that the chlorine can evaporate from the water"
+   ],
+   "answer": 2,
+   "why": "The flocs are denser than water and slowly sink to the bottom as sludge, leaving clearer water above. Dissolved salts do not settle."
+  },
+  {
+   "id": "mx154",
+   "band": "y7",
+   "topics": [
+    "water-treatment",
+    "separation"
+   ],
+   "q": "What does the sand filter in a water treatment plant remove?",
+   "options": [
+    "Small suspended particles that did not settle",
+    "Dissolved fertiliser, such as nitrate",
+    "Dissolved salts that are mixed into the water",
+    "Dissolved gases such as oxygen and carbon dioxide"
+   ],
+   "answer": 0,
+   "why": "The water passes through layers of sand and gravel that trap small solid particles. Dissolved substances pass straight through."
+  },
+  {
+   "id": "mx155",
+   "band": "y7",
+   "topics": [
+    "water-treatment"
+   ],
+   "q": "Why is chlorine added at the end of water treatment?",
+   "options": [
+    "To remove any sand that is left in the water",
+    "To kill the disease-causing microorganisms in it",
+    "To make the water denser and clearer",
+    "To take out the salts that are dissolved"
+   ],
+   "answer": 1,
+   "why": "Disinfection with chlorine (or ultraviolet light or ozone) kills bacteria and other microbes that could make people sick. A small amount of chlorine left in the water keeps killing germs in the pipes."
+  },
+  {
+   "id": "mx156",
+   "band": "y7",
+   "topics": [
+    "water-treatment",
+    "separation"
+   ],
+   "q": "Which water pollutant can NOT be removed by filtration?",
+   "options": [
+    "Soil particles washed off the land",
+    "Leaves and sticks from the bank",
+    "Sand and silt from the river",
+    "Dissolved fertiliser (nitrate) in the water"
+   ],
+   "answer": 3,
+   "why": "Dissolved nitrate particles are far smaller than the pores in a filter, so they pass through with the water."
+  },
+  {
+   "id": "mx157",
+   "band": "y7",
+   "topics": [
+    "water-treatment"
+   ],
+   "q": "What is the correct order of the main stages of water treatment?",
+   "options": [
+    "Filtration, screening, coagulation, disinfection, sedimentation",
+    "Disinfection, screening, sedimentation, filtration, coagulation",
+    "Sedimentation, screening, disinfection, coagulation, filtration",
+    "Screening, coagulation, sedimentation, filtration, disinfection"
+   ],
+   "answer": 3,
+   "why": "Large objects are removed first, then fine particles are clumped together, allowed to settle, filtered out and finally disinfected."
+  },
+  {
+   "id": "mx158",
+   "band": "y7",
+   "topics": [
+    "water-treatment"
+   ],
+   "q": "Why is untreated river water not safe to drink?",
+   "options": [
+    "It contains no oxygen, so it cannot be used by people",
+    "It is too pure, so it lacks what people need to stay healthy",
+    "It may contain microorganisms and pollutants that can make people sick",
+    "It contains no particles, so it has no taste at all"
+   ],
+   "answer": 2,
+   "why": "River water can carry bacteria, viruses, soil, chemicals and rubbish. Treatment removes them so the water is safe to drink."
+  },
+  {
+   "id": "mx159",
+   "band": "y7",
+   "topics": [
+    "water-treatment"
+   ],
+   "q": "How does boiling water make it safer to drink?",
+   "options": [
+    "The heat kills most disease-causing microorganisms",
+    "It removes the salts that are dissolved in the water",
+    "It removes all chemicals from the water",
+    "It changes the bacteria in the water into minerals"
+   ],
+   "answer": 0,
+   "why": "Boiling kills most microorganisms. It does not remove chemical pollutants or dissolved salts, and the water has to cool before it can be drunk."
+  },
+  {
+   "id": "mx160",
+   "band": "y7",
+   "topics": [
+    "water-treatment"
+   ],
+   "q": "Activated carbon is sometimes used in water treatment. What can it remove?",
+   "options": [
+    "Large sticks and leaves that float",
+    "All of the salts dissolved in the water",
+    "Some dissolved organic chemicals, and tastes and smells",
+    "Dissolved nitrate fertiliser from farm runoff"
+   ],
+   "answer": 2,
+   "why": "Activated carbon is very porous, so some dissolved organic chemicals stick to it. It does not remove dissolved nitrate or salt."
+  },
+  {
+   "id": "mx161",
+   "band": "y7",
+   "topics": [
+    "water-cycle"
+   ],
+   "q": "Which process in the water cycle is driven mostly by energy from the Sun?",
+   "options": [
+    "Evaporation of water from oceans and lakes",
+    "Condensation, which is clouds forming",
+    "Precipitation, which is rain and snow falling",
+    "Runoff, which is water flowing over the land"
+   ],
+   "answer": 0,
+   "why": "The Sun's energy heats surface water so that it evaporates. Precipitation and runoff are mainly driven by gravity."
+  },
+  {
+   "id": "mx162",
+   "band": "y7",
+   "topics": [
+    "water-cycle",
+    "states-of-matter"
+   ],
+   "q": "What happens to water vapour as it rises into cooler air?",
+   "options": [
+    "It evaporates even faster as the air gets cooler",
+    "It condenses into tiny droplets and forms clouds",
+    "It changes into hydrogen and oxygen gases",
+    "It freezes into rain before it reaches the ground"
+   ],
+   "answer": 1,
+   "why": "Cooler air cannot hold as much water vapour, so the vapour condenses into tiny water droplets, which make up clouds."
+  },
+  {
+   "id": "mx163",
+   "band": "y7",
+   "topics": [
+    "water-cycle"
+   ],
+   "q": "What is precipitation?",
+   "options": [
+    "Water falling from clouds as rain, hail, sleet or snow",
+    "Water vapour rising from lakes and the sea",
+    "Water soaking down into the soil and rock",
+    "Water vapour that is mixed into the air"
+   ],
+   "answer": 0,
+   "why": "Precipitation is any form of water that falls from clouds to the ground."
+  },
+  {
+   "id": "mx164",
+   "band": "y7",
+   "topics": [
+    "water-cycle"
+   ],
+   "q": "What is transpiration?",
+   "options": [
+    "Plants releasing water vapour from their leaves",
+    "Rain soaking down into the soil and rock",
+    "Clouds forming over the sea in the morning",
+    "Water running down a hill into a creek"
+   ],
+   "answer": 0,
+   "why": "Plants take up water through their roots and release some as water vapour through tiny pores in their leaves. It adds water vapour to the air."
+  },
+  {
+   "id": "mx165",
+   "band": "y7",
+   "topics": [
+    "water-cycle"
+   ],
+   "q": "What is runoff?",
+   "options": [
+    "Water vapour rising up from the ocean into the air",
+    "Water that is stored as tiny droplets in clouds",
+    "Water flowing over the land into streams, rivers and the sea",
+    "Water vapour that is given off from the leaves of plants"
+   ],
+   "answer": 2,
+   "why": "After rain, water that does not soak in flows downhill over the ground and collects in creeks and rivers."
+  },
+  {
+   "id": "mx166",
+   "band": "y7",
+   "topics": [
+    "water-cycle"
+   ],
+   "q": "Over a long time, what happens to the total amount of water on Earth?",
+   "options": [
+    "It is destroyed each time that water evaporates",
+    "It stays about the same, moving between stores and changing state",
+    "It keeps increasing as more rain falls each year",
+    "It slowly gets used up as people drink the water"
+   ],
+   "answer": 1,
+   "why": "Water is not created or destroyed in the water cycle. It moves between the ocean, air, land and living things, changing state along the way."
+  },
+  {
+   "id": "mx167",
+   "band": "y7",
+   "topics": [
+    "water-cycle"
+   ],
+   "q": "What is groundwater?",
+   "options": [
+    "Water that is held in clouds in the sky",
+    "Water vapour that is mixed into the air",
+    "Water that is found in the open ocean",
+    "Water stored underground in soil and rock"
+   ],
+   "answer": 3,
+   "why": "Some rain soaks into the ground and is stored in the spaces in soil and rock. It is part of the water cycle."
+  },
+  {
+   "id": "mx168",
+   "band": "y7",
+   "topics": [
+    "water-cycle",
+    "states-of-matter"
+   ],
+   "q": "Dew forms on grass on a cold morning. Which change of state has happened?",
+   "options": [
+    "Evaporation of water from the grass",
+    "Melting of ice",
+    "Sublimation of frost",
+    "Condensation of water vapour from the air"
+   ],
+   "answer": 3,
+   "why": "The cold grass cools the air next to it. Water vapour in the air condenses into tiny drops of liquid water."
+  },
+  {
+   "id": "mx169",
+   "band": "y7",
+   "topics": [
+    "water-cycle"
+   ],
+   "q": "Why does rain fall from a cloud?",
+   "options": [
+    "The Sun's energy pushes the droplets downwards",
+    "The droplets run out of energy and then evaporate",
+    "The droplets freeze as they get close to the ground",
+    "The droplets join up until gravity can pull them down"
+   ],
+   "answer": 3,
+   "why": "Tiny cloud droplets collide and join into bigger drops. When the drops are heavy enough, gravity pulls them to the ground as rain."
+  },
+  {
+   "id": "mx170",
+   "band": "y7",
+   "topics": [
+    "water-cycle",
+    "separation",
+    "solutions"
+   ],
+   "q": "The ocean is salty, but rain is fresh. Which is the best explanation?",
+   "options": [
+    "Salt evaporates faster than water does, so it leaves",
+    "The Sun changes the salt into water as it shines",
+    "Only water evaporates, so the dissolved salts stay behind in the ocean",
+    "Rain washes all the salt out of the clouds as it falls"
+   ],
+   "answer": 2,
+   "why": "Evaporation is a bit like natural distillation: water changes to vapour, and the dissolved salt is left behind."
+  },
+  {
+   "id": "mx171",
+   "band": "y7",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "Which of the following is a compound?",
+   "options": [
+    "Water (H₂O)",
+    "Air",
+    "Iron filings",
+    "Salt water"
+   ],
+   "answer": 0,
+   "why": "Water is a compound because hydrogen and oxygen are chemically joined in a fixed ratio of 2 to 1. Air and salt water are mixtures, and iron is an element."
+  },
+  {
+   "id": "mx172",
+   "band": "y7",
+   "topics": [
+    "separation",
+    "solutions"
+   ],
+   "q": "Sand is separated from salt water by filtering. What is the filtrate?",
+   "options": [
+    "A salt solution (salt dissolved in water)",
+    "Sand only, collected from the filter paper",
+    "Sand and salt mixed together",
+    "Only pure water with nothing dissolved in it"
+   ],
+   "answer": 0,
+   "why": "The sand is insoluble and stays on the filter paper as the residue. The salt has dissolved, so the liquid that passes through is a salt solution."
+  },
+  {
+   "id": "mx173",
+   "band": "ext",
+   "topics": [
+    "particle-theory",
+    "states-of-matter"
+   ],
+   "q": "Why do covalent molecular substances such as sugar or wax have lower melting points than ionic compounds such as salt?",
+   "options": [
+    "Only weak attractions between separate molecules need to be overcome",
+    "They contain free electrons that carry heat away",
+    "They are always made from lighter atoms",
+    "Their strong bonds inside each molecule are easily broken by heat"
+   ],
+   "answer": 0,
+   "why": "Covalent molecular substances have strong bonds within each molecule but only weak attractions between molecules. Little energy is needed to separate the molecules, so they melt at low temperatures. (Melting does not break the bonds inside the molecules.)"
+  },
+  {
+   "id": "mx174",
+   "band": "ext",
+   "topics": [
+    "solutions",
+    "particle-theory"
+   ],
+   "q": "What does particle theory tell us happens when a solid solute dissolves in water?",
+   "options": [
+    "The solid melts into a liquid that then mixes with the water",
+    "Water particles pull the solute particles away from the solid and spread them out",
+    "The solute particles shrink until they are too small to see",
+    "The solute particles break into atoms that join with the water atoms"
+   ],
+   "answer": 1,
+   "why": "In dissolution, water molecules attract outer solute particles, surrounding (solvating) them and carrying them through the solution until they are evenly distributed."
+  },
+  {
+   "id": "mx175",
+   "band": "ext",
+   "topics": [
+    "solutions"
+   ],
+   "q": "What does the state symbol (aq) mean in a chemical equation?",
+   "options": [
+    "The substance is a solid at room temperature",
+    "The substance is a pure liquid",
+    "The substance is dissolved in water as a solution",
+    "The substance is a gas at room temperature"
+   ],
+   "answer": 2,
+   "why": "(aq) stands for 'aqueous': the substance is dissolved in water."
+  },
+  {
+   "id": "mx176",
+   "band": "ext",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "What is steel, and why is it more useful than pure iron for building?",
+   "options": [
+    "A compound of iron and oxygen that never rusts",
+    "A mixture of copper and zinc, which makes it attractive",
+    "An alloy of iron and a little carbon, which is stronger than pure iron",
+    "Pure iron that has been polished, which makes it much lighter"
+   ],
+   "answer": 2,
+   "why": "Steel is an alloy of iron and carbon; the addition of carbon makes it much stronger than pure iron, making it ideal for buildings, cars, and tools."
+  },
+  {
+   "id": "mx177",
+   "band": "ext",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "What is stainless steel, and why is it used for surgical instruments?",
+   "options": [
+    "Pure iron that has been polished until it looks clean",
+    "A compound of iron and oxygen that is very hard",
+    "An alloy of iron, chromium and often nickel that resists rusting",
+    "A mixture of iron and carbon that is very soft"
+   ],
+   "answer": 2,
+   "why": "Stainless steel is mostly iron with chromium (and usually nickel). The chromium forms a thin protective layer, so it resists rusting and is easy to keep clean."
+  },
+  {
+   "id": "mx178",
+   "band": "ext",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "What is the formula of water, and what type of bonding holds its atoms together?",
+   "options": [
+    "H₂O₂ — covalent",
+    "H₂O — covalent",
+    "HO — ionic",
+    "H₂O — metallic"
+   ],
+   "answer": 1,
+   "why": "Water is H₂O; oxygen (valency 2) forms two covalent bonds with two hydrogen atoms (each valency 1), sharing electron pairs."
+  },
+  {
+   "id": "mx179",
+   "band": "ext",
+   "topics": [
+    "fractional-distillation"
+   ],
+   "q": "Crude oil is separated into useful fractions by which industrial process?",
+   "options": [
+    "Electrolysis",
+    "Chromatography",
+    "Filtration",
+    "Fractional distillation"
+   ],
+   "answer": 3,
+   "why": "Fractional distillation separates crude oil into fractions based on different boiling points; shorter-chain hydrocarbons condense at the cooler top, longer chains at the hotter base."
+  },
+  {
+   "id": "mx180",
+   "band": "ext",
+   "topics": [
+    "fractional-distillation",
+    "particle-theory"
+   ],
+   "q": "Which crude oil fraction has the shortest carbon chain and the lowest boiling point?",
+   "options": [
+    "Bitumen (>C70)",
+    "Diesel (C14–C20)",
+    "Kerosene (C10–C16)",
+    "Refinery gas / LPG (C1–C4)"
+   ],
+   "answer": 3,
+   "why": "Refinery gas (LPG, C1–C4) has the shortest carbon chains and lowest boiling points (<40°C), condensing at the very top of the fractionating column."
+  },
+  {
+   "id": "mx181",
+   "band": "ext",
+   "topics": [
+    "fractional-distillation"
+   ],
+   "q": "Why does a shorter carbon-chain hydrocarbon fraction from crude oil condense near the TOP of the fractionating column?",
+   "options": [
+    "Shorter chains react with longer chains and float upwards",
+    "Shorter chains boil at lower temperatures, so they condense at the cooler top",
+    "Shorter chains are denser, so they are pushed up to the top",
+    "Shorter chains have higher boiling points and so reach the top first"
+   ],
+   "answer": 1,
+   "why": "The fractionating column is hotter at the base and cooler at the top; shorter-chain hydrocarbons have lower boiling points and therefore condense (turn back to liquid) at the cooler upper sections."
+  },
+  {
+   "id": "mx182",
+   "band": "ext",
+   "topics": [
+    "fractional-distillation",
+    "particle-theory"
+   ],
+   "q": "How does the boiling point of heptane (C₇H₁₆, bp ≈ 98°C) compare with pentane (C₅H₁₂, bp ≈ 36°C)?",
+   "options": [
+    "The same — all liquid alkanes boil at the same temperature",
+    "Lower — branching lowers boiling point significantly",
+    "Lower — longer chains are lighter",
+    "Higher — longer chains have stronger intermolecular forces"
+   ],
+   "answer": 3,
+   "why": "Boiling point increases with carbon chain length in alkanes because larger molecules have stronger dispersion (intermolecular) forces; heptane boils much higher than pentane."
+  },
+  {
+   "id": "mx183",
+   "band": "ext",
+   "topics": [
+    "heating-curves"
+   ],
+   "q": "A heater supplies energy at a steady rate. Compared with melting a block of ice at 0 °C, boiling the same mass of water at 100 °C takes",
+   "options": [
+    "about seven times as long, because vaporising needs far more energy than melting",
+    "about twice as long, because boiling happens at a higher temperature",
+    "about the same time, because both are changes of state at a fixed temperature",
+    "about half the time, because water is already a liquid"
+   ],
+   "answer": 0,
+   "why": "Melting ice needs about 334 J per gram (latent heat of fusion). Turning water to vapour needs about 2257 J per gram (latent heat of vaporisation), roughly 6.8 times more."
+  },
+  {
+   "id": "mx184",
+   "band": "ext",
+   "topics": [
+    "heating-curves",
+    "particle-theory"
+   ],
+   "q": "During melting, the temperature stays constant even though energy is being added. What happens to the particles' energy?",
+   "options": [
+    "Average kinetic energy rises, while potential energy stays exactly the same",
+    "Kinetic energy and potential energy both stay exactly the same",
+    "Potential energy rises as attractions are overcome; average kinetic energy stays the same",
+    "The extra energy is destroyed as the substance melts"
+   ],
+   "answer": 2,
+   "why": "Temperature measures the average kinetic energy of the particles. The energy added during melting goes into increasing the potential energy stored in the arrangement of particles, as they move apart."
+  },
+  {
+   "id": "mx185",
+   "band": "ext",
+   "topics": [
+    "heating-curves"
+   ],
+   "q": "Water has a specific heat capacity of 4.18 J/g°C. How much energy raises the temperature of 50 g of water by 10 °C?",
+   "options": [
+    "418 J",
+    "209 J",
+    "2090 J",
+    "20 900 J"
+   ],
+   "answer": 2,
+   "why": "Energy = mass × specific heat capacity × temperature change = 50 × 4.18 × 10 = 2090 J."
+  },
+  {
+   "id": "mx186",
+   "band": "ext",
+   "topics": [
+    "heating-curves"
+   ],
+   "q": "The latent heat of fusion of ice is 334 J/g. How much energy is needed to melt 10 g of ice at 0 °C?",
+   "options": [
+    "33 400 J",
+    "3340 J",
+    "334 J",
+    "33.4 J"
+   ],
+   "answer": 1,
+   "why": "Energy = mass × latent heat = 10 × 334 = 3340 J. The temperature stays at 0 °C while the ice melts."
+  },
+  {
+   "id": "mx187",
+   "band": "ext",
+   "topics": [
+    "heating-curves",
+    "states-of-matter"
+   ],
+   "q": "Why can steam at 100 °C cause a worse burn than boiling water at 100 °C?",
+   "options": [
+    "Steam is always much hotter than 100 degrees Celsius",
+    "Steam sticks to the skin and cannot be wiped off",
+    "Steam releases a large amount of energy as it condenses on the skin",
+    "Steam particles are heavier than liquid water particles"
+   ],
+   "answer": 2,
+   "why": "Steam and boiling water are at the same temperature, but steam also releases about 2257 J per gram when it condenses into liquid, on top of the energy released as that water cools."
+  },
+  {
+   "id": "mx188",
+   "band": "ext",
+   "topics": [
+    "density",
+    "particle-theory"
+   ],
+   "q": "Liquid water is densest at about 4 °C. Why does it become less dense as it cools towards 0 °C?",
+   "options": [
+    "Hydrogen bonds start to hold the water molecules in an open arrangement",
+    "The water molecules start to shrink as they get colder",
+    "The water molecules stop moving altogether before 0 degrees",
+    "Dissolved air leaves the water as it gets colder"
+   ],
+   "answer": 0,
+   "why": "As water cools below 4 °C its molecules begin to line up, held by hydrogen bonds, into the open pattern found in ice. This takes up more space, so the density falls."
+  },
+  {
+   "id": "mx189",
+   "band": "ext",
+   "topics": [
+    "surface-tension",
+    "particle-theory"
+   ],
+   "q": "Why is the surface tension of water higher than that of most other liquids?",
+   "options": [
+    "Water has fewer molecules at its surface than other liquids",
+    "Water molecules do not move at all, even when warm",
+    "Strong hydrogen bonds between water molecules pull surface molecules inwards",
+    "Water molecules are much heavier than the molecules of other liquids"
+   ],
+   "answer": 2,
+   "why": "Surface tension depends on the strength of the attractions between molecules. Water's hydrogen bonds are strong, so its surface 'skin' is strong."
+  },
+  {
+   "id": "mx190",
+   "band": "ext",
+   "topics": [
+    "solutions",
+    "particle-theory"
+   ],
+   "q": "Why does salt (sodium chloride) dissolve in water but wax does not?",
+   "options": [
+    "Wax is too dense to be able to dissolve in water at all",
+    "Salt particles are much smaller than the particles of wax are",
+    "Wax melts before it has any chance to dissolve in the water",
+    "Water molecules attract the charged ions and pull them from the crystal"
+   ],
+   "answer": 3,
+   "why": "Water molecules have slightly charged ends that attract the sodium and chloride ions and surround them. Wax molecules are not charged, so water does not attract them strongly enough."
+  },
+  {
+   "id": "mx191",
+   "band": "ext",
+   "topics": [
+    "solutions",
+    "particle-theory"
+   ],
+   "q": "Why does sugar dissolve in water but not in cooking oil?",
+   "options": [
+    "Oil is less dense than water, so sugar cannot sink into it",
+    "Sugar and water molecules attract each other, but oil does not attract sugar",
+    "Oil molecules are much smaller than water molecules are, so sugar stays solid",
+    "Sugar melts when it is put into water but not when put into oil"
+   ],
+   "answer": 1,
+   "why": "A substance dissolves when its particles are attracted to the solvent particles as strongly as they are attracted to each other. This is often summarised as 'like dissolves like'."
+  },
+  {
+   "id": "mx192",
+   "band": "ext",
+   "topics": [
+    "solubility",
+    "concentration",
+    "particle-theory"
+   ],
+   "q": "A saturated salt solution has some undissolved salt at the bottom. What is happening to the salt particles?",
+   "options": [
+    "Nothing is happening because the particles have stopped moving",
+    "Particles dissolve and come out of solution at the same rate",
+    "Particles are only crystallising",
+    "Particles are only dissolving"
+   ],
+   "answer": 1,
+   "why": "A saturated solution is in dynamic equilibrium. Salt particles leave the solid and enter the solution at the same rate as other particles leave the solution and join the solid, so the amounts stay constant."
+  },
+  {
+   "id": "mx193",
+   "band": "ext",
+   "topics": [
+    "concentration"
+   ],
+   "q": "20 g of sugar is dissolved in water to make 100 g of solution. What is the concentration as a percentage by mass?",
+   "options": [
+    "120%",
+    "20%",
+    "80%",
+    "5%"
+   ],
+   "answer": 1,
+   "why": "Concentration (% by mass) = mass of solute ÷ mass of solution × 100 = 20 ÷ 100 × 100 = 20%."
+  },
+  {
+   "id": "mx194",
+   "band": "ext",
+   "topics": [
+    "concentration"
+   ],
+   "q": "10 g of salt is dissolved in water to make 500 mL of solution. What is the concentration in g/L?",
+   "options": [
+    "5000 g/L",
+    "20 g/L",
+    "0.02 g/L",
+    "50 g/L"
+   ],
+   "answer": 1,
+   "why": "500 mL is 0.5 L. Concentration = mass ÷ volume = 10 ÷ 0.5 = 20 g/L."
+  },
+  {
+   "id": "mx195",
+   "band": "ext",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "The formula CO₂ tells you that one molecule of carbon dioxide contains",
+   "options": [
+    "two carbon atoms and one oxygen atom",
+    "carbon mixed with oxygen",
+    "one cobalt atom and two oxygen atoms",
+    "one carbon atom and two oxygen atoms"
+   ],
+   "answer": 3,
+   "why": "The number after an element symbol shows how many atoms of that element are in the molecule. Carbon dioxide is a compound, not a mixture."
+  },
+  {
+   "id": "mx196",
+   "band": "ext",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "Which of these is a molecule of an element?",
+   "options": [
+    "O₂",
+    "H₂O",
+    "NaCl",
+    "CO₂"
+   ],
+   "answer": 0,
+   "why": "An element molecule has only one kind of atom. O₂ is two oxygen atoms. H₂O and CO₂ are compounds, and NaCl is an ionic compound made of ions, not molecules."
+  },
+  {
+   "id": "mx197",
+   "band": "ext",
+   "topics": [
+    "pure-mixtures"
+   ],
+   "q": "Why is an alloy such as brass a mixture, not a compound?",
+   "options": [
+    "Its metals are chemically joined in a fixed ratio",
+    "It is always a liquid at room temperature",
+    "Its metals are mixed in varying amounts, with no fixed formula",
+    "It contains only one type of atom throughout"
+   ],
+   "answer": 2,
+   "why": "Alloys can be made with different proportions of the metals, and their properties change with the proportions. A compound has a fixed ratio of elements."
+  },
+  {
+   "id": "mx198",
+   "band": "ext",
+   "topics": [
+    "separation"
+   ],
+   "q": "A chromatogram has a dye spot 3 cm from the start line, and the solvent front has moved 6 cm. What is the Rf value?",
+   "options": [
+    "0.5",
+    "0.3",
+    "3.0",
+    "2.0"
+   ],
+   "answer": 0,
+   "why": "Rf = distance moved by the spot ÷ distance moved by the solvent front = 3 ÷ 6 = 0.5. Rf depends on the solvent and the paper."
+  },
+  {
+   "id": "mx199",
+   "band": "ext",
+   "topics": [
+    "fractional-distillation",
+    "separation"
+   ],
+   "q": "Air can be cooled until it is a liquid and then separated by fractional distillation. Why does this work?",
+   "options": [
+    "Nitrogen, oxygen and argon have different boiling points",
+    "The gases are attracted to a magnet",
+    "The gases are different sizes",
+    "Nitrogen, oxygen and argon have different colours"
+   ],
+   "answer": 0,
+   "why": "When liquid air is warmed slowly, nitrogen (−196 °C) boils first, then argon (−186 °C), then oxygen (−183 °C). They can be collected separately."
+  },
+  {
+   "id": "mx200",
+   "band": "ext",
+   "topics": [
+    "water-treatment",
+    "separation"
+   ],
+   "q": "In reverse osmosis desalination, how is salt removed from seawater?",
+   "options": [
+    "High pressure forces water through a membrane that blocks the salt",
+    "Seawater is poured through ordinary filter paper in a big tank",
+    "Seawater is spun quickly in a very large centrifuge",
+    "A strong magnet pulls the salt out of the water"
+   ],
+   "answer": 0,
+   "why": "The membrane has pores big enough for water molecules but too small for the dissolved ions, so mostly salt-free water passes through."
+  }
+ ]
+}
