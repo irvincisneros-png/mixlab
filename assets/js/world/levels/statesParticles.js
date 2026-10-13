@@ -123,6 +123,7 @@ export function create(engine) {
   const lens = engine.lens;
   const L = (v) => lens.pick(v);
   let level = null;
+  let sawBoil = false;
   let frameTall = false;
   const FOV = 13;
   let prevFov = null;
@@ -391,7 +392,7 @@ export function create(engine) {
     for (let it = 0; it < 40; it++) { collide(true); wallsAll(); }
     for (let i = 0; i < N; i++) { lastX[i] = px[i]; lastY[i] = py[i]; lastZ[i] = pz[i]; sp[i] = 0; }
     sel = -1; trailN = 0;
-    budget = 0;
+    budget = 0; sawBoil = false;
   }
 
   // ----- walls -----
@@ -941,7 +942,7 @@ export function create(engine) {
     const m = model, c = counts();
     const mass0 = Math.max(1e-9, m.solid + m.liquid + m.gas + m.escaped);   // molecules shown are in proportion to the original mass; escaped vapour has left the box
     const html = TXT.narrative({
-      T: m.T, N, fs: m.solid / mass0, fl: m.liquid / mass0, fg: m.gas / mass0, phaseChange: m.phaseChange, heatIn: m.heatIn, heatLoss: m.heatLoss, latentRate: m.latentRate,
+      T: m.T, N, fs: m.solid / mass0, fl: m.liquid / mass0, fg: m.gas / mass0, rs: m.fractions().solid, rl: m.fractions().liquid, rg: m.fractions().gas, sawBoil: sawBoil || !!m.boiled, phaseChange: m.phaseChange, heatIn: m.heatIn, heatLoss: m.heatLoss, latentRate: m.latentRate,
       evapRate: m.evapRate, solidG: m.solid, liquidG: m.liquid, gasG: m.gas, escapedG: m.escaped, sealed: m.container === "sealed", drawnSep: drawnSep(),
     }, lens.band);
     if (W_.explain && W_.explain._h !== html) { W_.explain.innerHTML = html; W_.explain._h = html; }
@@ -1033,6 +1034,7 @@ export function create(engine) {
         if (hasParent === false && W_.container) W_.container.set(model.container);
       }
       lastT = model.t;
+      if (model.phaseChange === "boiling") sawBoil = true;
       // animated tilt and piston (real time, so they move even when paused)
       tiltAng += (tiltTarget - tiltAng) * Math.min(1, rdt * 4);
       tilt.rotation.z = tiltAng;

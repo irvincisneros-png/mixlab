@@ -434,7 +434,7 @@ export function create(engine) {
   function refreshText(force = false) {
     if (!narrEl) return;
     const r0 = recent[0], rate = recent.length >= 2 && M.t - r0.t > 4 && !M.phaseChange ? ((M.T - r0.T) / (M.t - r0.t)) * 60 : null;
-    const ctx = { rate, boiled: tr.boiled, sealed: ui.sealed, bath: ui.bath ? BATH_T : null, energyIn, started: ui.running || M.t > 0 };
+    const ctx = { rate, boiled: tr.boiled || M.boiled, sealed: ui.sealed, bath: ui.bath ? BATH_T : null, energyIn, started: ui.running || M.t > 0 };
     const html = narrative(M, ctx, lens.band).map((p) => `<p>${p}</p>`).join("");
     if (force || narrEl.innerHTML !== html) narrEl.innerHTML = html;
     const e = earthCard(M, ctx, lens.band);

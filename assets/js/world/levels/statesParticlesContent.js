@@ -57,7 +57,7 @@ export function stateAt(sub, Tc) { return Tc < sub.mp ? "solid" : Tc < sub.bp ? 
 
 // ---------- narrative ----------
 /**
- * c: { T, N, fs, fl, fg (model fractions), phaseChange, heatIn, heatLoss, latentRate, evapRate, solidG, liquidG, gasG, escapedG,
+ * c: { T, N, fs, fl, fg (fractions of the original mass: molecule counts), rs, rl, rg (fractions of the mass still in the sample: which state), sawBoil, phaseChange, heatIn, heatLoss, latentRate, evapRate, solidG, liquidG, gasG, escapedG,
  *      sealed, drawnSep }
  */
 export function narrative(c, band) {
@@ -71,7 +71,7 @@ export function narrative(c, band) {
   const power = c.heatIn > 0.5 ? `The hotplate is putting in ${f0(c.heatIn)} W. ` : "";
 
   if (mass < 0.05) {
-    out.push(`<p><strong>The container is empty.</strong> All the water has boiled away and left the beaker as water vapour. Press Reset to start again.</p>`);
+    out.push(`<p><strong>The container is empty.</strong> ${c.sawBoil ? "All the water has boiled away" : "All the water has evaporated"} and left the beaker as water vapour. Press Reset to start again.</p>`);
     return out.join("");
   }
 
@@ -97,9 +97,9 @@ export function narrative(c, band) {
     return out.join("");
   }
 
-  const allIce = c.fs > 0.995;
-  const allLiq = c.fl > 0.995;
-  const mostlyGas = c.fg > 0.5;
+  const allIce = c.rs > 0.995;
+  const allLiq = c.rl > 0.995;
+  const mostlyGas = c.rg > 0.5;
 
   if (allIce) {
     out.push(`<p><strong>Ice at ${T} °C.</strong> Every one of the ${f0(c.N)} molecules shown is locked into a regular, open pattern (a lattice). Each one only <strong>vibrates about its fixed position</strong>; none wander off. ${power}${c.heatIn > 0.5 ? "As the temperature rises the vibrations get bigger." : "Heat the ice and the vibrations will get bigger."}</p>`);
@@ -127,7 +127,7 @@ export function narrative(c, band) {
   if (nI) parts.push(`${fr(nI)} in the ice lattice`);
   if (nL) parts.push(`${fr(nL)} in the liquid`);
   if (nG) parts.push(`${fr(nG)} as gas`);
-  out.push(`<p><strong>Mixed states at ${T} °C:</strong> ${parts.join(", ")}. ${c.fs > 0.005 && c.fl > 0.005 ? "No state change is in progress at this instant." : ""}</p>`);
+  out.push(`<p><strong>Mixed states at ${T} °C:</strong> ${parts.join(", ")}. ${c.rs > 0.005 && c.rl > 0.005 ? "No state change is in progress at this instant." : ""}</p>`);
   if (ext && nI && nL) out.push(`<p>Ice and water coexist at 0 °C. Add energy and the ice melts; remove it and the water freezes. The temperature stays at 0 °C until one of them has gone.</p>`);
   return out.join("");
 }

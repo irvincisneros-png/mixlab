@@ -56,6 +56,7 @@ export function createStatesModel(opts = {}) {
     escaped: 0,        // g of vapour that has left an open beaker
     // flows over the last step (W): positive = into the sample
     heatIn: 0, heatLoss: 0, latentRate: 0, evapRate: 0,
+    boiled: false,      // true once this run has boiled (cleared by reset)
     phaseChange: null,  // "melting" | "freezing" | "boiling" | "condensing" | null
     history: [],        // [{ t, T }] sampled every `sampleEvery` simulated seconds
     sampleEvery: 10,
@@ -99,7 +100,7 @@ export function createStatesModel(opts = {}) {
     if (o.container) m.container = o.container;
     if (o.bath !== undefined) m.bath = o.bath;
     m.t = 0; m.history = []; nextSample = 0;
-    m.heatIn = m.heatLoss = m.latentRate = m.evapRate = 0; m.phaseChange = null;
+    m.heatIn = m.heatLoss = m.latentRate = m.evapRate = 0; m.phaseChange = null; m.boiled = false;
     setState(o.mass ?? opts.mass ?? 200, o.T0 ?? opts.T0 ?? -20);
     m.sample(true);
   };
@@ -163,6 +164,7 @@ export function createStatesModel(opts = {}) {
     const boilZone = m.T >= S.bp - 1e-9 && m.liquid > 0 && (m.gas > 0 || (m.container === "open" && boil > 1e-5));
     m.phaseChange = meltZone && dSolid < -1e-5 ? "melting" : meltZone && dSolid > 1e-5 ? "freezing"
       : boilZone && boil > 1e-5 ? "boiling" : boilZone && boil < -1e-5 ? "condensing" : null;
+    if (m.phaseChange === "boiling") m.boiled = true;     // has this run boiled at all (survives level changes)
     m.latentRate = dSolid < 0 ? -dSolid * S.Lf : dSolid > 0 ? -dSolid * S.Lf : boil * S.Lv;   // W going into (+) or out of (−) bonds
     m.sample();
   };
